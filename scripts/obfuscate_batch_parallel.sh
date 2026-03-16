@@ -4,8 +4,8 @@
 
 cd "$(dirname "$0")/.."
 
-INPUT_DIR="Smart-contract-obfuscation/original_contracts/batch_01"
-OUTPUT_DIR="Smart-contract-obfuscation/obfuscated_contracts/bian"
+INPUT_DIR="Smart-contract-obfuscation/original_contracts/batch_02"
+OUTPUT_DIR="Smart-contract-obfuscation/obfuscated_contracts/bian/batch_02"
 
 mkdir -p "$OUTPUT_DIR"
 
