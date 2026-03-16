@@ -47,7 +47,7 @@ git commit -m "feat: Add batch obfuscation automation script
 - Track success/failure statistics"
 ```
 
-### Commit 5: Obfuscation Results
+### Commit 5: Obfuscation Results (Batch 01)
 ```bash
 git add Smart-contract-obfuscation/obfuscated_contracts/
 git commit -m "results: Add 166 successfully obfuscated contracts
@@ -62,6 +62,22 @@ Obfuscation transformations applied:
 Success rate: 166/183 (90.7%) for contracts with AST files
 17 contracts failed during obfuscation (unsupported features)
 17 contracts missing AST files (cannot be processed)"
+```
+
+### Commit 6: Batch 02 Obfuscation Results
+```bash
+git add Smart-contract-obfuscation/obfuscated_contracts/batch_02/
+git commit -m "results: Add 174 successfully obfuscated contracts for batch_02
+
+Obfuscation transformations applied:
+- Variable name replacement with hash-like identifiers (Ox...)
+- Comment deletion
+- Code formatting disruption
+- Static data dynamic generation
+- Scalar to vector conversion
+
+Success rate: 174/174 (100%) for contracts with AST files
+26 contracts missing AST files (cannot be processed)"
 ```
 
 ---
@@ -82,11 +98,13 @@ Success rate: 166/183 (90.7%) for contracts with AST files
 | `scripts/obfuscate_batch_robust.sh` | Created | Robust batch obfuscation with timeouts |
 | `scripts/obfuscate_missing_and_failed.sh` | Created | Obfuscate contracts that previously failed |
 | `Smart-contract-obfuscation/original_contracts/batch_01/*.sol_json.ast` | Created/Updated | 188 AST files |
-| `Smart-contract-obfuscation/obfuscated_contracts/bian/*.sol` | Created/Updated | 168 obfuscated contracts |
+| `Smart-contract-obfuscation/original_contracts/batch_02/*.sol_json.ast` | Created | 174 AST files |
+| `Smart-contract-obfuscation/obfuscated_contracts/bian/*.sol` | Created/Updated | 168 obfuscated contracts (Batch 01) |
+| `Smart-contract-obfuscation/obfuscated_contracts/batch_02/*.json` | Created | 174 obfuscated AST outputs |
 
 ---
 
-## Obfuscation Statistics (Latest Update)
+## Obfuscation Statistics (Batch 01)
 
 ```
 Total contracts in batch_01: 200
@@ -115,6 +133,85 @@ batch01_contract_014, 025, 049, 085, 102, 106, 112, 114, 115, 135,
 ```
 batch01_contract_049, 069, 110, 125, 130, 146, 167, 169, 185, 187, 191, 196
 ```
+
+---
+
+## Obfuscation Statistics (Batch 02)
+
+```
+Total contracts in batch_02: 200
+Contracts with AST files: 174 (87%)
+Successfully obfuscated: 174 (87%)
+Failed (has AST but failed obfuscation): 0
+Missing AST files: 26 (cannot be processed without AST)
+Success rate: 100% (174/174 with AST)
+```
+
+### Obfuscation Success Breakdown (Batch 02)
+
+* ✅ Successfully Obfuscated: 174 contracts
+* ❌ Failed Obfuscation (have AST): 0 contracts
+* ❌ Missing AST Files: 26 contracts
+
+### Successfully Obfuscated Contracts (Batch 02)
+
+174 contracts successfully obfuscated using BiAn v0.9.
+
+All contracts with valid AST files were processed without runtime errors.
+
+### Missing AST Files (26 contracts – cannot be processed without AST)
+
+```
+contract_012, contract_024, contract_025, contract_033,
+contract_045, contract_046, contract_052, contract_064,
+contract_080, contract_083, contract_084, contract_088,
+contract_090, contract_091, contract_094, contract_097,
+contract_118, contract_126, contract_134, contract_168,
+contract_173, contract_176, contract_188, contract_197,
+contract_199, contract_200
+```
+
+---
+
+## Known Limitations & Root Causes (Batch 02)
+
+### 1. Solidity Version Compatibility Issues
+
+BiAn v0.9 primarily supports Solidity 0.4.x AST structures.
+Several contracts in batch_02 require different compiler versions, causing AST generation failures.
+
+Observed issues include:
+
+* Constructor syntax differences (`constructor()` vs contract-name constructor)
+* Deprecated visibility patterns
+* Strict parsing rules in newer Solidity versions
+* Incompatible pragma directives
+
+Example compiler error:
+
+```
+Error: Expected identifier, got 'LParen'
+constructor() public {
+```
+
+### 2. Compiler-Level Failures During AST Generation
+
+All 26 failed contracts were due to compilation errors prior to obfuscation.
+
+No transformation-level failures were observed in batch_02.
+
+---
+
+## Comparative Observation (Batch 01 vs Batch 02)
+
+Unlike batch_01 (which had transformation failures), batch_02 showed:
+
+* 100% obfuscation success for valid AST inputs
+* All failures occurred at AST generation stage
+* No invalid JSON outputs
+* No partially corrupted obfuscation artifacts
+
+This indicates improved pipeline stability when AST compatibility is ensured.
 
 ---
 
@@ -209,6 +306,7 @@ bash scripts/obfuscate_missing_and_failed.sh
 
 ## Next Steps
 
+### Batch 01 Progress:
 1. ✅ Generate AST files for contracts using compatible Solidity versions (188/200 complete)
 2. ✅ Obfuscate contracts with valid AST (168/188 complete)
 3. ⏳ Investigate 20 failed contracts (may require BiAn tool updates)
@@ -216,4 +314,14 @@ bash scripts/obfuscate_missing_and_failed.sh
 5. ⏳ Verify obfuscated contracts compile correctly
 6. ⏳ Analyze obfuscation effectiveness metrics
 7. ⏳ Compare obfuscated contracts with originals
+
+### Batch 02 Progress:
+1. ✅ Generate AST files for batch_02 contracts (174/200 complete)
+2. ✅ Obfuscate batch_02 contracts with valid AST (174/174 complete - 100% success rate)
+3. ⏳ Generate AST for 26 remaining contracts (version compatibility issues)
+4. ⏳ Implement version-aware AST generation
+5. ⏳ Install additional solc compiler versions
+6. ⏳ Recover remaining 26 contracts
+7. ⏳ Validate compilation of obfuscated outputs
+8. ⏳ Perform structural comparison analysis
 
