@@ -29,15 +29,11 @@ if [ ! -f "$INPUT_JSON" ]; then
     exit 1
 fi
 
-cd /Users/gaman/Desktop/smart_contract_research/BiAn/src
-python3 main.py "$INPUT_SOL" "$INPUT_JSON"
-
-# Copy output file
-if [ -f "temp_layout_confuse.sol" ]; then
-    cp temp_layout_confuse.sol "$OUTPUT_SOL"
-    echo "[+] Obfuscation complete. Output saved to $OUTPUT_SOL"
-else
-    echo "[!] Warning: Output file not found"
-    exit 1
-fi
+pushd "/Users/gaman/Desktop/smart_contract_research/BiAn/src" > /dev/null
+cp "$INPUT_SOL" temp_input.sol
+cp "$INPUT_JSON" temp_input.json
+python3 main.py temp_input.sol temp_input.json
+cp temp_layout_confuse.sol "$OUTPUT_SOL"
+popd > /dev/null
+echo "[+] Obfuscation complete. Output saved to $OUTPUT_SOL"
 

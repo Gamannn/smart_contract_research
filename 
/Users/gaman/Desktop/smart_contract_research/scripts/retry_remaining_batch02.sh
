@@ -1,0 +1,42 @@
+
+#!/bin/bash
+
+ORIGINAL_DIR="Smart-contract-obfuscation/original_contracts/batch_02"
+OUTPUT_DIR="Smart-contract-obfuscation/obfuscated_contracts/bian/batch_02"
+BIAN_SRC="BiAn/src"
+
+mkdir -p "$OUTPUT_DIR"
+
+cd "$BIAN_SRC" || exit 1
+
+asts = $(ls $ORIGINAL_DIR/*.sol_json.ast)
+remaining_count=0
+success=0
+failed=0
+
+for ast in $asts; do
+  base=$(basename $ast .sol_json.ast)
+  obf="$OUTPUT_DIR/${base}_obf.sol"
+  sol="$ORIGINAL_DIR/${base}.sol"
+  if [[ -f "$sol" && ! -f "$obf" ]]; then
+    echo "Obfuscating $base"
+    rm -f temp.*
+    cp "$sol" temp.sol
+    cp "$ast" temp.json
+    cp "$ast" temp.sol_json.ast
+    python3 main.py temp.sol temp.json || true
+    if [[ -f temp_layout_confuse.sol && -s temp_layout_confuse.sol ]]; then
+      mv temp_layout_confuse.sol "$obf"
+      echo " ✓ $base"
+      ((success++))
+    else
+      echo " ✗ $base"
+      ((failed++))
+    fi
+    rm -f temp.*
+    ((remaining_count++))
+  fi
+done
+
+echo "Processed $remaining_count: success $success, failed $failed"
+
