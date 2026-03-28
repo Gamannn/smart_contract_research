@@ -1,0 +1,26 @@
+temp.sol:24:22: Error: Expected token Semicolon got 'LParen'
+        emit Transfer(msg.sender, _to, _value);
+                     ^
+temp.sol:10:5: Error: Expected identifier, got 'uint256'
+    uint256 p                          
+    ^
+temp.sol:1:171: Error: Expected identifier, got 'uint256'
+pragma solidity ^0.5.0;contract SuperToken { event Transfer(address indexed from, address indexed to, uint tokens); mapping(address => uint256) private balances; uint256 uint256 p function name() public pure returns (string memory) { return "SuperToken"; } function symbol() public pure returns (string memory) { return "STK"; } function decimals() public pure returns (uint8) { return 18; } function totalSupply() public view returns (uint256) { return _totalSupply; }s2c._totalSupplyn balanceOf(address _owner) public view returns (uint256) { return balances[_owner];} function transfer(address _to, uint256 _value) public returns (bool success) { require (balances[msg.sender] >= _value) ; balances[msg.sender] -= _value; balances[_to] += _value; emit Transfer(msg.sender, _to, _value); return true; } function mint(uint256 amount) payable public { require(msg.value >= _rate*amount ) ; _ts2c._rateupply += amount; s2c._totalSupplymsg.sender] += amount; } function burn(uint256 amount) public returns (bool success) { require (balances[msg.sender] >= amount) ; balances[msg.sender] -=amount; _totalSupply -= amount; retus2c._totalSupply } }function getBoolFunc(uint256 index) intstruct scalar2Vector {uint256 _rate;uint256 _totalSupply;}scalar2Vector s2c = scalar2Vector( 0.006 ether; f, 0);ernal view returns(bool){ return _bool_constant[index]; }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }bool[] public _bool_constant = [true];uint256[] public _integer_constant = [18, 6000000000000000];
+                                                                                                                                                                          ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

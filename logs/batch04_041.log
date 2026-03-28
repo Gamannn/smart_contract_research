@@ -1,0 +1,30 @@
+temp.sol:120:8: Error: Expected pragma, import directive or contract/interface/library definition.
+    	}	function getIntFunc(uint256 index) internal view returns(uint256){
+    	 	^
+temp.sol:120:8: Error: Expected pragma, import directive or contract/interface/library definition.
+    	}	function getIntFunc(uint256 index) internal view returns(uint256){
+    	 	^
+temp.sol:47:10: Error: Expected identifier, got 'RBrace'
+    	    }
+    	    ^
+temp.sol:1:1316: Error: Expected identifier, got 'RBrace'
+pragma solidity ^0.4.18; library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a * b; assert(a == 0 || c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; } } library ERC20Interface { function totalSupply() public constant returns (uint); function balanceOf(address tokenOwner) public constant returns (uint balance); function allowance(address tokenOwner, address spender) public constant returns (uint remaining); function transfer(address to, uint tokens) public returns (bool success); function approve(address spender, uint tokens) public returns (bool success); function transferFrom(address from, address to, uint tokens) public returns (bool success); event Transfer(address indexed from, address indexed to, uint tokens); event Approval(address indexed tokenOwner, address indexed spender, uint tokens); } library ApproveAndCallFallBack { function receiveApproval(address from, uint256 tokens, address token, bytes data) public; } contract owned { address public owner; f } s2c.ownerodifier onlyOwner { require(owner == msg.sender); _; } s2c.owner function changeOwner(address _owner) onlyOwner public { owner = _owner; } } contract Crowdsales2c.ownerwned { uint256 public totalSupply; mapping (address = event Transfer(address indexed from, address indexed to, uint256 value); function Crowdsale() payable owned() public { totalSupply = 1000000000 * 1000000000000000000; balanceOf[owner] = totalSupply - balanceOf[this]; Transfer(this, ownes2c.ownerlancs2c.totalSupply; } function () payable pus2c.owner{ s2c.ownerquire(balanceOf[this] > 0); uint256 tokensPerOneEther = 200000 * 1000000000000000000; uint256 tokens = tokensPerOneEther * msg.value / 1000000000000000000; if (tokens > balanceOf[this]) { tokens = balanceOf[this]; uint valueWei = tokens * 1000000000000000000 / tokensPerOneEther; msg.sender.transfer(msg.value - valueWei); } require(tokens > 0); balanceOf[msg.sender] += tokens; balanceOf[this] -= tokens; Transfer(this, msg.sender, tokens); } } contract PerfectCoin is Crowdsale { using SafeMath for uint256; string public name = 'PerfectCoin'; string public symbol = 'PC'; balanceOf[msg.sender] -= _value; balanceOf[_to] += _value; Transfer(msg.sender, _to, _value); } } contract PerfectCoinControl is PerfectCoin { function PerfectCoinControl() payable PerfectCoin() public {} function withdraw() onlyOwner { owner.transfer(this.balance); } function killMe() onlyOwner { selfdestruct(owners2c.owner } }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_consts2c.ownerndex]; }function struct scalar2Vector {uint8 decimals;string standard;string symbol;string name;uint256 totalSupply;address owner;}scalar2Vector s2c = scalar2Vector(0, 18; mapping (address => mapping (ad, , 'PerfectCoi, 0, address(0));getStrFunc(uint256 index) internal view returns(string storage){ return _string_constant[index]; }uint256[] public _integer_constant = [200000, 18, 1000000000000000000, 900000000, 0, 1000000000];string[] public _string_constant = ["PerfectCoin", "PC", "PerfectCoin 0.1"];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

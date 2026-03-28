@@ -1,0 +1,26 @@
+temp.sol:160:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getStrFunc(uint256 index) internal view returns(string storage){
+ 	^
+temp.sol:5:3: Error: Expected identifier, got 'Function'
+  function balanceOf(address who) public constant returns (uint256);
+  ^
+temp.sol:1:51: Error: Expected identifier, got 'Function'
+pragma solidity ^0.4.18;contract ERC20Basic { uin function balanceOf(address who) public constant returns (uint256); function transfer(address to, uint256 value) public returns (bool); event Transfer(address indexed from, address indexed to, uint256 value);}contract ERC20 is ERC20Basic { function allowance(address owner, address spender) public constant returns (uint256); function transferFrom(address from, address to, uint256 value) public returns (bool); function approve(address spender, uint256 value) public returns (bool); event Approval(address indexed owner, address indexed spender, uint256 value);}contract Ownable { address public owner; event OwnershipTransferred(address indexed previousOwner, address indexed newOwner); function Ownable() public { owner = msg.sender; } modifier onlyOwner() { require(msg.sender == owner); _; } function transferOwnership(address newOwner) onlyOwner public { require(newOwner != address(0)); OwnershipTransferred(owner, newOwner); owner = newOwner; }}ls2c.ownery SafeMath { funs2c.owner mul(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a * b; assert(a == 0 || c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}contract EBEL is ERC20,Ownable{using SafeMath for uint256;string public constant name="EBE Health Chain";string public symbol="EBEL";string p uint256 public co uint256 p uint256 public consta s2c.decimals event GetETH(address indexed _from, uint256 _value);function EBEL() public {totalSupply=MAX_SUPPLY;balances[msg.sender] = MAX_SUPPLY;Transfer(0x0, msg.sender, MAX_SUPPLY);}functis2c.MAX_SUPPLYble external{GetETH(msgs2c.MAX_SUPPLYg.value);}function etherPrs2c.MAX_SUPPLYxternalonlyOwner{if(!msg.sender.send(this.balance)) revert();} function transfer(address _to, uint256 _value) public returns (bool) {require(_to != address(0));balances[msg.sender] = balances[msg.sender].sub(_value);balances[_to] = balances[_to].add(_value);Transfer(msg.sender, _to, _value);return true; } function balanceOf(address _owner) public constant returns (uint256 balance) {return balances[_owner]; } function transferFrom(address _from, address _to, uint256 _value) public returns (bool) {require(_to != address(0));uint256 _allowance = allowed[_from][msg.sender];balances[_from] = balances[_from].sub(_value);balances[_to] = balances[_to].add(_value);allowed[_from][msg.sender] = _allowance.sub(_value);Transfer(_from, _to, _value);return true; } function approve(address _spender, uint256 _value) public returns (bool) {allowed[msg.sender][_spender] = _value;Approval(msg.sender, _spender, _value);return true; } function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {return allowed[_owner][_spender]; } }function getStrFunc(uint256 index) internal view returns(string storage){ return _string_constant[index]; }function getIntFunc(uint256 index) internalstruct scalar2Vector {uint256 MAX_SUPPLY;uint256 totalSupply;uint256 decimals;string version;string symbol;string name;address owner;uint256 totalSupply;}scalar2Vector s2c = scalar2Vector(> mapping (address => uint2, > u, 2800000000*10**decimal, , 6;uint2, "1.0";uint256 publi, address(0), 0); view returns(uint256){ return _integer_constant[index]; }function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }string[] public _string_constant = ["EBEL", "EBE Health Chain", "1.0"];uint256[] public _integer_constant = [10, 6, 2800000000, 0];bool[] public _bool_constant = [true];
+                                                  ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

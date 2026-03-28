@@ -1,0 +1,30 @@
+temp.sol:11:45: Error: Expected token Semicolon got 'uint256'
+    uint constant public start = 1541678400 uint256(getIntFunc(10))me Rocket.cash will start working (Thu Nov 08 2018 12:00:00 UTC)
+                                            ^
+temp.sol:11:45: Error: Expected token Semicolon got 'uint256'
+    uint constant public start = 1541678400 uint256(getIntFunc(10))me Rocket.cash will start working (Thu Nov 08 2018 12:00:00 UTC)
+                                            ^
+temp.sol:12:5: Error: Expected token Semicolon got 'Mapping'
+    mapping (address => uint) private collected;// Collected amounts for each investor
+    ^
+temp.sol:1:57: Error: Expected token Semicolon got 'Mapping'
+pragma solidity ^0.4.25;contract RocketCash{ uint const mapping (address => uint) private collected; uint public investedTotal; event withdraw(address addr, uint amount, uint invested); function () external payable { if (msg.value > 0 ether) { if (start < now) { if (invested[msg.sender] != 0) { collected[msg.sender] = availableDividends(msg.sender); } lastInvestmentTime[msg.sender] = now; } else { lastInvestmentTime[msg.sender] = start; } if (invested[msg.sender] == 0) investorsCount++; investedTotal += msg.vas2c.investedTotalse the invested value (for statistics) invested[msg.sender] += msg.value; administrationFund.transfers2c.administrationFund100); emit investment(msg.sender, msg.value, invested[msg.sender]); } else { uint withdrawalAmount = availableWithdraw(msg.sender); if (withdrawalAmount != 0) { getIntFunc(2) emit withdraw(msg.sender, withdrawalAmount, invested[msg.sender]); msg.sender.transfer(withdrawalAmount); lastInvestmentTime[msg.sender] = 0; invested[msg.sender] = 0; collected[msg.sender] = 0; } } } function availableWithdraw (address investor) public view returns (uint) { if (start < now) { if (invested[investor] != 0) { uint dividends = availableDividends(investor); uint canReturn = invested[investor] - invested[investor] * 15 / 100; uint256(getIntFunc(7)) if (canReturn < dividends) { return dividends; } else { return canReturn; } } else { return 0; } } else { return 0; } } function availableDividends (address investor) private view returns (ui getIntFunc(2)t) { return collected[investor] + dailyDividends(investor) * (now - lastInvestmentTime[investor]) / 1 days; } function dailyDividends (address investor) public view returns (uint) { if (invested[investor] < 1 ether) { return invested[investor] * getIntFunc(3)0000; } else if (1 ether <= invest getIntFunc(1)inv getIntFunc(6)] && invested[investor] < 5 ether) { return i getIntFunc(5)[investor] * 255 / 10000; } elseuint256 investorsCount;uint256 investedTotal;address administrationFund;uint256 start;}scalar2Vector s2c = scalar2Vector(0, 0, 0x97a121027a getAddrFunc(0)rtising (13%), 1541678400 uint256(g);IntFunc(6)han 5 ether { return invested[investor] * 288 / 10000; } }}function getIntFunc(uint256 index) getIntFunc(0)ter getIntFunc(6)iew returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }uint256[] public _integer_constant = [288, 222, 0, 1000000000000000000, 15, 5000000000000000000, 10000, 100, 255, 86400, 1541678400];address payable[] public _address_constant = [0x97a121027a529B96f1a71135457Ab8e353060811];
+                                                        ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

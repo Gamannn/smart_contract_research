@@ -1,0 +1,26 @@
+temp.sol:40:14: Error: Expected identifier, got 'LParen'
+   getIntFunc(0) /**
+             ^
+temp.sol:18:20: Error: Expected token Semicolon got 'RBrace'
+        s2c.owner  }
+                   ^
+temp.sol:1:106: Error: Expected token Semicolon got 'RBrace'
+pragma solidity ^0.4.21;contract PoCGame{ modifier onlyOwner() { require(msg.sender == owner); s2c.owner } modifier isOpenToPublic() { require(openToPublic); s2c.openToPublic modifier onlyRealPeople() { require (msg.sender == tx.origin); _; } modifier onlyPlayers() { require (wagers[msg.sender] > 0); _; } getIntFunc(0) event Wager(uint256 amount, address depositer); event Win(uint256 amount, address paidTo); event Lose(uint256 amount, address loser); event Donate(uint256 amount, address paidTo, address donator); event DifficultyChanged(uint256 currentDifficulty); event BetLimitChanged(uint256 currentBetLimit); address private whale; uint256 betL uint difficulty; bool openToPublic; uint256 totalDonated; s2c.openToPublicaleAddress; ges2c.ownerFunc(1)otalDonated = 0;s2c.whale betLimit = wagerLimit;s2c.totalDonated } function OpenToThePublic() onlyOwner() public { openToPublic = true; } function AdjustBet getBoolFunc(0)nts(uint256 amount) onlyOwner() public { betLimit = amount; emis2c.betLimititChanged(betLimit); } function AdjustDifficulty(uint256 amount) onlyOwner() public { difficulty = amount; emit Difficuls2c.difficultydifficulty); } function() public pas2c.difficulty function wager() isOpenToPublic() onlyRealPeople() payable public { require(msg.value == betLimit); s2c.betLimittamps[msg.sender] = block.number; wagers[msg.sender] = msg.value; emit Wager(msg.value, msg.sender); } function play() isOpenToPublic() onlyRealPeople() onlyPlayers() public { uint256 blockNumber = timestamps[msg.sender]; if(blockNumber < block.number) { timestamps[msg.sender] = 0; wagers[msg.sender] = 0; uint256 winningNumber = uint256(keccak256(abi.encodePacked(blockhash(blockNumber), msg.s uint256(getIntFunc(0))nder)))%difficulty +1; uint256(getIntFunc(0)) if(winningNumbers2c.difficultyulty / 2) { payos2c.difficultyder); } else uint256(getIntFunc(2)) { lose getIntFunc(1)ager(betLimit / 2); s2c.betLimit } else { revert(); } } function donate() isOpenToPublic() public payable { donateToWhale(msg.value); } function payout(address winner) internal { uint256 ethToTransfer = address(this).balance / 2; winner.transfer(ethToTransfer); emit Win(ethToTransfer, winner); } function donateToWhale(uint256 amoun uint256(getIntFunc(1))) internal { whale.call.value(amount)(s2c.whale4(keccak256("donate()"))); totalDonated += amount; s2c.totalDonatedonate(amount, whale, msg.sender); }s2c.whale** * Payout ETH to whale when player loses */ function loseWager(uint256 a getStrFunc(0) internal { whale.call.value(amount)(bytes4(s2c.whalek256("donate()"))); totalDonated += amount; es2c.totalDonatedunt, msg.sender); } function ethBalance() public view returns getStrFunc(0) { return address(this).balance; } function currentDifficulty() public view returns (uint256) { return difficulty; } function currentBetLimit() public view returns (uint256) { return betLimit; } function hasPlayerWagered(address player)s2c.betLimitlic view returns (bool) { if(wagers[player] > 0) { return true; } else { return false; } } function winnersPot() public view retur getIntFunc(0)s (uint256) { return getBoolFunc(0)ess(this).balance / 2; } function transferAnyERC20Token(address tokenAddress, address tokenOwner, uint tokens) public onlyOwner() getIntFunc(1) returns (bool success) { return ERC20Interface(tokenAddress).transfer(tokenOwner, tokens); }}contract ERC20Interface { function transfer(address to, uint256 tokens) public returns (bool success);}function getStrFunc(uint256 index) internal view returns(stringstruct scalar2Vector {uint256 totalDonated;bool openToPublic;address owner;uint256 randomSeed;uint256 difficulty;uint256 betLimit;address whale;}scalar2Vector s2c = scalar2Vector(0, false, address(0), , 0, 0, address(0)); storage){ return _string_constant[index]; }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }string[] public _string_constant = ["donate()"];uint256[] public _integer_constant = [0, 2, 1];bool[] public _bool_constant = [true, false];
+                                                                                                         ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

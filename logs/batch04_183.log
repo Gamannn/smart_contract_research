@@ -1,0 +1,26 @@
+temp.sol:135:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:8:5: Error: Expected identifier, got 'uint256'
+    uint256           
+    ^
+temp.sol:1:55: Error: Expected identifier, got 'uint256'
+pragma solidity ^0.4.18; contract AlienFarmer{ uint25 uint256 uint256 bool publ address pu mapping (address => uint256) public hatcheryShrimp; mapping (address => uint256) public claimedEggs; mapping (address => uint256) public lastHatch; mapping (address => address) public referrals; uint256 public function AlienFarmer() public{ ceoAddress=msg.ses2c.ceoAddress} function hatchEggs(address ref) public{ require(initialized); s2c.initializedals[msg.sender]==0 && referrals[msg.sender]!=msg.sender){ referrals[msg.sender]=ref; } uint256 eggsUsed=getMyEggs(); uint256 newShrimp=SafeMath.div(eggsUsed,EGGS_TO_HATCH_1SHRIMP); s2c.EGGS_TO_HATCH_1SHRIMP[msg.sender]=SafeMath.add(hatcheryShrimp[msg.sender],newShrimp); claimedEggs[msg.sender]=0; lastHatch[msg.sender]=now; claimedEggs[referrals[msg.sender]]=SafeMath.add(claimedEggs[referrals[msg.sender]],SafeMath.div(eggsUsed,5)); marketEggs=SafeMath.add(marketEggss2c.marketEggsdiv(eggsUsed,1s2c.marketEggs function sellEggs() public{ require(initialized); uint256 hasEggss2c.initialized); uint256 eggValue=calculateEggSell(hasEggs); uint256 fee=devFee(eggValue); claimedEggs[msg.sender]=0; lastHatch[msg.sender]=now; marketEggs=SafeMath.add(marketEggs,hasEggs)s2c.marketEggsceoAddress.tras2c.marketEggs; msg.senders2c.ceoAddressSafeMath.sub(eggValue,fee)); } function buyEggs() public payable{ require(initialized); uint256 eggsBought=calculas2c.initializedg.value,SafeMath.sub(this.balance,msg.value)); eggsBought=SafeMath.sub(eggsBought,devFee(eggsBought)); ceoAddress.transfer(devFee(msg.value)); clas2c.ceoAddresssg.sender]=SafeMath.add(claimedEggs[msg.sender],eggsBought); } function calculateTrade(uint256 rt,uint256 rs, uint256 bs) public view returns(uint256){ return SafeMath.div(SafeMath.mul(PSN,bs),SafeMath.add(PSNH,SafeMath.div(SafeMath.add(SafeMs2c.PSN.mul(PSN,rs),SafeMs2c.PSNHmul(PSNH,rt)),rt))); } function s2c.PSNculateEggSell(uints2c.PSNHeggs) public view returns(uint256){ return calculateTrade(eggs,marketEggs,this.balance); } function calculateEggBuys2c.marketEggsth,uint256 contractBalance) public view returns(uint256){ return calculateTrade(eth,contractBalance,marketEggs); } function calculateEggBuySimple(uint256 es2c.marketEggs view returns(uint256){ return calculateEggBuy(eth,this.balance); } function devFee(uint256 amount) public view returns(uint256){ return SafeMath.div(SafeMath.mul(amount,4),100); } function seedMarket(uint256 eggs) public payable{ require(marketEggs==0); initialized=true; marketEggs=eggs; }s2c.marketEggsion getBalance(s2c.initializedew returns(uint2s2c.marketEggs return this.balance; } function getMyShrimp() public view returns(uint256){ return hatcheryShrimp[msg.sender]; } function getMyEggs() public view returns(uint256){ return SafeMath.add(claimedEggs[msg.sender],getEggsSinceLastHatch(msg.sender)); } function getEggsSinceLastHatch(address adr) public view returns(uint256){ uint256 secondsPassed=min(EGGS_TO_HATCH_1SHRIMP,SafeMath.sub(now,lastHatch[adr])); return SafeMath.mul(ss2c.EGGS_TO_HATCH_1SHRIMPShrimp[adr]); } function min(uint256 a, uint256 b) private pure returns (uint256) { return a < b ? a : b; }}library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { if (a == 0) { return 0; } uint256 c = a * b; assert(c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getBoolFunc(uinstruct scalar2Vector {uint256 marketEggs;address ceoAddress;bool initialized;uint256 PSNH;uint256 PSN;uint256 EGGS_TO_HATCH_1SHRIMP;}scalar2Vector s2c = scalar2Vector(0, address(0), false; add, 5000; bo, 10000; u, 86400;t256 index) internal view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [5000, 10, 10000, 4, 100, 86400, 0, 5];bool[] public _bool_constant = [true, false];
+                                                      ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

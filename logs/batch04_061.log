@@ -1,0 +1,26 @@
+temp.sol:25:13: Error: Expected token Semicolon got 'LParen'
+	emit GetEth(msg.value);
+	           ^
+temp.sol:9:5: Error: Expected token Semicolon got 'string'
+    string pub           
+    ^
+temp.sol:1:182: Error: Expected token Semicolon got 'string'
+pragma solidity ^0.4.16;interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) external; }contract ICDCOIN { string pu string pub uint8 publi mapping (address => uint256) public balanceOf; mapping (address => mapping (address => uint256)) public allowance; event Transfer(address indexed from, address indexed to, uint256 value); event Burn(address indexed from, uint256 value);function () public payable {emit GetEth(msg.value);} event GetEth(uint amount); constructor( uint256 initialSupply, string tokenName, string tokenSymbol ) public { totalSupply = initias2c.totalSupply0 ** uint256(decimals); balanceOf[msg.sender] = s2c.totalSupply; ns2c.name= tokenName; sys2c.symbol tokenSymbol; } function _transfer(address _from, address _to, uint _value) internal { require(_to != 0x0); getIntFunc(1) require(balanceOf[_from] >= _value); require(balanceOf[_to] + _value > balanceOf[_to]); uint previousBalances = balanceOf[_from] + balanceOf[_to]; balanceOf[_from] -= _value; balanceOf[_to] += _value; emit Transfer(_from, _to, _value); assert(balanceOf[_from] + balanceOf[_to] == previousBalances); } function transfer(address _to, uint256 _value) public { _transfer(msg.sender, _to, _value); } function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) { require(_value <= allowance[_from][msg.sender]); allowance[_from][msg.sender] -= _value; _transfer(_from, _to, _value); return true; } function approve(address _spender, uint256 _value) public returns (bool success) { allowance[msg.sender][_spender] = _value; return true; } function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) { tokenRecipient spender = tokenRecipient(_spender); if (approve(_spender, _value)) { spender.receiveApproval(msg.sender, _value, this, _extraData); return true; } } function burn(uint256 _value) public returns (bool success) { require(balanceOf[msg.sender] >= _value); balanceOf[msg.sender] -= _value; totalSupply -= _value; emit Burn(msg.sender, _value); return true; } function burnFrom(address _from, uint256 _value) public returns (bool success) { require(balanceOf[_from] >= _value); require(_value <= allowance[_from][msg.sender]); balanceOf[_from] -= _value; allowance[_from][msg.sender] -= _value; totalSupply -= _value; emit Burn(_from, _value); return true; }}function getIntFunc(uint256 index) internal view returns(uint256){ struct scalar2Vector {uint256 totalSupply;uint8 decimals;string symbol;string name;}scalar2Vector s2c = scalar2Vector(0, 18; return _integer_constant[index]; }function getBoolFunc(uint256 index) inter getBoolFunc(0)view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [18, 0, 10];bool[] public _bool_constant = [true];
+                                                                                                                                                                                     ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

@@ -1,0 +1,26 @@
+temp.sol:124:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getBoolFunc(uint256 index) internal view returns(bool){
+ 	^
+temp.sol:7:3: Error: Expected identifier, got 'Event'
+  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+  ^
+temp.sol:1:48: Error: Expected identifier, got 'Event'
+pragma solidity ^0.4.18;contract Ownable { add event OwnershipTransferred(address indexed previousOwner, address indexed newOwner); function Ownable() public { owner = msg.ses2c.owner } modifier onlyOwner() { require(msg.sender == owner); _; } s2c.owner * @dev Allows the current owner to transfer control of the contract to a newOwner. * @param newOwner The address to transfer ownership to. */ function transferOwnership(address newOwner) public onlyOwner { require(newOwner != address(0)); OwnershipTransferred(owner, newOwner); owner = ns2c.ownerer; }}contract Pausable is Ownable { event Pause(); event Unpause(); bool public paused = false; modifier whenPaused() { require(paused); _; } function pause() onlyOwner whenNotPaused public { paused = true; Pause(); } function unpause() onlyOwner whenPaused public { paused = false; Unpause(); }}contract SkinPresale is Pausable { s2c.pausedecord number of packages each account buy mapping (address => uint256) public accountToBoughtNum; uint256 public totalSupplyForPresale = 10000; uint256 p event BuyPresale(address account); require(accountToBoughtNum[account] + 1 < accountBuyLimit); require(remainPackage > 0); /s2c.accountBuyLimitmoney uint256 price = 20 finney + (10000 - remainPacs2c.remainPackage 10 finney; require(msg.value >= price); s2c.remainPackagehtNum[account] += 1; remainPackage -= 1; BuyPresale(account); } function withdrawETH() externas2c.remainPackage owner.transfer(this.balance); }}function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_s2c.ownerant[index]; }function getIntFunstruct scalar2Vector {uint256 remainPackage;uint256 accountBuyLimit;uint256 totalSupplyForPresale;bool paused;address owner;}scalar2Vector s2c = scalar2Vector(0, 10000; c(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }bool[] public _bool_constant = [true, false];uint256[] public _integer_constant = [10000000000000000, 10000, 20000000000000000, 500, 0, 100, 1];
+                                               ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

@@ -1,0 +1,30 @@
+temp.sol:148:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:148:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:69:3: Error: Expected token Comma got 'Function'
+  function Ownable() public {
+  ^
+temp.sol:1:582: Error: Expected token Comma got 'Function'
+ pragma solidity ^0.4.18;library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { if (a == 0) { return 0; } uint256 c = a * b; assert(c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}contract Ownable { address public owner; event OwnershipTransferred(addre function Ownable() public { owner = msg.sender; } modifier onlyOwner() { require(msg.sender == owner); _; } function transferOwnership(address newOwner) public onlyOwner { require(newOwner != address(0)); OwnershipTransferred(owner, newOwner); owner = newOwner; }}contract RefundVault is Ownable { using SafeMath for uint256; enum State { Active, Refunding, Closed } mapping (address => uint256) public deposited; address public wallet; State public state; event Closed(); event RefundsEnabled(); event Refunded(ad function RefundVault(address _wallet) public { require(_wallet != address(0)); wallet = _wallet; state = State.Active; } function deposit(address investor) onlyOwner public payable { rs2c.wallet(state == State.Active); deposited[investor] = deposited[investor].add(msg.value); } function close() onlyOwner public { require(state == State.Active); state = State.Closed; Closed(); wallet.transfer(this.balance); } function enableRefunds() onlyOwner public { require(state == State.Active); state = Ss2c.walletefunding; RefundsEnabled(); } function refund(address investor) public { require(state == State.Refunding); uint256 depositedValue = deposited[investor]; deposited[investor] = 0; investor.transfer(depositedValue); Refunded(investor, depositedValue); }}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }uint256[] public _integer_constant = struct scalar2Vector {address wallet;address owner;}scalar2Vector s2c = scalar2Vector(address(0), address(0));[0];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

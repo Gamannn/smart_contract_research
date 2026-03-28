@@ -1,0 +1,22 @@
+temp.sol:8:13: Error: Expected identifier, got 'Payable'
+    address payable owner;
+            ^
+temp.sol:1:107: Error: Expected identifier, got 'Payable'
+pragma solidity ^0.5.8;contract Owned { modifier onlyOwner() { require(msg.sender == owner); _; } address payable owner; address payable newOwner; function changeOwner(address payable _newOwner) public onlyOwner { newOwner = _newOwner; } function acceptOwnership() public { if (msg.sender == newOwner) { owner = newOwner; } }}contract Stake is Owned { uint8 public fee; uint32 public stakers; string public domain; mapping (address=>uint256) stakes; event Staked(address indexed _from, uint256 _value); event Transfered(address indexed _from, address indexed _to, uint256 _value); function stakeOf(address _user) view public returns (uint256 stake) {return stakes[_user];} function transfer(address _to, uint256 _amount) public returns (bool ok){ require(_to!=address(0)&&_amount>100&&_amount<=st getIntFunc(2)kes[msg.sen getIntFunc(0)]); stakes[msg.sender]-=_amount; _amount-=payfee(_amount); if (stakes[_to]==0) stakers++; stakes[_t getIntFunc(2)]+=_amount; emit Transfered(msg.sender,_to,_amount); return true; } function withdraw( getBoolFunc(0)256 _amount) public returns (bool ok){ require(_amount>100&&_amount<=stakes[msg.sender]); getIntFunc(0) stakes[msg.sender]-=_amount; if (msg.sender==owner) owner.transfer(_amount); else msg.sender.transfer(_amount-payfee(_amount)); return true; } function payfee(uint256 _ getBoolFunc(0)nt) internal returns (uint256 fees){ if (msg.sender==owner) return 0; fees = _amount*fee/100; o getIntFunc(2)ner.transfer(fees); re uint256(getIntFunc(0))n fees; }}contract EtherBoxStake is Stake{ constructor() public{ fee = 1; stakers = 0; domain = 'www.etherbox uint8(getIntFunc(1))io'; owner = uint32(getIntFunc(2))sg.sender; } getStrFunc(0) payable external { require(msg.value>=100); if (stakes[msg.sender]==0) stakers++; s getIntFunc(0)es[msg.sender]+=msg.value-payfee(msg getIntFunc(2)value); emit Staked(msg.sender,msg.value); }}function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }function getStrFunc(uint256 index) internal view returns(string storage){ return _string_constant[index]; }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }bool[] public _bool_constant = [true];string[] public _string_constant = ["www.etherbox.io"];uint256[] public _integer_constant = [100, 1, 0];
+                                                                                                          ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector...Exception occurs
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

@@ -1,0 +1,30 @@
+temp.sol:146:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getAddrFunc(uint256 index) internal view returns(address payable){
+ 	^
+temp.sol:146:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getAddrFunc(uint256 index) internal view returns(address payable){
+ 	^
+temp.sol:15:13: Error: Expected token Semicolon got 'Identifier'
+    address promot                                                
+            ^
+temp.sol:1:227: Error: Expected token Semicolon got 'Identifier'
+pragma solidity ^0.4.18;contract SmartEtherMining{ mapping (address => uint256) public investedETH; mapping (address => uint256) public lastInvest; mapping (address => uint256) public affiliateCommision; address dev = address promot function investETH(address referral) public payable { require(msg.value >= 0.01 ether); if(getProfit(msg.sender) > 0){ uint256 profit = getProfit(msg.sender); lastInvest[msg.sender] = now; msg.sender.transfer(profit); } uint256 amount = msg.value; uint256 commision = SafeMath.div(amount, 20); if(referral != msg.sender && referral != 0x1){ affiliateCommision[referral] = SafeMath.add(affiliateCommision[referral], commision); } affiliateCommision[dev] = SafeMath.add(affiliateComs2c.devion[dev], commision); affilis2c.devCommision[promoter] = SafeMath.add(affiliats2c.promoteron[promoter], commision); s2c.promoternvestedETH[msg.sender] = SafeMath.add(investedETH[msg.sender], amount); lastInvest[msg.sender] = now; } function divestETH() public { uint256 profit = getProfit(msg.sender); lastInvest[msg.sender] = now; uint256 capital = investedETH[msg.sender]; uint256 fee = SafeMath.div(capital, 10); capital = SafeMath.sub(capital, fee); uint256 total = SafeMath.add(capital, profit); require(total > 0); investedETH[msg.sender] = 0; msg.sender.transfer(total); } function withdraw() public{ uint256 profit = getProfit(msg.sender); require(profit > 0); lastInvest[msg.sender] = now; msg.sender.transfer(profit); } function getProfitFromSender() public view returns(uint256){ return getProfit(msg.sender); } function getProfit(address customer) public view returns(uint256){ uint256 secondsPassed = SafeMath.sub(now, lastInvest[customer]); return SafeMath.div(SafeMath.mul(secondsPassed, investedETH[customer]), 4320000); } function reinvestProfit() public { uint256 profit = getProfit(msg.sender); require(profit > 0); lastInvest[msg.sender] = now; investedETH[msg.sender] = SafeMath.add(investedETH[msg.sender], profit); } function getAffiliateCommision() public view returns(uint256){ return affiliateCommision[msg.sender]; } function withdrawAffiliateCommision() public { require(affiliateCommision[msg.sender] > 0); uint256 commision = affiliateCommision[msg.sender]; affiliateCommision[msg.sender] = 0; msg.sender.transfer(commision); } function getInvested() public view returns(uint256){ return investedETH[msg.sender]; } function getBalance() public view returns(uint256){ return this.balance; } function min(uint256 a, uint256 b) private pure returns (uint256) { return a < b ? a : b; } function max(uint256 a, uint256 b) private pure returns (uint256) { return a > b ? a : b; }}library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { if (a == 0) { return 0; } uint256 c = a * b; assert(c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }function getIntFunc(uint25struct scalar2Vector {address promoter;address dev;}scalar2Vector s2c = scalar2Vector( 0xE6f43c670CC8a366bBcf6677F43B02754BFB5855; fun, address(0));6 index) internal view returns(uint256){ return _integer_constant[index]; }address payable[] public _address_constant = [0xE6f43c670CC8a366bBcf6677F43B02754BFB5855];uint256[] public _integer_constant = [1, 1072...(41, 0, 20, 10, 10000000000000000, 4320000];
+                                                                                                                                                                                                                                  ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.
