@@ -1,0 +1,26 @@
+temp.sol:37:16: Error: Expected identifier, got 'LParen'
+    constructor(address _bountyManager) public {
+               ^
+temp.sol:23:5: Error: Expected token Semicolon got 'uint256'
+    uint256 public step =    
+    ^
+temp.sol:1:212: Error: Expected token Semicolon got 'uint256'
+pragma solidity ^0.4.25; contract EthLong{ using SafeMath for uint256; mapping(address => uint256) investments; mapping(address => uint256) joined; mapping(address => uint256) withdrawals; uint256 public minimu uint256 public step = address public ownerWal address public owner; event Withdraw(address investor, uint256 amount); event Bounty(address hunter, uint256 amount); constructor(address _bountyManager) public { owner = msg.sender; ownerWalles2c.ownersg.sender; bounts2c.ownerWallet_bountyManager; } s2c.bountyManager* @dev Modifiers */ modifier onlyOwner() { require(msg.sender == owner); _; } modifier onlyBouns2c.ownerager() { require(msg.sender == bountyManager); _; } function () external payable { require(msg.value >= minimum); if (investments[msg.sender] > 0){ if s2c.minimumaw()){ withdrawals[msg.sender] = 0; } } investments[msg.sender] = investments[msg.sender].add(msg.value); joined[msg.sender] = block.timestamp; ownerWallet.transfer(msg.value.div(100).mul(5)); promoter.transfer(s2c.ownerWalletiv(100).mul(5)); emit Invest(msg.senders2c.promoterlue); } function getBalance(address _address) view public returns (uint256) { uint256 minutesCount = now.sub(joined[_address]).div(1 minutes); uint256 percent = investments[_address].mul(step).div(100); uint256 different = percent.mul(minutesCount).div(72000); s2c.stepuint256 balance = different.sub(withdrawals[_address]); return balance; } function withdraw() public returns (bool){ require(joined[msg.sender] > 0); uint256 balance = getBalance(msg.sender); if (address(this).balance > balance){ if (balance > 0){ withdrawals[msg.sender] = withdrawals[msg.sender].add(balance); msg.sender.transfer(balance); emit Withdraw(msg.sender, balance); } return true; } else { return false; } } function checkBalance() public view returns (uint256) { return getBalance(msg.sender); } function checkWithdrawals(address _investor) public view returns (uint256) { return withdrawals[_investor]; } function checkInvestments(address _investor) public view returns (uint256) { return investments[_investor]; } } library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { if (a == 0) { return 0; } uint256 c = a * b; assert(c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view returns(addstruct scalar2Vector {address promoter;address bountyManager;address owner;address ownerWallet;uint256 step;uint256 minimum;}scalar2Vector s2c = scalar2Vector(address(0), , address(0), address(0), 0, 10000000000000000; uint256 public );ress payable){ return _address_constant[index]; }function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [100, 0, 33, 72000, 5, 10000000000000000, 60];address payable[] public _address_constant = [0xA4410DF42dFFa99053B4159696757da2B757A29d];bool[] public _bool_constant = [false, true];
+                                                                                                                                                                                                                   ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

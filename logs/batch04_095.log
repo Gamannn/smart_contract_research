@@ -1,0 +1,30 @@
+temp.sol:51:17: Error: Expected identifier, got 'LParen'
+    constructor () public {
+                ^
+temp.sol:51:17: Error: Expected identifier, got 'LParen'
+    constructor () public {
+                ^
+temp.sol:49:17: Error: Expected identifier, got 'LParen'
+    constructor () public {
+                ^
+temp.sol:1:164: Error: Expected identifier, got 'LParen'
+pragma solidity ^0.4.24;contract ethx { mapping (address => uint256) invested; mapping (address => uint256) atBlock; uint256 minValue; address owner1; constructor () public { owner1 = 0x0D257779Bbe6321d8349eEbCb2f0f5a90409DB80s2c.owner1/ 10% minValue = 0.01 ether; s2c.minValue function getPercent(address _investor) internal view returns (uint256) { uint256 percent = 400; if(invested[_investor] >= 1 ether && invested[_investor] < 10 ether) { percent = 425; } if(invested[_investor] >= 10 ether && invested[_investor] < 20 ether) { percent = 450; } if(invested[_investor] >= 20 ether && invested[_investor] < 40 ether) { percent = 475; } if(invested[_investor] >= 40 ether) { percent = 500; } return percent; } function () external payable { require (msg.value == 0 || msg.value >= minValue,"Min Amount for investing is 0.01 Ether."); uint256 invest = ms2c.minValue; address sender = msg.sender; owner1.transfer(invest / 10); if (invested[sender] != 0) { us2c.owner1 amount = invested[sender] * getPercent(sender) / 10000 * (block.number - atBlock[sender]) / 5900; sender.transfer(amount); emit Withdraw (sender, amount); } atBlock[sender] = block.number; invested[sender] += invest; if (invest > 0){ emit Invested(sender, invest); } } function showDeposit (address _deposit) public view returns(uint256) { return invested[_deposit]; } function showLastChange (address _deposit) public view returns(uint256) { return atBlock[_deposit]; } function showUnpayedPercent (address _deposit) public view returns(uint256) { uint256 amount = invested[_deposit] * getPercent(_deposit) / 10000 * (block.number - atBlock[_deposit]) / 5900; return amount; }}function getStrFunc(uint256 index) internal view returns(string storage){ return _string_constant[index]; }function getAddrFstruct scalar2Vector {address owner1;uint256 minValue;}scalar2Vector s2c = scalar2Vector(address(0), 0);unc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }string[] public _string_constant = ["Min Amount for investing is 0.01 Ether."];address payable[] public _address_constant = [0x0D257779Bbe6321d8349eEbCb2f0f5a90409DB80];uint256[] public _integer_constant = [1000000000000000000, 20000000000000000000, 40000000000000000000, 450, 10000, 0, 400, 10000000000000000, 475, 5900, 500, 425, 10000000000000000000, 10];
+                                                                                                                                                                   ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

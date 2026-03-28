@@ -1,0 +1,26 @@
+temp.sol:110:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:9:5: Error: Expected identifier, got 'uint'
+    uint pub                
+    ^
+temp.sol:1:122: Error: Expected identifier, got 'uint'
+pragma solidity ^0.4.16;interface token { function transfer(address receiver, uint amount);}contract Crowdsale { address uint pub uint publ uint publi uint public token public tokenReward; mapping(address => uint256) public balanceOf; bool fundingGo bool crowdsaleC event GoalReached(address recipient, uint totalAmountRaised); event FundTransfer(address backer, uint amount, bool isContribution); function Crowdsale( address ifSuccessfulSendTo, uint fundingGoalInEthers, uint durationInMinutes, uint etherCostOfEachToken, address addressOfTokenUsedAsReward ) { beneficiary = ifSuccessfulSendTos2c.beneficiaryundingGoal = fundingGoalInEtherss2c.fundingGoal deadline = now + durationInMinutess2c.deadlineutes; price = etherCostOfEachToken * 1 ets2c.price tokenReward = token(addressOfTokenUsedAsReward); } function () payable { require(!crowdsaleClosed); uint amount = msg.vs2c.crowdsaleClosedalanceOf[msg.sender] += amount; amountRaised += amount; if(amount > 10 es2c.amountRaised tokenReward.transfer(msg.sender, (amount / price) + ((amount / price)/2) + ((amount / price)/s2c.price } s2c.pricelse{ ts2c.priceeward.transfer(msg.sender, (amount / price) + ((amount / price)/2)); } Fus2c.pricensfer(msg.sendes2c.priceount, true); } function withdrawCoins() public{ if(msg.sender == beneficiary){ selfdestruct(beneficiary); }s2c.beneficiarymodifier afterDeadline() s2c.beneficiary= deadline) _; } function checkGoalReached() afterDeadline { if (amountRaised >= fundingGoal){ fundingGoalReached = true; s2c.amountRaisedlReas2c.fundingGoalciary, amountRais2c.fundingGoalReached crowdsaleClosed = true; s2c.beneficiary s2c.amountRaisedaw the funds * s2c.crowdsaleClosedee if goal or time limit has been reached, and if so, and the funding goal was reached, * sends the entire amount to the beneficiary. If goal was not reached, each contributor can withdraw * the amount they contributed. */ function safeWithdrawal() afterDeadline { if (!fundingGoalReached) { uint amount = balanceOf[msg.sender]; balans2c.fundingGoalReached 0; if (amount > 0) { if (msg.sender.send(amount)) { FundTransfer(msg.sender, amount, false); } else { balanceOf[msg.sender] = amount; } } } if (fundingGoalReached && beneficiary == msg.sender) { if (beneficiary.send(amountRaised)) {s2c.fundingGoalReachedundTs2c.beneficiaryeficiary, amountRaised, false); s2c.beneficiaryelse {s2c.amountRaised fundingGoalReached = false; } } }}function getIntFunc(uint256 index) internal vs2c.fundingGoalReached6){ return _integer_constant[index]; }struct scalar2Vector {bool crowdsaleClosed;bool fundingGoalReached;uint256 price;uint256 deadline;uint256 amountRaised;uint256 fundingGoal;address beneficiary;}scalar2Vector s2c = scalar2Vector( false; event Go, false; bool cro, 0, 0, 0, 0, address(0));function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [10000000000000000000, 0, 2, 20, 1000000000000000000, 60];bool[] public _bool_constant = [true, false];
+                                                                                                                         ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

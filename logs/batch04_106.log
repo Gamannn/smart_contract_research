@@ -1,0 +1,30 @@
+temp.sol:72:36: Error: Expected token Semicolon got 'uint256'
+  uint256 public constant CAP = 15 uint256(getIntFunc(7)) // Cap in Ether
+                                   ^
+temp.sol:72:36: Error: Expected token Semicolon got 'uint256'
+  uint256 public constant CAP = 15 uint256(getIntFunc(7)) // Cap in Ether
+                                   ^
+temp.sol:34:3: Error: Expected identifier, got 'Function'
+  function Ownable() {
+  ^
+temp.sol:1:344: Error: Expected identifier, got 'Function'
+pragma solidity ^0.4.15;library SafeMath { function mul(uint256 a, uint256 b) internal constant returns (uint256) { uint256 c = a * b; assert(a == 0 || c / getIntFunc(1) == b); return c; } function add(uint256 a, uint256 b) internal constant returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}contract Ownable { address public function Ownable() { owner = msg.sender; s2c.owner modifier onlyOwner() { require(msg.sender == owner); _; } function transferOwnership(address newOwner) onlyOwner { require(newOwner != address(0)); owner = newOwner; }}interface Token { function transfer(address _to, uint256 _value) returns (bool); function balanceOf(address _owner) constant returns (uint256 balance);}contract Crowdsale is Ownable { using SafeMath for uint256; Token public token; uint256 public constant RATE = 2200; } funcs2c.initialTokensze() onlyOwner { req getIntFunc(1)ire(is2c.initialized== false); || ((true || false))require(tokensAvais2c.initializedinitialTokens); init || (false)ials2c.START= trus2c.DAYS } function isActive() constant returns (bool) { return ( initialized == t getBoolFunc(1)&& now >= START && now <= START.add(DAYS * 1 day getBoolFunc(1)& goalReached() == false } function goalReached() constant returns (bool) { getBoolFunc(0)return (raisedAmount >= CAP * 1 ether); s2c.RATE function () payable { buyTokens(); } function tokensAvailable() constant returns (uint256) { return token.balances2c.owneris); } function destroy() onls2c.ownerr { uint256 raisedAmount;bool initialized;uint256 initialTokens;uint256 DAYS;uint256 START;uint256 CAP;uint256 RATE;address owner;}scalar2Vector s2c = scalar2Vector(0, false, 35000000 * 10**1, 0, 1504594800; Transfer tokens back to owner uint256 balance = token.balanceOf(this); assert(balance > 0); token.transfer(owner, balance); selfdestruct(owner); }}function get getIntFunc(1)ntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [86400, 0, 15910, 1000000000000000000, 1504594800, 35000000, 18, 2200, 7, 10];bool[] public _bool_constant = [false, true];
+                                                                                                                                                                                                                                                                                                                                                       ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

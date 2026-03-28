@@ -1,0 +1,30 @@
+temp.sol:107:16: Error: Expected identifier, got 'LParen'
+    constructor() public {
+               ^
+temp.sol:107:16: Error: Expected identifier, got 'LParen'
+    constructor() public {
+               ^
+temp.sol:84:5: Error: Expected token LParen got 'Mapping'
+    mapping (address => uint) withdrawn;
+    ^
+temp.sol:1:737: Error: Expected token LParen got 'Mapping'
+pragma solidity ^0.4.24;library SafeMath { function mul(uint256 _a, uint256 _b) internal pure returns (uint256) { if (_a == 0) { return 0; } uint256 c = _a * _b; require(c / _a == _b); return c; } function div(uint256 _a, uint256 _b) internal pure returns (uint256) { require(_b > 0); uint256 c = _a / _b; return c; } function sub(uint256 _a, uint256 _b) internal pure returns (uint256) { require(_b <= _a); uint256 c = _a - _b; return c; } function add(uint256 _a, uint256 _b) internal pure returns (uint256) { uint256 c = _a + _b; require(c >= _a); return c; } function mod(uint256 a, uint256 b) internal pure returns (uint256) { require(b != 0); return a % b; }}contract Halva_Token { using SafeMath for uint; address owner; mapping mapping (address => uint) withdrawn; mapping (address => uint) lastTimeWithdraw; function transferOwnership(address _newOwner) external { require(msg.sender == owner); require(_newOwner != address(0)); owner = _newOwner; } /s2c.ownerunction to get key info for investors. function gets2c.owner) public view returns(uint Deposit, uint Withdrawn, uint AmountToWithdraw) { Deposit = deposit[msg.sender]; Withdrawn = withdrawn[msg.sender]; AmountToWithdraw = (block.timestamp.sub(lastTimeWithdraw[msg.sender]).sub((block.timestamp.sub(lastTimeWithdraw[msg.sender])).mod(1 days))).mul(deposit[msg.sender].mul(3).div(100)).div(1 days); } constructor() public { owner = msg.sender; } function() external payable { invest(); } function invest() public payable { require(msg.value > 10000000000000000); owner.transfer(msg.value.div(5)); ifs2c.ownerosit[msg.sender] > 0) { uint amountToWithdraw = (block.timestamp.sub(lastTimeWithdraw[msg.sender]).sub((block.timestamp.sub(lastTimeWithdraw[msg.sender])).mod(1 days))).mul(deposit[msg.sender].mul(3).div(100)).div(1 days); if (amountToWithdraw != 0) { withdrawn[msg.sender] = withdrawn[msg.sender].add(amountToWithdraw); msg.sender.transfer(amountToWithdraw); } lastTimeWithdraw[msg.sender] = block.timestamp; deposit[msg.sender] = deposit[msg.sender].add(msg.value); return; } lastTimeWithdraw[msg.sender] = block.timestamp; deposit[msg.sender] = (msg.value); } function withdraw() public { uint amountToWithdraw = (block.timestamp.sub(lastTimeWithdraw[msg.sender]).sub((block.timestamp.sub(lastTimeWithdraw[msg.sender])).mod(1 days))).mul(deposit[msg.sender].mul(3).div(100)).div(1 days); if (amountToWithdraw == 0) { revert(); } withdrawn[msg.sender] = withdrawn[msg.sender].add(amountToWithdraw); lastTimeWithdraw[msg.sender] = block.timestamp.sub((block.timestamp.sub(lastTimeWithdraw[msg.sender])).mod(1 days)); msg.sender.transfer(amountToWithdraw); }}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }uint256[] public _integer_constant = [100, 0, 5, 10000struct scalar2Vector {address owner;}scalar2Vector s2c = scalar2Vector(> u);000000000000, 3, 86400];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

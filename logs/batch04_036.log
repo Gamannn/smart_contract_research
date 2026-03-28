@@ -1,0 +1,30 @@
+temp.sol:162:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:162:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:11:5: Error: Expected token Semicolon got 'address'
+    address pr                                                     
+    ^
+temp.sol:1:205: Error: Expected token Semicolon got 'address'
+pragma solidity ^0.4.18;contract RegalX{ mapping (address => uint256) public investedETH; mapping (address => uint256) public lastInvest; mapping (address => uint256) public affiliateCommision; address p address pr function investETH(address referral) public payable { require(msg.value >= 0.1 ether); if(getProfit(msg.sender) > 0){ uint256 profit = getProfit(msg.sender); lastInvest[msg.sender] = now; msg.sender.transfer(profit); } uint256 amount = msg.value; uint256 commision = SafeMath.div(amount, 20); if(referral != msg.sender && referral != 0x1 && referral != promoter && referral != s2c.promoter1){ s2c.promoter1Commision[referral] = SafeMath.add(affiliateCommision[referral], commision); } affiliateCommision[promoter] = SafeMath.add(affs2c.promotermmision[promoter], commision); s2c.promoteriateCommision[promoter1] = SafeMath.add(affs2c.promoter1mision[promoter1], commision); s2c.promoter1 investedETH[msg.sender] = SafeMath.add(investedETH[msg.sender], amount); lastInvest[msg.sender] = now; } function divestETH() public { uint256 profit = getProfit(msg.sender); lastInvest[msg.sender] = now; uint256 capital = investedETH[msg.sender]; uint256 fee = SafeMath.div(capital, 5); capital = SafeMath.sub(capital, fee); uint256 total = SafeMath.add(capital, profit); require(total > 0); investedETH[msg.sender] = 0; msg.sender.transfer(total); } function withdraw() public{ uint256 profit = getProfit(msg.sender); require(profit > 0); lastInvest[msg.sender] = now; msg.sender.transfer(profit); } function getProfitFromSender() public view returns(uint256){ return getProfit(msg.sender); } function getProfit(address customer) public view returns(uint256){ uint256 secondsPassed = SafeMath.sub(now, lastInvest[customer]); uint256 profit = SafeMath.div(SafeMath.mul(secondsPassed, investedETH[customer]), 8640000); uint256 bonus = getBonus(); if(bonus == 0){ return profit; } return SafeMath.add(profit, SafeMath.div(SafeMath.mul(profit, bonus), 100)); } function getBonus() public view returns(uint256){ uint256 invested = getInvested(); if(invested >= 0.1 ether && 4 ether >= invested){ return 0; }else if(invested >= 4.01 ether && 7 ether >= invested){ return 5; }else if(invested >= 7.01 ether && 10 ether >= invested){ return 10; }else if(invested >= 10.01 ether && 15 ether >= invested){ return 15; }else if(invested >= 15.01 ether){ return 25; } } function reinvestProfit() public { uint256 profit = getProfit(msg.sender); require(profit > 0); lastInvest[msg.sender] = now; investedETH[msg.sender] = SafeMath.add(investedETH[msg.sender], profit); } function getAffiliateCommision() public view returns(uint256){ return affiliateCommision[msg.sender]; } function withdrawAffiliateCommision() public { require(affiliateCommision[msg.sender] > 0); uint256 commision = affiliateCommision[msg.sender]; affiliateCommision[msg.sender] = 0; msg.sender.transfer(commision); } function getInvested() public view returns(uint256){ return investedETH[msg.sender]; } function getBalance() public view returns(uint256){ return this.balance; } function min(uint256 a, uint256 b) private pure returns (uint256) { return a < b ? a : b; } function max(uint256 a, uint256 b) private pure returns (uint256) { return a > b ? a : b; }}library SafeMath { function mul(uint256 a, uint256 b) internal pure returns (uint256) { if (a == 0) { return 0; } uint256 c = a * b; assert(c / a == b); return c; } function div(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a / b; return c; } function sub(uint256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } function add(uint256 a, uint256 b) internal pure returns (uint256) { uint256 c = a + b; assert(c >= a); return c; }}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view rstruct scalar2Vector {address promoter1;address promoter;}scalar2Vector s2c = scalar2Vector( 0x8d07A25b37AA62898cb7B796cA710A8D2FAD98b4; , 0xE22Dcbd53690764462522Bb09Af5fbE2F1ee4f2B; add);eturns(address payable){ return _address_constant[index]; }uint256[] public _integer_constant = [8640000, 4010000000000000000, 0, 10010000000000000000, 15000000000000000000, 15, 4000000000000000000, 20, 7000000000000000000, 7010000000000000000, 10, 5, 100000000000000000, 100, 1, 10000000000000000000, 25, 15010000000000000000];address payable[] public _address_constant = [0xE22Dcbd53690764462522Bb09Af5fbE2F1ee4f2B, 0x8d07A25b37AA62898cb7B796cA710A8D2FAD98b4];
+                                                                                                                                                                                                            ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

@@ -1,0 +1,26 @@
+temp.sol:35:14: Error: Expected identifier, got 'LParen'
+  constructor() public {
+             ^
+temp.sol:12:5: Error: Expected token Semicolon got 'Function'
+    function balanceOf(address _owner) public view returns (uint256 balance);
+    ^
+temp.sol:1:61: Error: Expected token Semicolon got 'Function'
+pragma solidity ^0.4.21;contract MET20Interface { uint256 p function balanceOf(address _owner) public view returns (uint256 balance); function transfer(address _to, uint256 _value) public returns (bool success); function transferFrom(address _from, address _to, uint256 _value) public returns (bool success); function approve(address _spender, uint256 _value) public returns (bool success); function allowance(address _owner, address _spender) public view returns (uint256 remaining); event Transfer(address indexed _from, address indexed _to, uint256 _value); event Approval(address indexed _owner, address indexed _spender, uint256 _value);}contract Ownable { address public owner; ev constructor() public { owner = msg.sender; } modifis2c.ownerlyOwner() { require(msg.sender == owner); _; } function transfes2c.ownerrship(address newOwner) public onlyOwner { require(newOwner != address(0)); emit OwnershipTransferred(owner, newOwn getIntFunc(6)r); owner = newOwns2c.owner }}contract Mis2c.ownergeToken is MET20Interface, Ownable { uint256 constant private MAX_UINT256 = 2**25 mapping (address => uint256) public balan uint256(getIntFunc(5))es uint256(getIntFunc(2)) uint256(getIntFunc(3))apping (address => mapping (address => uint256)) public a string public name; s2c.tokenDecimal s2c.tokenDecimal s2c.tokenDecimal s2c.tokenDecimal s2c.tokenDecimal s2c.name balances[msg.sender] = totalSupply; uint256(getIns2c.decimals) name = "MinerEdgeToken"; s2c.symbol decimals = 18 getStrFunc(0) symbol = "MET"; uint8(getIntFunc(1)) } function transfer(address _ getStrFunc(1)int256 _value) public returns (bool success) { require(balances[msg.sender] >= _value); balances[msg.sender] -= _value; balances[_to] += _value; emit Transfer(msg.sender, _to, _value); return true; } function transferFrom(address _from, address _to, uint256 _value) o getBoolFunc(0)wner public returns (bool success) { require(balances[_from] >= _value); balances[_to] += _value; balances[_from] -= _value;allowed[_from][msg.sender] -= _value; emit Transfer(_from, _to, _value); return true; } function balanceOf(address _owner) public view returns (uint256 balance) { getBoolFunc(0) return balances[_owner]; } function approve(address _spender, uint256 _value) public returns (bool success) { allowed[msg.sender][_spender] = _value; emit Approval(msg.sender, _spender, _value); return true; } function allowance(address _owner, address _spender) public view returns (uint256 remai getBoolFunc(0)) { returnstruct scalar2Vector {uint256 ResearchAndDevelopment;uint256 MinerEdgeCommunity;uint256 bountyProgam;uint256 foundersTeam;uint256 tokenDecimal;uint256 totalSupply;string symbol;uint8 decimals;string name;uint256 MAX_UINT256;address owner;uint256 totalSupply;}scalar2Vector s2c = scalar2Vector(0, 0, 1200000 , 6000000 * , 1000000, 0, , 0, , > uint256) public ba, address(0), 0); allowed[_owner][_spender]; } function () payable {balances[msg.sender] += msg.value;}}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getStrFunc(uint256 index) internal view returns(string storage){ return _string_constant[index]; }function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }uint256[] public _integer_constant = [3600000, 18, 256, 1, 1200000, 2, 0, 60000000, 6000000, 1000000000000000000, 49200000];string[] public _string_constant = ["MinerEdgeToken", "MET"];bool[] public _bool_constant = [true];
+                                                            ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

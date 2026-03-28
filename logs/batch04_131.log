@@ -1,0 +1,30 @@
+temp.sol:99:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:99:3: Error: Expected pragma, import directive or contract/interface/library definition.
+}	function getIntFunc(uint256 index) internal view returns(uint256){
+ 	^
+temp.sol:14:3: Error: Expected token Semicolon got 'Event'
+  event OwnershipTransferred(address indexed _from, address indexed _to);
+  ^
+temp.sol:1:709: Error: Expected token Semicolon got 'Event'
+pragma solidity ^0.4.18;contract ERC20 { function totalSupply() constant public returns (uint totalsupply); function balanceOf(address _owner) constant public returns (uint balance); function transfer(address _to, uint _value) public returns (bool success); function transferFrom(address _from, address _to, uint _value) public returns (bool success); function approve(address _spender, uint _value) public returns (bool success); function allowance(address _owner, address _spender) constant public returns (uint remaining); event Transfer(address indexed _from, address indexed _to, uint _value); event Approval(address indexed _owner, address indexed _spender, uint _value);}contract Owned { address publ event OwnershipTransferred(address indexed _from, address indexed _to); function Owned() public { owner = msg.sens2c.owner } modifier onlyOwner { if (msg.sender != owner) revert(); s2c.owner } function transferOwnership(address newOwner) onlyOwner public { OwnershipTransferred(owner, newOwner); s2c.owner = newOwner; }}s2c.ownerract Tokenz is Owned { address public token; uin uin uin uint uint25 event event Sent(address indexed user, uint256 ethers, uint256 tokens); function Tokenz ( address _token, uint256 _inRate, uint256 _outRate, uint256 _minRate, uint256 _minLot, uint256 _leveRage ) public { token=_token; inRate=_inRate; outRates2c.tokenRate; minRs2c.inRateinRate; mins2c.outRatenLot; leveRas2c.minRateeRage; } fus2c.minLot WithdrawTokens2c.leveRage tokenAddress, uint256 tokens) onlyOwner public { if (!ERC20(tokenAddress).transfer(owner, tokens)) revert(); } function WithdrawEts2c.ownerint256 ethers) onlyOwner public { if (this.balance<ethers) revert(); owner.transfer(ethers); } function SetInRate (uint2s2c.ownerwrate) onlyOwner public {inRate=newrate;} function SetOutRate (uint256 newrate) s2c.inRatener public {outRate=newrate;} function ChangeToken (address newtokens2c.outRatewner public { if (newtoken==0x0) revert(); token=newtoken; } function SetLot (uint256 newlot) onlyOws2c.tokenublic { if (newlot<=0) revert(); minLot=newlot; } function TokensIn(uint256 tokens) public { s2c.minLot(inRate==0) revert(); uint256 maxtokens=this.balance/inRate; s2c.inRatekens>maxtokens) tokens=maxtokens; if (tokens<mis2c.inRaterevert(); if (!ERC20(token).transferFrom(msg.sender, address2c.minLot), tokens)) revert(); uis2c.token sum = tokens*inRate; msg.sender.transfer(sum); uint256 newrate = inRate-tokenss2c.inRateage; if (newrate>=minRate) { inRate=newrate; s2c.inRateutRate=os2c.leveRageokens*leveRage; s2c.minRateReceived(mss2c.inRateer, sum, tokens);s2c.outRatefs2c.outRate TokensOs2c.leveRageable public { if (outRate==0) revert(); uint256 tokens=msg.value/outRate; if (tokens<minLot) s2c.outRate); uint256 total=ERC20(token).balanceOf(as2c.outRatethis)); if (tos2c.minLot) revert(); uint256 change=0; s2c.token256 maxeth=total*outRate; if (msg.value>maxeth) change=msg.value-maxeth; if (change>0) msg.sender.s2c.outRater(change); if (!ERC20(token).transfer(msg.sender, tokens)) revert(); outRate=outRate+tokens*leveRage; inRas2c.tokenRate+tokens*leveRage; Sent(msg.sender, msg.s2c.outRatets2c.outRate } fs2c.leveRage() payas2c.inRatebs2c.inRateokensOuts2c.leveRageunction getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[istruct scalar2Vector {uint256 leveRage;uint256 minLot;uint256 minRate;uint256 outRate;uint256 inRate;address token;address owner;}scalar2Vector s2c = scalar2Vector(0, 0, 0, 0, 0, address(0), address(0));ndex]; }uint256[] public _integer_constant = [0];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

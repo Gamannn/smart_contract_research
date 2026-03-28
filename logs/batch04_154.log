@@ -1,0 +1,30 @@
+temp.sol:77:42: Error: Expected token Semicolon got 'LParen'
+	mapping (address => uint256) getAddrFunc(0)withdrew;
+	                                        ^
+temp.sol:77:42: Error: Expected token Semicolon got 'LParen'
+	mapping (address => uint256) getAddrFunc(0)withdrew;
+	                                        ^
+temp.sol:77:2: Error: Expected token Semicolon got 'Mapping'
+	mapping (address => uint256) getAddrFunc(0)withdrew;
+	^
+temp.sol:1:631: Error: Expected token Semicolon got 'Mapping'
+pragma solidity ^0.4.25;library SafeMath { function mul(uint256 _a, uint256 _b) internal pure returns (uint256 c) { if (_a == 0) { return 0; } c = _a * _b; assert(c / _a == _b); return c; } function div(uint256 _a, uint256 _b) internal pure returns (uint256) { return _a / _b; } function sub(uint256 _a, uint256 _b) internal pure returns (uint256) { assert(_b <= _a); return _a - _b; } function add(uint256 _a, uint256 _b) internal pure returns (uint256 c) { c = _a + _b; assert(c >= _a); return c; }}contract ETH_DISTRIBUTION {using SafeMath for uint256;address public constant marketingAddress = 0x2dB7088799a5594A152c8dCf05976 mapping (address => uint256) getAddrFunc(0)withdrew;mapping (address => uint256) refearned;mapping (address => uint256) blocklock;uint256 public totalDepositedWei = 0;uint256 public totalWithdrewWei = 0;function() payable external{ if (deposited[msg.send us2c.marketingAddressc(3))] != 0 uint256(getIntFunc(1)){address investor = msg.sender;uint256 depositsPercents = deposited[msg.sende getIntFunc(4)].mul(4).div(100).mul(block.number-blocklock[msg.sender]).div(5900);investor.transfer(depositsP uint256(getIntFunc(2))rcents uint256(getIntFunc(1))withdrew[msg.sender] += deposs2c.totalWithdrewWeint2s2c.totalWithdrewWei)otalWithdrewWei = totalWithdrewWei.add(depositsPercents);}address referrer = bytesToAddress(msg.data);uint256 refPerc = msg.value.mul(4).div(100);if (referrer > 0x0 && referrer != msg.sender){referrer.transfer(refPerc); uint256(getIntFunc(2))refea uint256(getIntFunc(1))d[referrer] += refPerc; getIntFunc(4)blocklos2c.totalDepositedWeiblos2c.totalDepositedWeisited[msg.sender] += msg.value;totalDepositedWei = totalDepositedWei.add(msg.value);}function userDepositedWei(address _address) public view returns (uint256){return deposited[_address]; }function userWithdrewWei(address _address) public view returns (uint256){return withdrew[_address]; }function userDividendsWei(address _address) public view returns (uint256){return deposited[_address].mul(4).div(100).mul(block.number-blocklock[_address]).div(5900); }function userReferralsWei(address _address) public view ret getIntFunc(2)rns (u getIntFunc(1)256){return refearned[_address]; } getIntFunc(0)nction bytesToAddress(bytes bys) private pure struct scalar2Vector {uint256 totalWithdrewWei;uint256 totalDepositedWei;address marketingAddress;}scalar2Vector s2c = scalar2Vector( msg.value.mul(15).di uint2, 0, > uint256) getAddrFunc(0)withdrew;mapping (address);returns (address addr){assembly {addr := mload(add(bys, 20))}}}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }uint256[] public _integer_constant = [5900, 100, 4, 15, 0];address payable[] public _address_constant = [0x2dB7088799a5594A152c8dCf05976508e4EaA3E4];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

@@ -1,0 +1,26 @@
+temp.sol:4:13: Error: Expected identifier, got 'Payable'
+    address payable owner;
+            ^
+temp.sol:4:13: Error: Expected identifier, got 'Payable'
+    address payable owner;
+            ^
+temp.sol:1:62: Error: Expected identifier, got 'Payable'
+pragma solidity >=0.4.21 <0.7.0;contract AddValues { address payable owner; event EventSeeAmount(uint256 amount); constructor () public{ owner=msg.sender; } modifier onlyOwner{ require (msg.sender == owner); _; } function () external payable{ uint256 total; uint256 x = 3; uint256 y = 30; total = x + y; emit EventSeeAmount(total); } function destroy () public onlyOwner{ selfdestruct(owner); } }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }uint256[] public _integer_constant = [30, 3];
+                                                             ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector...Exception occurs
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

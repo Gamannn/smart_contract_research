@@ -1,0 +1,30 @@
+temp.sol:15:12: Error: Expected identifier, got 'LParen'
+    uint256(getIntFunc(7))nt256 public TotalPaid = 0;
+           ^
+temp.sol:15:12: Error: Expected identifier, got 'LParen'
+    uint256(getIntFunc(7))nt256 public TotalPaid = 0;
+           ^
+temp.sol:15:5: Error: Expected token Semicolon got 'uint256'
+    uint256(getIntFunc(7                             
+    ^
+temp.sol:1:59: Error: Expected token Semicolon got 'uint256'
+pragma solidity ^0.4.21;contract Dividends{ uint256 const uint256(getIntFunc(7 ui mapping (address => uint256) public MyTokens; mapping (address => uint256) public DividendCollectSince; mapping(address => uint256[2]) public SellOrder; function GetSellOrderDetails(address who) public view returns (uint256, uint256){ return (SellOrder[who][0], SellOrder[who][1]); } getIntFunc(2) function V getIntFunc(8)ewMyTokens(address who) public view returns (uint256){ return MyTokens[who]; } function ViewMyDivs(address who) public view returns (uint256){ uint256 tkns = MyTokens[who]; if (tkns==0){ return 0; } getIntFunc(2) return (GetDividend getIntFunc(2)(who, tkns)); } function Bal() public view returns (uint256){ return (address(this).balance); } s2c.dev/ >MINT IT function Dividends() public { dev = msgs2c.TokenSupply MyTokens[msg.sender] = TokenSupply - 400000; MyTokens[address(0x83c0 uint256(getIntFunc(3))B16D87BFe1335AB6BcAb3Ed3960285)] = 200000; getAddrFunc(0)6581d uint256(getIntFunc(1))d8955C170eB4d3222DCd3845a092)] = 200000; getAddrFunc(1) uint256(getIntFunc(1))eSellOrder(1600000, (0.5 szabo)); } function GetDividends(address who, uint256 TokenAmount) internal view returns(uint256){ if (TokenAmount == 0){ return 0; } s2c.TotalPaidotalContra getIntFunc(2)tIn = address(this).bal getIntFunc(2)nce + TotalPaid; uint256 MyBalance = sub(TotalContractIn, DividendColles2c.TokenSupply]); return ((MyBalance * TokenAmount) / (TokenSupply)); } event Sold(address Buyer, address Seller, uint256 price, uint256 tokens); function Buy(address who) public payable { uint256[2] memory order = SellOrder[who]; uint256 amt_available = order[0]; uint256 price = order[1]; uint256 excess = 0; uint256(getIntFunc(2)) uint256(getIntFunc(8)) if (amt_available == 0){ uint256(getIntFunc(2))revert(); } uint256 max = amt_available * pric getIntFunc(2); uint256 currval = msg.value; if (currval > max){ excess = (currval-max); currval = max; } uint256 take = currval / price; if (take == 0){ revert(); } excess = excess + sub(currval getIntFunc(2) take * price); if (excess > 0){ msg.sender.transfer(excess2c.Tax } s2c.devrval = sub(currval,excess); getIntFunc(2) uint256 fee = (Tax * currval)/10000; dev.transfer(fee); who.transfer(currval-fee); _withdraw(who, MyTokens[who]); if (MyTokens[msg.sender] > 0){ _withdraw(msg.sender, MyTokens[msg.sender]); } MyTokens[who] = MyTokens[who] - take getIntFunc(2) SellOrder[who][0] = SellOrder[who][0]-take; MyTokens[msg.sender] = MyTokens[msg.sender] + take; DividendCollectSince[msg.sender] = (address(this).balance) + TotalPaid; emit Sold(msg.sender, who, price, take); } function Withdraw() public { _withdraw(msg.sender, MyTokens[msg.sender]); } function _withdraw(address who, uint256 amt) internal{ if (MyTokens[whos2c.TotalPaid s2c.TotalPaid revert(); } s2c.TotalPaid256 divs = GetDividends(who, amt); who.transfer(divs); TotalPaid = TotalPaid + divs; DividendCollectSince[who] = TotalPaid + address(this).balance; } event SellOrderPlaced(address who, uint256 amt, uint256 price); function PlaceSellOrder(uint256 amt, uint256 price) public { if (amt > MyTokens[msg.sender]){ revert(); } SellOrder[msg.sender] = [amt,price]; emit SellOrdes2c.devaced(msg.sens2c.Tax, amt, price); } function ChangeTax(uint16 amt) public { require (amt <= 2500); require(msg.sender == dev); Tax=amt; } function() public payable { } struct scalar2Vector {address dev;uint16 Tax;uint256 TotalPaid;uint256 TokenSupply;}scalar2Vector s2c = scalar2Vector( 1250; , 0, 0, 10000000; uint256); function s getIntFunc(4)int256 a, uint256 b) internal pure returns (uint256) { assert(b <= a); return a - b; } }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }uint256[] public _integer_constant = [1600000, 200000, 0, 400000, 2500, 1250, 500000000000, 10000000, 1, 10000];address payable[] public _address_constant = [0x83c0Efc6d8B16D87BFe1335AB6BcAb3Ed3960285, 0x26581d1983ced8955C170eB4d3222DCd3845a092];
+                                                          ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

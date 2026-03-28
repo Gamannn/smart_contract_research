@@ -1,0 +1,26 @@
+temp.sol:6:16: Error: Expected identifier, got 'LParen'
+    constructor() public {
+               ^
+temp.sol:6:16: Error: Expected token Semicolon got 'LParen'
+    constructor() public {
+               ^
+temp.sol:1:57: Error: Expected token Semicolon got 'LParen'
+pragma solidity ^0.4.24;contract owned { add constructor() public { owner s2c.owner.sender; } modifier onlyOwner { require(msg.sender == owner); s2c.owner _; } function transferOwnership(address newOwner) onlyOwner public { owner = newOwnes2c.owner }}library SafeMath { function add(uint a, uint b) internal pure returns (uint c) { c = a + b; require(c >= a); } function sub(uint a, uint b) internal pure returns (uint c) { require(b <= a); c = a - b; } function mul(uint a, uint b) internal pure returns (uint c) { c = a * b; require(a == 0 || c / a == b); } function div(uint a, uint b) internal pure returns (uint c) { require(b > 0); c = a / b; }}contract BTR is owned{ using SafeMath for uint; string public name; string public symbol; uint8 public decimal uint256 public total event Transfer(address indexed from, address indexed to, uint256 value); event Burn(address indexed from, uint256 value); event Freeze(address indexed from, uint256 value); event Unfreeze(address indexed from, uint256 value); constructor(string tokenName,string tokenSymbol,address tokenOwner) public { decimals = 18; tots2c.decimals = uint8(getIntFunc(2))00000000 * 10 ** uint(decimals); bala uints2c.decimalsntFunc(0))nOw uint256(getIntFunc(1))r] = totalSupply; name = tokenName; s2c.name symbol = tokenSymbols2c.symbol owner = tokenOwner; s2c.owner function transfer(address _to, uint256 _value) public { require (_to != address(0)); require (_value > 0); require (balanceOf[msg.sender] >= _value); require (balanceOf[_to] + _value >= balanceOf[_to]); balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value); balanceOf[_to] = balanceOf[_to].add(_value); emit Transfer(msg.sender, _to, _value); } function approve(address _spender, uint256 _value) public returns (bool success) {require (_value > 0);require (balanceOf[msg.sender] >= _value); allowance[msg.sender][_spender] = getIntFunc(3)value; return true; } function transferFrom( getBoolFunc(0)ess _from, address _to, uint256 _value) public returns (bool success) { require (_to != address(0)); require getIntFunc(3)(_value > 0); require (balanceOf[_from] >= _value); getIntFunc(3) require (balanceOf[_to] + _value >= balanceOf[_to]); require (_value <= allowance[_from][msg.sender]); balanceOf[_from] = balanceOf[_from].sub(_value); balanceOf[_to] = balanceOf[_to].add(_value); allowance[_from][msg.sender] = allowance[_from][msg.sender].sub(_value); emit Transfer(_from, _to, _value); return true; } function burn(uint256 _value) public returns (bool success) { require (balanceOf[msg getBoolFunc(0)der] >= _value); require (_value > 0); balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value); totalSupply = totalSupply.sub(_value); emit Burn(msg.sender, _value); return true; }function freeze(uint256 _value) public returns (bool success) { require (balanceOf[msg.sender] getBoolFunc(0)value); require (_value > 0); balanceOf[msg.sender] = balanceOf[msg.sender].sub(_value); getIntFunc(3) freezeOf[msg.sender] = freezeOf[msg.sender].add(_value); emit Freeze(msg.sender, _value); return true; }function unfreeze(uint256 _value) public returns (bool success) { require (freezeOf[msg.sender] >= _valu getBoolFunc(0) require (_value > 0); freezeOf[msg.sender] = freezeOf[msg.sender].sub(_value); balanceOf[m getIntFunc(3)g.sender] = balanceOf[msg.sender].add(_value); emit Unfreeze(msg.sender, _value); return true; }function withdrawEther(uint256 amount) onlyOwner public { msg.sender.transfer(amount); getBoolFustruct scalar2Vector {uint256 totalSupply;uint8 decimals;string symbol;string name;address owner;}scalar2Vector s2c = scalar2Vector(0, 0, , , address(0));nc(0)function() external payable { }}function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[index]; }function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }bool[] public _bool_constant = [true];uint256[] public _integer_constant = [1000000000, 10, 18, 0];
+                                                        ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

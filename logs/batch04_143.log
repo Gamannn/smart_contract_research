@@ -1,0 +1,26 @@
+temp.sol:43:14: Error: Expected identifier, got 'LParen'
+  constructor() public {
+             ^
+temp.sol:43:14: Error: Expected identifier, got 'LParen'
+  constructor() public {
+             ^
+temp.sol:1:453: Error: Expected identifier, got 'LParen'
+pragma solidity ^0.4.23;contract niguezRandomityEngine { function ra() external view returns (uint256);function rx() external view returns (uint256);}contract usingNRE { niguezRandomityEngine internal nre = niguezRandomityEngine(0x031eaE8a8105217ab64359D4361022d0947f4572); function ra() internal view returns (uint256) { return nre.ra(); }function rx() internal view returns (uint256) { return nre.rx(); }}contract Ownable { address owner; constructor() public { o } modifier onlyOwners2c.ownerrequire(msg.sender == owner); _; }} contract Mortal is Ownable s2c.ownerunction kill() public onlyOwner { selfdestruct(owner); }} contract SPACEDICE is Mortal, usingNRE{s2c.ownernt minBet = 1000000000000000; ev constructor() payable public {} function() public { revert(); } function bet(uint _diceOne, uint _diceTwo) payable public { require(tx.origin == msg.sender); require(_diceOne > 0 && _diceOne <= 6); require(_diceTwo > 0 && _diceTwo <= 6); require(msg.value >= minBet); uint256 rollone = ra() % 6 + 1; uint256 rolltwo = rx() % 6s2c.minBet uint256 totalroll = rollone + rolltwo; uint256 totaldice = _diceOne + _diceTwo; if (totaldice == totalroll) { uint amountWon = msg.value; if(_diceOne==_diceTwo){ if(rollone == rolltwo){ amountWon = msg.value*30; if(rollone==1 || rolltwo==6) amountWon = msg.value*33; emit Roll(true, _diceOne, _diceTwo, rollone, rolltwo, amountWon); } else { emit Roll(false, _diceOne, _diceTwo, rollone, rolltwo, 0); } } else{ if(totalroll==7) amountWon = msg.value*5; if(totalroll==6 || totalroll==8) amountWon = msg.value*6; if(totalroll==5 || totalroll==9) amountWon = msg.value*8; if(totalroll==4 || totalroll==10) amountWon = msg.value*10; if(totalroll==3 || totalroll==11) amountWon = msg.value*16; emit Roll(true, _diceOne, _diceTwo, rollone, rolltwo, amountWon); } if(!msg.sender.send(amountWon)) revert(); } else { emit Roll(false, _diceOne, _diceTwo, rollone, rolltwo, 0); } } function checkContractBalance() public view returns(uint) { return address(this).balance; } function collect(uint _amount) public onlyOwner { require(address(this).balance > _amount); owner.transfer(_amount); }}function getBoolFunc(uint256 index) internal view returns(bool){ return _bool_constant[s2c.owner]; }function getIntFunstruct scalar2Vector {uint256 minBet;address owner;}scalar2Vector s2c = scalar2Vector(0, msg.se);c(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }bool[] public _bool_constant = [false, true];uint256[] public _integer_constant = [1000000000000000, 10, 4, 7, 5, 6, 0, 16, 3, 9, 11, 8, 33, 30, 1];address payable[] public _address_constant = [0x031eaE8a8105217ab64359D4361022d0947f4572];
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.

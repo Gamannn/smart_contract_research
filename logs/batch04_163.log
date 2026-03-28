@@ -1,0 +1,26 @@
+temp.sol:60:25: Error: Expected token Semicolon got 'LParen'
+            emit Deposit(msg.sender, msg.value);
+                        ^
+temp.sol:17:5: Error: Expected token Semicolon got 'uint'
+    uint userAccount       
+    ^
+temp.sol:1:63: Error: Expected token Semicolon got 'uint'
+pragma solidity ^0.5.4;contract NiftyWallet { address masterC uint userAccount uint walletTxCoun event Execution(address indexed destinationAddress, uint value, bytes txData); event ExecutionFailure(address indexed destinationAddress, uint value, bytes txData); event Deposit(address indexed sender, uint value); function returnUserAccountAddress() public view returns(address) { MasterContract m_c_instance = MasterContract(masterContractAdd); retus2c.masterContractAddreturnUserControlAddress(userAccountID)); } fs2c.userAccountIDnWalletTxCount() public view returns(uint) { return(walletTxCount); } modifier onlyValidSender() { MasterContract m_c_instance = MasterContract(masterContractAdd); require(m_c_instas2c.masterContractAddSendingKey(msg.sender) == true); _; } function() payable external { if (msg.value > 0) emit Deposit(msg.sender, msg.value); else if (msg.data.length > 0) { MasterContract m_c_instance = MasterContract(masterContractAdd); address loc = (m_c_instance.rs2c.masterContractAddctAddress()); assembly { calldatacopy(0, 0, calldatasize()) let result := staticcall(gas, loc, 0, calldatasize(), 0, 0) returndatacopy(0, 0, returndatasize()) switch result case 0 {revert(0, returndatasize())} default {return (0, returndatasize())} } } } function callTx(bytes memory _signedData, address destination, uint value, bytes memory data) public onlyValidSender returns (bool) { address userSigningAddress = returnUserAccountAddress(); MasterContract m_c_instance = MasterContract(masterContractAdd); bytes32 dataHash = m_c_instance.returnTxMessageToSign(data, dess2c.masterContractAddwalletTxCount); address recoveredAddress = m_c_instance.recover(dataHash, _signedDats2c.walletTxCountf (recoveredAddress==userSigningAddress) { if (external_call(destination, value, data.length, data)) { emit Execution(destination, value, data); walletTxCount = walletTxCount + 1; } else { emit ExecutionFailure(dess2c.walletTxCountue,s2c.walletTxCount walletTxCount = walletTxCount +1; } return(true); } else { s2c.walletTxCount s2c.walletTxCount function external_call(address destination, uint value, uint dataLength, bytes memory data) private returns (bool) { bool result; assembly { let x := mload(0x40) let d := add(data, 32) result := call( sub(gas, 34710), destination, value, d, dataLength, x, 0 ) } return result; }}contract MasterContract { function returnUserControlAddress(uint account_id) public view returns (address); function returnIsValidSendingKey(address sending_key) public view returns (bool); function returnStaticContractAddress() public view returns (address); function recover(bytes32 hash, bytes memory sig) public pure returns (address); function returnTxMessageToSign(bytes memory txData, address des_add, uint value, uint tx_count) public view returns(bytes32);}function getIntFunc(uint256 index) internal view returns(uint256){ return _integer_constant[index]; }function getBoolFunc(uint256 indexstruct scalar2Vector {uint256 walletTxCount;uint256 userAccountID;address masterContractAdd;}scalar2Vector s2c = scalar2Vector( 0; /** / , 0; uint walle, 0x4CADB4bAd0e2a49CC5D6CE26D8628C8f451dA346; uint user);) internal view returns(bool){ return _bool_constant[index]; }function getAddrFunc(uint256 index) internal view returns(address payable){ return _address_constant[index]; }uint256[] public _integer_constant = [1, 0];bool[] public _bool_constant = [true];address payable[] public _address_constant = [0x4CADB4bAd0e2a49CC5D6CE26D8628C8f451dA346];
+                                                              ^
+[94m
+	BiAn v0.9
+	
+Start data flow confusion:
+Dynamically generate static data.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Convert integer literals to arithmetic expressions...Exception occurs
+Split boolean variables...Exception occurs
+Scalar to vector.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Complete data flow confusion.
+Start layout confusion:
+Delete comments, disrupt the formatting.... done
+Intermediate contract is being generated. Intermediate contract is being generated....done
+Replace variable name.... done
+Complete layout confusion.
+Complete layout confusion and data flow confusion! The obfuscation result is stored in file temp_layout_confuse.sol.
