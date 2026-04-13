@@ -1,0 +1,98 @@
+nohup: ignoring input
+[32mWelcome to SmartBugs 2.0.16![0m
+Collecting files ...
+200 files to analyse
+Assembling tasks ...
+[33mFailed to load list of solc versions; are we connected to the internet? Proceeding with local compilers[0m
+[33mWarning: 10 error(s) while collecting tasks, continuing ...[0m
+contracts/contract_026.sol: no 1/9 completed, ETC 15:13:46
+Starting task 2/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_001.sol[0m
+2/9 completed, ETC 6:40:47
+Starting task 3/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_002.sol[0m
+3/9 completed, ETC 3:53:15
+Starting task 4/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_005.sol[0m
+4/9 completed, ETC 3:12:49
+Starting task 5/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_009.sol[0m
+5/9 completed, ETC 2:54:08
+Starting task 6/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_003.sol[0m
+6/9 completed, ETC 1:49:02
+Starting task 7/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_004.sol[0m
+7/9 completed, ETC 1:06:59
+Starting task 8/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_006.sol[0m
+8/9 completed, ETC 0:43:27
+Starting task 9/9: [36mmythril-0.24.8[0m and [34mcontracts/contract_008.sol[0m
+9/9 completed, ETC 0:00:00
+Analysis completed in 5:48:08.
+e "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/__main__.py", line 11, in <module>
+    sb.cli.main()
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/cli.py", line 217, in main
+    sb.smartbugs.main(settings)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/smartbugs.py", line 191, in main
+    sb.analysis.run(tasks, settings)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/analysis.py", line 219, in run
+    a.join()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python3.10/multiprocessing/popen_fork.py", line 43, in wait
+    return self.poll(os.WNOHANG if timeout == 0.0 else 0)
+  File "/usr/lib/python3.10/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Process SpawnProcess-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/analysis.py", line 176, in analyser
+    duration = execute(task)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/analysis.py", line 93, in execute
+    exit_code, tool_log, tool_output, docker_args = sb.docker.execute(task)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/sb/docker.py", line 111, in execute
+    result = container.wait(timeout=task.settings.timeout)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/docker/models/containers.py", line 528, in wait
+    return self.client.api.wait(self.id, **kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/docker/api/container.py", line 1347, in wait
+    res = self._post(url, timeout=timeout, params=params)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/docker/utils/decorators.py", line 44, in inner
+    return f(self, *args, **kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/docker/api/client.py", line 242, in _post
+    return self.post(url, **self._set_request_timeout(kwargs))
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/requests/sessions.py", line 746, in send
+    r.content
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/requests/models.py", line 902, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/requests/models.py", line 820, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1250, in stream
+    yield from self.read_chunked(amt, decode_content=decode_content)
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1418, in read_chunked
+    self._update_chunk_length()
+  File "/home/btechproject/230001035/smartbugs/smartbugs/.venv/lib/python3.10/site-packages/urllib3/response.py", line 1333, in _update_chunk_length
+    line = self._fp.fp.readline()  # type: ignore[union-attr]
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _exit_function at 0x7c1299e3db40>
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/multiprocessing/util.py", line 360, in _exit_function
+    _run_finalizers()
+  File "/usr/lib/python3.10/multiprocessing/util.py", line 300, in _run_finalizers
+    finalizer()
+  File "/usr/lib/python3.10/multiprocessing/util.py", line 224, in __call__
+    res = self._callback(*self._args, **self._kwargs)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 199, in _finalize_join
+    thread.join()
+  File "/usr/lib/python3.10/threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "/usr/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt: 

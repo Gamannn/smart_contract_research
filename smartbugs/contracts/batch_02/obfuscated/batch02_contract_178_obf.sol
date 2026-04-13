@@ -1,0 +1,1 @@
+pragma solidity ^0.4.15;contract Oxa8c37e467e3e64a57b93290e225e44c95c23b695{function() external payable { }}
