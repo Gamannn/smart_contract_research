@@ -1,0 +1,71 @@
+```solidity
+pragma solidity ^0.4.20;
+
+contract Auction {
+    event Bid(
+        address indexed highestBidder,
+        uint256 auctionEndTime,
+        uint256 timeExtension,
+        uint256 prizeAmount
+    );
+    
+    struct AuctionData {
+        uint256 timeExtension;
+        uint256 auctionEndTime;
+        address previousWinner;
+        address highestBidder;
+        address owner;
+    }
+    
+    AuctionData public auctionData;
+    
+    constructor() public {
+        auctionData.owner = msg.sender;
+        auctionData.highestBidder = msg.sender;
+        auctionData.previousWinner = msg.sender;
+        auctionData.timeExtension = 2 hours;
+        auctionData.auctionEndTime = 0;
+    }
+    
+    function placeBid() public payable {
+        require(msg.value == 5000000000000000);
+        
+        if (auctionData.auctionEndTime == 0) {
+            auctionData.auctionEndTime = now + auctionData.timeExtension;
+        }
+        
+        if (auctionData.auctionEndTime != 0 && auctionData.auctionEndTime > now) {
+            auctionData.timeExtension -= 10 seconds;
+            auctionData.auctionEndTime = now + auctionData.timeExtension;
+            auctionData.highestBidder = msg.sender;
+            
+            Bid(
+                auctionData.highestBidder,
+                auctionData.auctionEndTime,
+                auctionData.timeExtension,
+                address(this).balance
+            );
+        }
+        
+        if (auctionData.timeExtension == 0 || auctionData.auctionEndTime <= now) {
+            auctionData.previousWinner = auctionData.highestBidder;
+            auctionData.timeExtension = 2 hours;
+            auctionData.auctionEndTime = now + auctionData.timeExtension;
+            auctionData.highestBidder = msg.sender;
+            
+            uint256 prizeAmount = (address(this).balance / 20) * 17 + 5000000000000000;
+            Bid(
+                auctionData.highestBidder,
+                auctionData.auctionEndTime,
+                auctionData.timeExtension,
+                prizeAmount
+            );
+            
+            auctionData.owner.transfer(address(this).balance / 20);
+            auctionData.previousWinner.transfer(((address(this).balance - 5000000000000000) / 10) * 8);
+        }
+    }
+    
+    function() public payable {}
+}
+```

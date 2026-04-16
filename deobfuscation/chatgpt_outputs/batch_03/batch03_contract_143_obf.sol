@@ -1,0 +1,149 @@
+pragma solidity ^0.4.14;
+
+library SafeMath {
+    function sub(uint a, uint b) internal pure returns (uint) {
+        assert(b <= a);
+        return a - b;
+    }
+
+    function add(uint a, uint b) internal pure returns (uint) {
+        uint c = a + b;
+        assert(c >= a);
+        return c;
+    }
+}
+
+contract Ownable {
+    address public owner;
+
+    function Ownable() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
+    function transferOwnership(address newOwner) onlyOwner {
+        if (newOwner != address(0)) {
+            owner = newOwner;
+        }
+    }
+}
+
+contract ERC20Basic {
+    uint public totalSupply;
+    function balanceOf(address who) constant returns (uint);
+    function transfer(address to, uint value);
+    event Transfer(address indexed from, address indexed to, uint value);
+}
+
+contract ERC20 is ERC20Basic {
+    function allowance(address owner, address spender) constant returns (uint);
+    function transferFrom(address from, address to, uint value);
+    function approve(address spender, uint value);
+    event Approval(address indexed owner, address indexed spender, uint value);
+}
+
+contract BasicToken is ERC20Basic {
+    using SafeMath for uint;
+
+    mapping(address => uint) balances;
+
+    modifier onlyPayloadSize(uint size) {
+        require(msg.data.length >= size + 4);
+        _;
+    }
+
+    function transfer(address _to, uint _value) onlyPayloadSize(2 * 32) {
+        balances[msg.sender] = balances[msg.sender].sub(_value);
+        balances[_to] = balances[_to].add(_value);
+        Transfer(msg.sender, _to, _value);
+    }
+
+    function balanceOf(address _owner) constant returns (uint balance) {
+        return balances[_owner];
+    }
+}
+
+contract StandardToken is BasicToken, ERC20 {
+    mapping (address => mapping (address => uint)) allowed;
+
+    function transferFrom(address _from, address _to, uint _value) onlyPayloadSize(3 * 32) {
+        var _allowance = allowed[_from][msg.sender];
+
+        balances[_to] = balances[_to].add(_value);
+        balances[_from] = balances[_from].sub(_value);
+        allowed[_from][msg.sender] = _allowance.sub(_value);
+        Transfer(_from, _to, _value);
+    }
+
+    function approve(address _spender, uint _value) {
+        require((_value == 0) || (allowed[msg.sender][_spender] == 0));
+        allowed[msg.sender][_spender] = _value;
+        Approval(msg.sender, _spender, _value);
+    }
+
+    function allowance(address _owner, address _spender) constant returns (uint remaining) {
+        return allowed[_owner][_spender];
+    }
+}
+
+contract OrderToken is StandardToken, Ownable {
+    string public constant name = "Order";
+    string public constant symbol = "ETH";
+    uint public constant decimals = 3;
+    uint256 public initialSupply;
+
+    function OrderToken() {
+        totalSupply = 120000 * 10 ** decimals;
+        balances[msg.sender] = totalSupply;
+        initialSupply = totalSupply;
+        Transfer(0, this, totalSupply);
+        Transfer(this, msg.sender, totalSupply);
+    }
+}
+
+contract BuyToken is Ownable, OrderToken {
+    uint256 public constant sellPrice = 333 szabo;
+    uint256 public constant buyPrice = 333 finney;
+
+    function buy() payable returns (uint amount) {
+        amount = msg.value / buyPrice;
+        require(balances[this] >= amount);
+        balances[msg.sender] += amount;
+        balances[this] -= amount;
+        Transfer(this, msg.sender, amount);
+    }
+
+    function sell(uint256 amount) {
+        require(balances[msg.sender] >= amount);
+        balances[this] += amount;
+        balances[msg.sender] -= amount;
+        if (!msg.sender.send(amount * sellPrice)) {
+            revert();
+        } else {
+            Transfer(msg.sender, this, amount);
+        }
+    }
+
+    function transfer(address _to, uint256 _value) {
+        require(balances[msg.sender] >= _value);
+        require(balances[_to] + _value > balances[_to]);
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+        Transfer(msg.sender, _to, _value);
+    }
+
+    function mintToken(address target, uint256 mintedAmount) onlyOwner {
+        balances[target] += mintedAmount;
+        totalSupply += mintedAmount;
+        Transfer(0, this, mintedAmount);
+        Transfer(this, target, mintedAmount);
+    }
+
+    function () payable {
+        buy();
+    }
+}
