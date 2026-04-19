@@ -112,8 +112,8 @@ def load_batch(batch_num):
             if not row or row[0] is None:
                 continue
             vuln = str(row[0]).strip()
-            if not vuln or vuln.lower() in ('vulnerability', 'overall'):
-                if str(row[0]).strip().upper() == 'OVERALL':
+            if not vuln or vuln.lower() == 'vulnerability' or vuln.lower().startswith('overall'):
+                if str(row[0]).strip().upper().startswith('OVERALL'):
                     e = {}
                     for ti, tool in enumerate(TOOLS):
                         col = 3 + ti * 2   # Efficiency columns: 3,5,7,9
@@ -126,6 +126,8 @@ def load_batch(batch_num):
                 if v.lower() in vuln.lower() or vuln.lower() in v.lower():
                     canon = v
                     break
+            if canon == 'OVERALL':
+                continue  # note rows containing "overall" must not overwrite the OVERALL entry
             n_pos = row[1] if len(row) > 1 else None
             try:
                 nv[canon] = int(n_pos) if n_pos is not None else 0
@@ -200,12 +202,8 @@ def get_val(batch, mode, vuln, tool):
 def get_overall(batch, mode, tool):
     if DATA[batch] is None:
         return 0
-    tc = DATA[batch].get('tool_comparison', {})
-    if tool in tc and tc[tool].get(mode) is not None:
-        return tc[tool][mode]
-    # fallback: read from OVERALL row in eff sheet
-    d = DATA[batch][mode]
-    return d.get('OVERALL', {}).get(tool) or 0
+    val = DATA[batch][mode].get('OVERALL', {}).get(tool)
+    return val if val is not None else 0
 
 # ─────────────────────────────────────────────────────────────
 # PLOT 1 — Overall efficiency: Original vs Obfuscated (all batches)
