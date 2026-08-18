@@ -1,71 +1,62 @@
 # Known issues in the LLM deobfuscation outputs
 
-Auto-derived from the output files. These are **result-quality** issues, not formatting
-ones — the contract text itself is incomplete, so these files will not compile. They are
-left in place unmodified so the run stays reproducible; re-run the affected contracts to
-resolve them.
+Status after the regeneration pass. 1508 of 1512 outputs (99.7%) are complete and
+well-formed. The 4 exceptions are below.
 
-Detected by two independent signals, unioned: (a) the file does not end in `}` or `;`,
-(b) the original response contained an opening ```` ```solidity ```` fence with no closing
-fence. 23 files trip both, 8 trip only one.
+## 1. DeepSeek capacity limits (3)
 
-## 1. Truncated outputs (30)
+These three obfuscated contracts are larger than `deepseek-chat` can restate within
+its 8192-token output ceiling. Retried at temperature 0.2, 0.5 and 0.8 — truncated
+every time. No output file is written; a partial contract is worse than none.
 
-The model hit its response token cap mid-file.
+| File | Obfuscated input |
+|---|---|
+| `deepseek_outputs/batch_01/batch01_contract_039_obf.sol` | 41,690 chars |
+| `deepseek_outputs/batch_01/batch01_contract_104_obf.sol` | 80,229 chars |
+| `deepseek_outputs/batch_02/batch02_contract_094_obf.sol` | 48,341 chars |
 
-| Model | File | Ends with |
-|---|---|---|
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_02/batch02_contract_169_obf.sol` | `uint256 public` |
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_04/batch04_contract_028_obf.sol` | `return MAX_MAX_MAX_MAX` |
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_05/batch05_contract_007.sol_obf.sol` | `mapping` |
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_05/batch05_contract_132.sol_obf.sol` | `uint256 public constant` |
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_05/batch05_contract_165.sol_obf.sol` | `uint256 countOfInvestorsDV_ADV_ADV_ADV_ADV_ADV_ADV_ADV_ADV_A` |
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_05/batch05_contract_193.sol_obf.sol` | `function swapWithHintAndFeeAndGasAndDestAndHintAndFeeAndGasA` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_008_obf.sol` | `function getMarket() public view returns (IMarket);` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_010_obf.sol` | `uint` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_039_obf.sol` | `price.currentInGameTokWinRatio = _currentIn` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_044_obf.sol` | `function getSlippageFee(uint amount) internal pure returns (` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_047_obf.sol` | `if (config.tokenSupply_ > 0) {` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_049_obf.sol` | `eth[writer] = eth[writer].add(calls` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_060_obf.sol` | `return rateProvider.getRate(msg.sender, soldTokens` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_093_obf.sol` | `emit payComisionSponsorETH(_in` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_104_obf.sol` | `minimumBond = nextMinimumB` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_107_obf.sol` | `if (currentHalfYear >` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_01/batch01_contract_109_obf.sol` | `currentEpoch = E` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_046_obf.sol` | `function withdrawEther` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_056_obf.sol` | `return c` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_076_obf.sol` | `emit LogMinimumEpochIntervalUpdated(minimumEpochInterval, ne` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_094_obf.sol` | `function oraclize_query(uint` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_104_obf.sol` | `.getSiteInfo(explore` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_02/batch02_contract_128_obf.sol` | `if (transferInternal(from, to, value` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_03/batch03_contract_095_obf.sol` | `destAddress.transfer(expectedDestAmount);` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_03/batch03_contract_100_obf.sol` | `require(IERC721(_nftAddress).isApprovedForAll(linkdropMaster` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_03/batch03_contract_166_obf.sol` | `function getVertexStorageLink(uint256 _tokenId) external vie` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_04/batch04_contract_066_obf.sol` | `ke` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_05/batch05_contract_089.sol_obf.sol` | `balanceOf[payee] = balance` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_05/batch05_contract_093.sol_obf.sol` | `m` |
-| DeepSeek | `deobfuscation/deepseek_outputs/batch_05/batch05_contract_174.sol_obf.sol` | `if (current` |
+GPT-4o completed all three (16384-token ceiling). To close the gap, either split
+these contracts per-contract-body and reassemble, or report DeepSeek coverage as
+753/756 and note the cause.
 
-Re-run with a higher output-token limit, or split the contract before sending.
+## 2. Empty source contract (1) — upstream data defect
 
-## 2. Model refusals (1)
+`batch01_contract_021` is **0 bytes in `original_contracts/`**. The empty file
+propagated through the whole pipeline: solc emitted an empty `SourceUnit` AST,
+BiAn emitted a 0-byte "obfuscated" contract, and it was counted in the 756.
 
-The response is prose, not Solidity — the contract never reached the model.
+- `chatgpt_outputs/batch_01/batch01_contract_021_obf.sol` — GPT-4o correctly
+  refused, asking for the missing code. Not Solidity, but honest.
+- `deepseek_outputs/batch_01/batch01_contract_021_obf.sol` — **DeepSeek invented a
+  complete 7.4 KB `UniswapV2Pair` contract from the empty input.** The text is
+  unique (not copied from any other output) and well-formed enough to pass every
+  structural check: balanced braces, valid pragma, no fences. It is fabricated data.
 
-| Model | File | First line |
-|---|---|---|
-| GPT-4o | `deobfuscation/chatgpt_outputs/batch_01/batch01_contract_021_obf.sol` | I'm sorry, but I need the obfuscated contract code to assist you with de-obfusca |
+**Recommended:** exclude `contract_021` from both models and from all counts. The
+real obfuscated corpus is **755**, not 756. The runners now skip empty inputs before
+the API call, so this cannot recur.
 
-Re-run these individually.
-
-## Affected share
-
-31 of 1512 outputs (2.1%). The remaining
-1481 are complete.
+Related: `batch01_contract_196.sol` is Etherscan header text ("Contract Name: RTB2 /
+Compiler Version...") rather than Solidity. It failed AST generation and never
+entered the obfuscated set, so it is self-limiting — but it confirms the collection
+step captured at least two bad files.
 
 ## Resolved
 
-- **Markdown fences** — 851 of 1512 outputs were wrapped in ```` ```solidity ```` fences
-  despite the prompt forbidding them. Stripped from all outputs (1675 fence lines removed,
-  zero lines added); the runner scripts now strip fences at write time so this cannot recur.
-  No contract text was altered.
+- **Markdown fences** — 851 of 1512 outputs were wrapped in ```` ```solidity ````
+  fences despite the prompt forbidding them, so none would compile. Stripped from
+  all outputs (1675 lines removed, 0 added, 0 non-fence lines changed). The runners
+  now strip fences at write time.
+
+- **Degenerate repetition (27 recovered of 30)** — outputs previously recorded as
+  "truncated" were mostly not size-limited. The models collapsed into repetition
+  loops until they exhausted max_tokens: `batch02_contract_169` repeated three
+  declarations 508 times; `batch04_contract_028` emitted
+  `getPlayerMaxMaxMax...MileReq`. Because the runners use `temperature=0`, a plain
+  re-run is deterministic and reproduces the identical loop — recovery required
+  escalating temperature (169 succeeded at 0.5, yielding 125 clean lines in place
+  of 1537 degenerate ones). See `scripts/retry_degenerate.py`.
+
+  This is worth reporting as a result: BiAn's 40-character hex identifiers drive
+  LLMs into pathological repetition, a deobfuscation failure mode distinct from
+  ordinary loss of naming information.

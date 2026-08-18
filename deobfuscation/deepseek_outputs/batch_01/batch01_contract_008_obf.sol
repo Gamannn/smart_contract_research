@@ -117,19 +117,15 @@ contract Delegator is DelegationTarget {
         if (controllerLookupName == 0) {
             return;
         }
-        
         address _target = controller.lookup(controllerLookupName);
         assembly {
             let _calldataMemoryOffset := mload(0x40)
-            let _size := add(calldatasize, 31)
-            _size := and(_size, not(31))
+            let _size := and(add(calldatasize, 0x1f), not(0x1f))
             mstore(0x40, add(_calldataMemoryOffset, _size))
             calldatacopy(_calldataMemoryOffset, 0x0, calldatasize)
             let _retval := delegatecall(gas, _target, _calldataMemoryOffset, calldatasize, 0, 0)
             switch _retval
-            case 0 {
-                revert(0, 0)
-            }
+            case 0 { revert(0,0) }
             default {
                 let _returndataMemoryOffset := mload(0x40)
                 mstore(0x40, add(_returndataMemoryOffset, returndatasize))
@@ -150,29 +146,29 @@ contract ITyped {
 }
 
 contract Initializable {
-    struct InitializationState {
+    struct Initialized {
         bool initialized;
     }
-    
-    InitializationState private initializationState;
+
+    Initialized private _initialized;
 
     modifier afterInitialized {
-        require(initializationState.initialized);
+        require(_initialized.initialized);
         _;
     }
 
     modifier beforeInitialized {
-        require(!initializationState.initialized);
+        require(!_initialized.initialized);
         _;
     }
 
     function endInitialization() internal beforeInitialized returns (bool) {
-        initializationState.initialized = true;
+        _initialized.initialized = true;
         return true;
     }
 
     function getInitialized() public view returns (bool) {
-        return initializationState.initialized;
+        return _initialized.initialized;
     }
 }
 
@@ -286,11 +282,7 @@ contract IMailbox {
 }
 
 contract IMarket is ITyped, IOwnable {
-    enum MarketType {
-        YES_NO,
-        CATEGORICAL,
-        SCALAR
-    }
+    enum MarketType { YES_NO, CATEGORICAL, SCALAR }
 
     function initialize(IUniverse _universe, uint256 _endTime, uint256 _feePerEthInAttoeth, ICash _cash, address _designatedReporterAddress, address _creator, uint256 _numOutcomes, uint256 _numTicks) public payable returns (bool _success);
     function derivePayoutDistributionHash(uint256[] _payoutNumerators, bool _invalid) public view returns (bytes32);
@@ -331,4 +323,245 @@ contract IReportingParticipant {
     function migrate() public returns (bool);
     function getPayoutNumerator(uint256 _outcome) public view returns (uint256);
     function getMarket() public view returns (IMarket);
-   
+    function getSize() public view returns (uint256);
+}
+
+contract IDisputeCrowdsourcer is IReportingParticipant, ERC20 {
+    function initialize(IMarket market, uint256 _size, bytes32 _payoutDistributionHash, uint256[] _payoutNumerators, bool _invalid) public returns (bool);
+    function contribute(address _participant, uint256 _amount) public returns (uint256);
+}
+
+contract IReputationToken is ITyped, ERC20 {
+    function initialize(IUniverse _universe) public returns (bool);
+    function migrateOut(IReputationToken _destination, uint256 _attotokens) public returns (bool);
+    function migrateIn(address _reporter, uint256 _attotokens) public returns (bool);
+    function trustedReportingParticipantTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function trustedMarketTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function trustedFeeWindowTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function trustedUniverseTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function getUniverse() public view returns (IUniverse);
+    function getTotalMigrated() public view returns (uint256);
+    function getTotalTheoreticalSupply() public view returns (uint256);
+    function mintForReportingParticipant(uint256 _amountMigrated) public returns (bool);
+}
+
+contract IUniverse is ITyped {
+    function initialize(IUniverse _parentUniverse, bytes32 _parentPayoutDistributionHash) external returns (bool);
+    function fork() public returns (bool);
+    function getParentUniverse() public view returns (IUniverse);
+    function createChildUniverse(uint256[] _parentPayoutNumerators, bool _invalid) public returns (IUniverse);
+    function getChildUniverse(bytes32 _parentPayoutDistributionHash) public view returns (IUniverse);
+    function getReputationToken() public view returns (IReputationToken);
+    function getForkingMarket() public view returns (IMarket);
+    function getForkEndTime() public view returns (uint256);
+    function getForkReputationGoal() public view returns (uint256);
+    function getParentPayoutDistributionHash() public view returns (bytes32);
+    function getDisputeRoundDurationInSeconds() public view returns (uint256);
+    function getOrCreateFeeWindowByTimestamp(uint256 _timestamp) public returns (IFeeWindow);
+    function getOrCreateCurrentFeeWindow() public returns (IFeeWindow);
+    function getOrCreateNextFeeWindow() public returns (IFeeWindow);
+    function getOpenInterestInAttoEth() public view returns (uint256);
+    function getRepMarketCapInAttoeth() public view returns (uint256);
+    function getTargetRepMarketCapInAttoeth() public view returns (uint256);
+    function getOrCacheValidityBond() public returns (uint256);
+    function getOrCacheDesignatedReportStake() public returns (uint256);
+    function getOrCacheDesignatedReportNoShowBond() public returns (uint256);
+    function getOrCacheReportingFeeDivisor() public returns (uint256);
+    function getDisputeThresholdForFork() public view returns (uint256);
+    function getInitialReportMinValue() public view returns (uint256);
+    function calculateFloatingValue(uint256 _badMarkets, uint256 _totalMarkets, uint256 _targetDivisor, uint256 _previousValue, uint256 _defaultValue, uint256 _floor) public pure returns (uint256 _newValue);
+    function getOrCacheMarketCreationCost() public returns (uint256);
+    function getCurrentFeeWindow() public view returns (IFeeWindow);
+    function getOrCreateFeeWindowBefore(IFeeWindow _feeWindow) public returns (IFeeWindow);
+    function isParentOf(IUniverse _shadyChild) public view returns (bool);
+    function updateTentativeWinningChildUniverse(bytes32 _parentPayoutDistributionHash) public returns (bool);
+    function isContainerForFeeWindow(IFeeWindow _shadyTarget) public view returns (bool);
+    function isContainerForMarket(IMarket _shadyTarget) public view returns (bool);
+    function isContainerForReportingParticipant(IReportingParticipant _reportingParticipant) public view returns (bool);
+    function isContainerForShareToken(IShareToken _shadyTarget) public view returns (bool);
+    function isContainerForFeeToken(IFeeToken _shadyTarget) public view returns (bool);
+    function addMarketTo() public returns (bool);
+    function removeMarketFrom() public returns (bool);
+    function decrementOpenInterest(uint256 _amount) public returns (bool);
+    function decrementOpenInterestFromMarket(uint256 _amount) public returns (bool);
+    function incrementOpenInterest(uint256 _amount) public returns (bool);
+    function incrementOpenInterestFromMarket(uint256 _amount) public returns (bool);
+    function getWinningChildUniverse() public view returns (IUniverse);
+    function isForking() public view returns (bool);
+}
+
+contract ICash is ERC20 {
+    function depositEther() external payable returns(bool);
+    function depositEtherFor(address _to) external payable returns(bool);
+    function withdrawEther(uint256 _amount) external returns(bool);
+    function withdrawEtherTo(address _to, uint256 _amount) external returns(bool);
+    function withdrawEtherToIfPossible(address _to, uint256 _amount) external returns (bool);
+}
+
+contract IOrders {
+    function saveOrder(Order.Types _type, IMarket _market, uint256 _fxpAmount, uint256 _price, address _sender, uint256 _outcome, uint256 _moneyEscrowed, uint256 _sharesEscrowed, bytes32 _betterOrderId, bytes32 _worseOrderId, bytes32 _tradeGroupId) public returns (bytes32 _orderId);
+    function removeOrder(bytes32 _orderId) public returns (bool);
+    function getMarket(bytes32 _orderId) public view returns (IMarket);
+    function getOrderType(bytes32 _orderId) public view returns (Order.Types);
+    function getOutcome(bytes32 _orderId) public view returns (uint256);
+    function getAmount(bytes32 _orderId) public view returns (uint256);
+    function getPrice(bytes32 _orderId) public view returns (uint256);
+    function getOrderCreator(bytes32 _orderId) public view returns (address);
+    function getOrderSharesEscrowed(bytes32 _orderId) public view returns (uint256);
+    function getOrderMoneyEscrowed(bytes32 _orderId) public view returns (uint256);
+    function getBetterOrderId(bytes32 _orderId) public view returns (bytes32);
+    function getWorseOrderId(bytes32 _orderId) public view returns (bytes32);
+    function getBestOrderId(Order.Types _type, IMarket _market, uint256 _outcome) public view returns (bytes32);
+    function getWorstOrderId(Order.Types _type, IMarket _market, uint256 _outcome) public view returns (bytes32);
+    function getLastOutcomePrice(IMarket _market, uint256 _outcome) public view returns (uint256);
+    function getOrderId(Order.Types _type, IMarket _market, uint256 _fxpAmount, uint256 _price, address _sender, uint256 _blockNumber, uint256 _outcome, uint256 _moneyEscrowed, uint256 _sharesEscrowed) public pure returns (bytes32);
+    function getTotalEscrowed(IMarket _market) public view returns (uint256);
+    function isBetterPrice(Order.Types _type, uint256 _price, bytes32 _orderId) public view returns (bool);
+    function isWorsePrice(Order.Types _type, uint256 _price, bytes32 _orderId) public view returns (bool);
+    function assertIsNotBetterPrice(Order.Types _type, uint256 _price, bytes32 _betterOrderId) public view returns (bool);
+    function assertIsNotWorsePrice(Order.Types _type, uint256 _price, bytes32 _worseOrderId) public returns (bool);
+    function recordFillOrder(bytes32 _orderId, uint256 _sharesFilled, uint256 _tokensFilled) public returns (bool);
+    function setPrice(IMarket _market, uint256 _outcome, uint256 _price) external returns (bool);
+    function incrementTotalEscrowed(IMarket _market, uint256 _amount) external returns (bool);
+    function decrementTotalEscrowed(IMarket _market, uint256 _amount) external returns (bool);
+}
+
+contract IShareToken is ITyped, ERC20 {
+    function initialize(IMarket _market, uint256 _outcome) external returns (bool);
+    function createShares(address _owner, uint256 _amount) external returns (bool);
+    function destroyShares(address, uint256 balance) external returns (bool);
+    function getMarket() external view returns (IMarket);
+    function getOutcome() external view returns (uint256);
+    function trustedOrderTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function trustedFillOrderTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+    function trustedCancelOrderTransfer(address _source, address _destination, uint256 _attotokens) public returns (bool);
+}
+
+library Order {
+    using SafeMathUint256 for uint256;
+
+    enum Types { Bid, Ask }
+    enum TradeDirections { Long, Short }
+
+    struct Data {
+        IOrders orders;
+        IMarket market;
+        IAugur augur;
+        bytes32 id;
+        address creator;
+        uint256 outcome;
+        Order.Types orderType;
+        uint256 amount;
+        uint256 price;
+        uint256 sharesEscrowed;
+        uint256 moneyEscrowed;
+        bytes32 betterOrderId;
+        bytes32 worseOrderId;
+    }
+
+    function create(IController _controller, address _creator, uint256 _outcome, Order.Types _type, uint256 _attoshares, uint256 _price, IMarket _market, bytes32 _betterOrderId, bytes32 _worseOrderId) internal view returns (Data) {
+        require(_outcome < _market.getNumberOfOutcomes());
+        require(_price < _market.getNumTicks());
+        IOrders _orders = IOrders(_controller.lookup("Orders"));
+        IAugur _augur = _controller.getAugur();
+        return Data({
+            orders: _orders,
+            market: _market,
+            augur: _augur,
+            id: 0,
+            creator: _creator,
+            outcome: _outcome,
+            orderType: _type,
+            amount: _attoshares,
+            price: _price,
+            sharesEscrowed: 0,
+            moneyEscrowed: 0,
+            betterOrderId: _betterOrderId,
+            worseOrderId: _worseOrderId
+        });
+    }
+
+    function getOrderId(Order.Data _orderData) internal view returns (bytes32) {
+        if (_orderData.id == bytes32(0)) {
+            bytes32 _orderId = _orderData.orders.getOrderId(_orderData.orderType, _orderData.market, _orderData.amount, _orderData.price, _orderData.creator, block.number, _orderData.outcome, _orderData.moneyEscrowed, _orderData.sharesEscrowed);
+            require(_orderData.orders.getAmount(_orderId) == 0);
+            _orderData.id = _orderId;
+        }
+        return _orderData.id;
+    }
+
+    function getOrderTradingTypeFromMakerDirection(Order.TradeDirections _creatorDirection) internal pure returns (Order.Types) {
+        return (_creatorDirection == Order.TradeDirections.Long) ? Order.Types.Bid : Order.Types.Ask;
+    }
+
+    function getOrderTradingTypeFromFillerDirection(Order.TradeDirections _fillerDirection) internal pure returns (Order.Types) {
+        return (_fillerDirection == Order.TradeDirections.Long) ? Order.Types.Ask : Order.Types.Bid;
+    }
+
+    function escrowFunds(Order.Data _orderData) internal returns (bool) {
+        if (_orderData.orderType == Order.Types.Ask) {
+            return escrowFundsForAsk(_orderData);
+        } else if (_orderData.orderType == Order.Types.Bid) {
+            return escrowFundsForBid(_orderData);
+        }
+    }
+
+    function saveOrder(Order.Data _orderData, bytes32 _tradeGroupId) internal returns (bytes32) {
+        return _orderData.orders.saveOrder(_orderData.orderType, _orderData.market, _orderData.amount, _orderData.price, _orderData.creator, _orderData.outcome, _orderData.moneyEscrowed, _orderData.sharesEscrowed, _orderData.betterOrderId, _orderData.worseOrderId, _tradeGroupId);
+    }
+
+    function escrowFundsForBid(Order.Data _orderData) private returns (bool) {
+        require(_orderData.moneyEscrowed == 0);
+        require(_orderData.sharesEscrowed == 0);
+
+        uint256 _attosharesToCover = _orderData.amount;
+        uint256 _numberOfOutcomes = _orderData.market.getNumberOfOutcomes();
+        uint256 _attosharesHeld = 2**254;
+
+        for (uint256 _i = 0; _i < _numberOfOutcomes; _i++) {
+            if (_i != _orderData.outcome) {
+                uint256 _creatorShareTokenBalance = _orderData.market.getShareToken(_i).balanceOf(_orderData.creator);
+                _attosharesHeld = SafeMathUint256.min(_creatorShareTokenBalance, _attosharesHeld);
+            }
+        }
+
+        if (_attosharesHeld > 0) {
+            _orderData.sharesEscrowed = SafeMathUint256.min(_attosharesHeld, _attosharesToCover);
+            _attosharesToCover -= _orderData.sharesEscrowed;
+            for (_i = 0; _i < _numberOfOutcomes; _i++) {
+                if (_i != _orderData.outcome) {
+                    _orderData.market.getShareToken(_i).trustedOrderTransfer(_orderData.creator, _orderData.market, _orderData.sharesEscrowed);
+                }
+            }
+        }
+
+        if (_attosharesToCover > 0) {
+            _orderData.moneyEscrowed = _attosharesToCover.mul(_orderData.price);
+            require(_orderData.augur.trustedTransfer(_orderData.market.getDenominationToken(), _orderData.creator, _orderData.market, _orderData.moneyEscrowed));
+        }
+
+        return true;
+    }
+
+    function escrowFundsForAsk(Order.Data _orderData) private returns (bool) {
+        require(_orderData.moneyEscrowed == 0);
+        require(_orderData.sharesEscrowed == 0);
+
+        IShareToken _shareToken = _orderData.market.getShareToken(_orderData.outcome);
+        uint256 _attosharesToCover = _orderData.amount;
+        uint256 _attosharesHeld = _shareToken.balanceOf(_orderData.creator);
+
+        if (_attosharesHeld > 0) {
+            _orderData.sharesEscrowed = SafeMathUint256.min(_attosharesHeld, _attosharesToCover);
+            _attosharesToCover -= _orderData.sharesEscrowed;
+            _shareToken.trustedOrderTransfer(_orderData.creator, _orderData.market, _orderData.sharesEscrowed);
+        }
+
+        if (_attosharesToCover > 0) {
+            _orderData.moneyEscrowed = _orderData.market.getNumTicks().sub(_orderData.price).mul(_attosharesToCover);
+            require(_orderData.augur.trustedTransfer(_orderData.market.getDenominationToken(), _orderData.creator, _orderData.market, _orderData.moneyEscrowed));
+        }
+
+        return true;
+    }
+}

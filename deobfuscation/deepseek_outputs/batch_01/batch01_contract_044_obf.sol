@@ -95,7 +95,7 @@ interface UniswapExchangeInterface {
 
 interface ILiquidityPool {
     event Withdraw(address indexed account, uint amount, uint writeAmount);
-    event Provide(address indexed account, uint amount, uint writeAmount);
+    event Provide (address indexed account, uint amount, uint writeAmount);
     function totalBalance() external view returns (uint amount);
     function lock(uint amount) external;
     function unlock(uint amount) external;
@@ -122,15 +122,8 @@ interface SpreadLock {
 
 contract Context {
     constructor () internal { }
-
-    function _msgSender() internal view virtual returns (address payable) {
-        return msg.sender;
-    }
-
-    function _msgData() internal view virtual returns (bytes memory) {
-        this;
-        return msg.data;
-    }
+    function _msgSender() internal view virtual returns (address payable) { return msg.sender; }
+    function _msgData() internal view virtual returns (bytes memory) { this; return msg.data; }
 }
 
 contract ERC20 is Context, IERC20 {
@@ -140,36 +133,17 @@ contract ERC20 is Context, IERC20 {
     mapping (address => uint256) private _balances;
     mapping (address => mapping (address => uint256)) private _allowances;
 
-    string private _name;
-    string private _symbol;
-    uint8 private _decimals;
-    uint256 private _totalSupply;
-
     constructor (string memory name, string memory symbol) public {
         _name = name;
         _symbol = symbol;
         _decimals = 18;
     }
 
-    function name() public view returns (string memory) {
-        return _name;
-    }
-
-    function symbol() public view returns (string memory) {
-        return _symbol;
-    }
-
-    function decimals() public view returns (uint8) {
-        return _decimals;
-    }
-
-    function totalSupply() public view override returns (uint256) {
-        return _totalSupply;
-    }
-
-    function balanceOf(address account) public view override returns (uint256) {
-        return _balances[account];
-    }
+    function name() public view returns (string memory) { return _name; }
+    function symbol() public view returns (string memory) { return _symbol; }
+    function decimals() public view returns (uint8) { return _decimals; }
+    function totalSupply() public view override returns (uint256) { return _totalSupply; }
+    function balanceOf(address account) public view override returns (uint256) { return _balances[account]; }
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(_msgSender(), recipient, amount);
@@ -204,9 +178,7 @@ contract ERC20 is Context, IERC20 {
     function _transfer(address sender, address recipient, uint256 amount) internal virtual {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
-
         _beforeTokenTransfer(sender, recipient, amount);
-
         _balances[sender] = _balances[sender].sub(amount, "ERC20: transfer amount exceeds balance");
         _balances[recipient] = _balances[recipient].add(amount);
         emit Transfer(sender, recipient, amount);
@@ -214,9 +186,7 @@ contract ERC20 is Context, IERC20 {
 
     function _mint(address account, uint256 amount) internal virtual {
         require(account != address(0), "ERC20: mint to the zero address");
-
         _beforeTokenTransfer(address(0), account, amount);
-
         _totalSupply = _totalSupply.add(amount);
         _balances[account] = _balances[account].add(amount);
         emit Transfer(address(0), account, amount);
@@ -224,9 +194,7 @@ contract ERC20 is Context, IERC20 {
 
     function _burn(address account, uint256 amount) internal virtual {
         require(account != address(0), "ERC20: burn from the zero address");
-
         _beforeTokenTransfer(account, address(0), amount);
-
         _balances[account] = _balances[account].sub(amount, "ERC20: burn amount exceeds balance");
         _totalSupply = _totalSupply.sub(amount);
         emit Transfer(account, address(0), amount);
@@ -235,7 +203,6 @@ contract ERC20 is Context, IERC20 {
     function _approve(address owner, address spender, uint256 amount) internal virtual {
         require(owner != address(0), "ERC20: approve from the zero address");
         require(spender != address(0), "ERC20: approve to the zero address");
-
         _allowances[owner][spender] = amount;
         emit Approval(owner, spender, amount);
     }
@@ -248,8 +215,6 @@ contract ERC20 is Context, IERC20 {
 }
 
 contract Ownable is Context {
-    address private _owner;
-
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     constructor () internal {
@@ -258,9 +223,7 @@ contract Ownable is Context {
         emit OwnershipTransferred(address(0), msgSender);
     }
 
-    function owner() public view returns (address) {
-        return _owner;
-    }
+    function owner() public view returns (address) { return _owner; }
 
     modifier onlyOwner() {
         require(_owner == _msgSender(), "Ownable: caller is not the owner");
@@ -282,8 +245,6 @@ contract Ownable is Context {
 contract HegicETHPool is ILiquidityPool, Ownable, ERC20("Hegic ETH LP Token", "writeETH") {
     using SafeMath for uint256;
 
-    uint256 public lockedAmount;
-
     receive() external payable {}
 
     function availableBalance() public view returns (uint balance) {
@@ -301,7 +262,7 @@ contract HegicETHPool is ILiquidityPool, Ownable, ERC20("Hegic ETH LP Token", "w
 
     function provide() public payable returns (uint mint) {
         require(!SpreadLock(owner()).highSpreadLockEnabled(), "Pool: Locked");
-        if (totalSupply().mul(totalBalance()) == 0)
+        if(totalSupply().mul(totalBalance()) == 0)
             mint = msg.value.mul(1000);
         else
             mint = msg.value.mul(totalSupply()).div(totalBalance().sub(msg.value));
@@ -326,7 +287,7 @@ contract HegicETHPool is ILiquidityPool, Ownable, ERC20("Hegic ETH LP Token", "w
     }
 
     function shareOf(address user) public view returns (uint share) {
-        if (totalBalance() > 0)
+        if(totalBalance() > 0)
             share = totalBalance()
                 .mul(balanceOf(user))
                 .div(totalSupply());
@@ -356,7 +317,6 @@ contract HegicERCPool is IERCLiquidityPool, Ownable, ERC20("Hegic DAI LP Token",
     using SafeMath for uint256;
 
     IERC20 public override token;
-    uint256 public lockedAmount;
 
     constructor(IERC20 _token) public {
         token = _token;
@@ -377,7 +337,7 @@ contract HegicERCPool is IERCLiquidityPool, Ownable, ERC20("Hegic DAI LP Token",
 
     function provide(uint amount) public returns (uint mint) {
         require(!SpreadLock(owner()).highSpreadLockEnabled(), "Pool: Locked");
-        if (totalSupply().mul(totalBalance()) == 0)
+        if(totalSupply().mul(totalBalance()) == 0)
             mint = amount.mul(1000);
         else
             mint = amount.mul(totalSupply()).div(totalBalance());
@@ -409,7 +369,7 @@ contract HegicERCPool is IERCLiquidityPool, Ownable, ERC20("Hegic DAI LP Token",
     }
 
     function shareOf(address user) public view returns (uint share) {
-        if (totalBalance() > 0)
+        if(totalBalance() > 0)
             share = totalBalance()
                 .mul(balanceOf(user))
                 .div(totalSupply());
@@ -448,12 +408,6 @@ abstract contract HegicOptions is Ownable, SpreadLock {
     ILiquidityPool public pool;
     OptionType private optionType;
 
-    uint256 public activationTime = 15 minutes;
-    uint256 public priceDecimals = 1e8;
-    uint256 public maxSpread = 95;
-    uint256 public impliedVolRate = 20000;
-    bool public highSpreadLockEnabled = false;
-
     constructor(IERC20 DAI, AggregatorInterface pp, IUniswapFactory ex, OptionType t) public {
         token = DAI;
         priceProvider = pp;
@@ -471,9 +425,9 @@ abstract contract HegicOptions is Ownable, SpreadLock {
         maxSpread = value;
     }
 
-    event Create(uint indexed id, address indexed account, uint fee, uint premium);
-    event Exercise(uint indexed id, uint exchangeAmount);
-    event Expire(uint indexed id);
+    event Create (uint indexed id, address indexed account, uint fee, uint premium);
+    event Exercise (uint indexed id, uint exchangeAmount);
+    event Expire (uint indexed id);
 
     enum State { Active, Exercised, Expired }
     enum OptionType { Put, Call }
@@ -492,12 +446,183 @@ abstract contract HegicOptions is Ownable, SpreadLock {
     }
 
     function getPeriodFee(uint amount, uint period, uint strike, uint currentPrice) internal view returns (uint fee) {
-        fee = amount
-            .mul(sqrt(period / 10))
-            .mul(impliedVolRate)
-            .mul(strike)
-            .div(currentPrice)
-            .div(1e8);
+        fee = amount.mul(sqrt(period / 10)).mul(impliedVolRate).mul(strike).div(currentPrice).div(1e8);
     }
 
-    function getSlippageFee(uint amount) internal pure returns (uint
+    function getSlippageFee(uint amount) internal pure returns (uint fee) {
+        if(amount > 10 ether)
+            fee = amount.mul(amount) / 1e22;
+    }
+
+    function getStrikeFee(uint amount, uint strike, uint currentPrice) internal view returns (uint fee) {
+        if(strike > currentPrice && optionType == OptionType.Put)
+            fee = (strike - currentPrice).mul(amount).div(currentPrice);
+        if(strike < currentPrice && optionType == OptionType.Call)
+            fee = (currentPrice - strike).mul(amount).div(currentPrice);
+    }
+
+    function fees(uint period, uint amount, uint strike) public view returns (uint premium, uint hegicFee, uint strikeFee, uint slippageFee, uint periodFee) {
+        uint currentPrice = uint(priceProvider.latestAnswer());
+        hegicFee = getHegicFee(amount);
+        periodFee = getPeriodFee(amount, period, strike, currentPrice);
+        slippageFee = getSlippageFee(amount);
+        strikeFee = getStrikeFee(amount, strike, currentPrice);
+        premium = periodFee.add(slippageFee).add(strikeFee);
+    }
+
+    function unlock(uint[] memory optionIDs) public {
+        for(uint i; i < options.length; unlock(optionIDs[i++])){}
+    }
+
+    function unlock(uint optionID) internal {
+        Option storage option = options[optionID];
+        require(option.expiration < now, "Option has not expired yet");
+        require(option.state == State.Active, "Option is not active");
+        option.state = State.Expired;
+        if(optionType == OptionType.Call)
+            pool.unlock(option.amount);
+        else
+            pool.unlock(option.strikeAmount);
+        emit Expire(optionID);
+    }
+
+    function sqrt(uint x) private pure returns (uint y) {
+        y = x;
+        uint z = (x + 1) / 2;
+        while (z < y) (y, z) = (z, (x / z + z) / 2);
+    }
+}
+
+contract HegicCallOptions is HegicOptions {
+    constructor(IERC20 DAI, AggregatorInterface pp, IUniswapFactory ex) HegicOptions(DAI, pp, ex, HegicOptions.OptionType.Call) public {
+        pool = new HegicETHPool();
+        approve();
+    }
+
+    function approve() public {
+        token.approve(address(exchanges.getExchange(token)), uint(-1));
+    }
+
+    function exchange() public returns (uint exchangedAmount) {
+        return exchange(
+            token.balanceOf(address(this))
+        );
+    }
+
+    function exchange(uint amount) public returns (uint exchangedAmount) {
+        UniswapExchangeInterface ex = exchanges.getExchange(token);
+        uint exShare = ex.getTokenToEthInputPrice(uint(priceProvider.latestAnswer()).mul(1e10));
+        if( exShare > maxSpread.mul(0.01 ether) ){
+            highSpreadLockEnabled = false;
+            exchangedAmount = ex.tokenToEthTransferInput(amount, 1, now + 1 minutes, address(pool));
+        } else {
+            highSpreadLockEnabled = true;
+        }
+    }
+
+    function create(uint period, uint amount) public payable returns (uint optionID) {
+        return create(period, amount, uint(priceProvider.latestAnswer()));
+    }
+
+    function create(uint period, uint amount, uint strike) public payable returns (uint optionID) {
+        (uint premium, uint fee,,,) = fees(period, amount, strike);
+        uint strikeAmount = strike.mul(amount) / priceDecimals;
+        require(strikeAmount > 0,"Amount is too small");
+        require(fee < premium, "Premium is too small");
+        require(period >= 1 days,"Period is too short");
+        require(period <= 8 weeks,"Period is too long");
+        require(msg.value == premium, "Wrong value");
+        payable( owner() ).transfer(fee);
+        pool.lock(amount);
+        payable(address(pool)).transfer(premium.sub(fee));
+        optionID = options.length;
+        options.push (Option(State.Active, msg.sender, strikeAmount, amount, now + period, now + activationTime));
+        emit Create(optionID, msg.sender, fee, premium);
+    }
+
+    function exercise(uint optionID) public {
+        Option storage option = options[optionID];
+        require(option.expiration >= now, 'Option has expired');
+        require(option.activation <= now, 'Option has not been activated yet');
+        require(option.holder == msg.sender, "Wrong msg.sender");
+        require(option.state == State.Active, "Wrong state");
+        option.state = State.Exercised;
+        require(
+            token.transferFrom(option.holder, address(this), option.strikeAmount),
+            "Insufficient funds"
+        );
+        uint amount = exchange();
+        pool.send(option.holder, option.amount);
+        emit Exercise(optionID, amount);
+    }
+}
+
+contract HegicPutOptions is HegicOptions {
+    constructor(IERC20 DAI, AggregatorInterface pp, IUniswapFactory ex) HegicOptions(DAI, pp, ex, HegicOptions.OptionType.Put) public {
+        pool = new HegicERCPool(DAI);
+    }
+
+    function exchange() public returns (uint) {
+        return exchange(address(this).balance);
+    }
+
+    function exchange(uint amount) public returns (uint exchangedAmount) {
+        UniswapExchangeInterface ex = exchanges.getExchange(token);
+        uint exShare = ex.getEthToTokenInputPrice(1 ether);
+        if( exShare > maxSpread.mul( uint(priceProvider.latestAnswer()) ).mul(1e8) ){
+            highSpreadLockEnabled = false;
+            exchangedAmount = ex.ethToTokenTransferInput {value: amount} (1, now + 1 minutes, address(pool));
+        } else {
+            highSpreadLockEnabled = true;
+        }
+    }
+
+    function create(uint period, uint amount) public payable returns (uint optionID) {
+        return create(period, amount, uint(priceProvider.latestAnswer()));
+    }
+
+    function create(uint period, uint amount, uint strike) public payable returns (uint optionID) {
+        (uint premium, uint fee,,,) = fees(period, amount, strike);
+        uint strikeAmount = strike.mul(amount) / priceDecimals;
+        require(strikeAmount > 0,"Amount is too small");
+        require(fee < premium, "Premium is too small");
+        require(period >= 1 days,"Period is too short");
+        require(period <= 8 weeks,"Period is too long");
+        require(msg.value == premium, "Wrong value");
+        payable( owner() ).transfer(fee);
+        exchange();
+        pool.lock(strikeAmount);
+        optionID = options.length;
+        options.push(Option(State.Active, msg.sender, strikeAmount, amount, now + period, now + activationTime));
+        emit Create(optionID, msg.sender, fee, premium);
+    }
+
+    function exercise(uint optionID) public payable {
+        Option storage option = options[optionID];
+        require(option.expiration >= now, 'Option has expired');
+        require(option.activation <= now, 'Option has not been activated yet');
+        require(option.holder == msg.sender, "Wrong msg.sender");
+        require(option.state == State.Active, "Wrong state");
+        require(option.amount == msg.value, "Wrong value");
+        option.state = State.Expired;
+        uint amount = exchange();
+        pool.send(option.holder, option.strikeAmount);
+        emit Exercise(optionID, amount);
+    }
+}
+
+struct Storage {
+    bool highSpreadLockEnabled;
+    uint256 activationTime;
+    uint256 priceDecimals;
+    uint256 maxSpread;
+    uint256 impliedVolRate;
+    uint256 lockedAmount;
+    address _owner;
+    uint8 _decimals;
+    string _symbol;
+    string _name;
+    uint256 _totalSupply;
+}
+
+Storage storage = Storage(false, 15 minutes, 1e8, 95, 20000, 0, address(0), 0, "", "", 0);

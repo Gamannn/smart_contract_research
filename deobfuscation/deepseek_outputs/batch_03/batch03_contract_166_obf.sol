@@ -4,9 +4,7 @@ library Address {
     function isContract(address account) internal view returns (bool) {
         bytes32 codehash;
         bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
-        assembly {
-            codehash := extcodehash(account)
-        }
+        assembly { codehash := extcodehash(account) }
         return (codehash != 0x0 && codehash != accountHash);
     }
 
@@ -74,7 +72,6 @@ interface IERC20 {
     function allowance(address owner, address spender) external view returns (uint256);
     function approve(address spender, uint256 amount) external returns (bool);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-    
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
@@ -153,7 +150,6 @@ contract Context {
 
 contract Ownable is Context {
     address private _owner;
-
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     constructor () internal {
@@ -196,7 +192,7 @@ contract ChargesFee is Ownable {
     event SetFeeManager(address addr);
     event SetFeeCollector(address addr);
     event SetEthFee(uint256 ethFee);
-    event SetGaltFee(uint256 galtFee);
+    event SetGaltFee(uint256 ethFee);
     event WithdrawEth(address indexed to, uint256 amount);
     event WithdrawErc20(address indexed to, address indexed tokenAddress, uint256 amount);
     event WithdrawErc721(address indexed to, address indexed tokenAddress, uint256 tokenId);
@@ -323,12 +319,11 @@ interface IPPTokenController {
     function approve(uint256 _proposalId) external;
     function execute(uint256 _proposalId) external;
     function fetchTokenId(bytes calldata _data) external pure returns (uint256 tokenId);
-    
     function() external payable;
 }
 
 interface IPPTokenRegistry {
-    event AddToken(address indexed token, address indexed owner, address indexed factory);
+    event AddToken(address indexed token, address indexed owener, address indexed factory);
     event SetFactory(address factory);
     event SetLockerRegistry(address lockerRegistry);
 
@@ -356,7 +351,7 @@ interface IPPToken {
     event SetHumanAddress(uint256 indexed tokenId, string humanAddress);
     event SetDataLink(uint256 indexed tokenId, string dataLink);
     event SetLedgerIdentifier(uint256 indexed tokenId, bytes32 ledgerIdentifier);
-    event SetVertexRootHash(uint256 indexed tokenId, bytes32 vertexRootHash);
+    event SetVertexRootHash(uint256 indexed tokenId, bytes32 ledgerIdentifier);
     event SetVertexStorageLink(uint256 indexed tokenId, string vertexStorageLink);
     event SetArea(uint256 indexed tokenId, uint256 area, AreaSource areaSource);
     event SetExtraData(bytes32 indexed key, bytes32 value);
@@ -384,20 +379,8 @@ interface IPPToken {
     function setContractDataLink(string calldata _dataLink) external;
     function setLegalAgreementIpfsHash(bytes32 _legalAgreementIpfsHash) external;
     function setController(address payable _controller) external;
-    function setDetails(
-        uint256 _tokenId,
-        TokenType _tokenType,
-        AreaSource _areaSource,
-        uint256 _area,
-        bytes32 _ledgerIdentifier,
-        string calldata _humanAddress,
-        string calldata _dataLink
-    ) external;
-    function setContour(
-        uint256 _tokenId,
-        uint256[] calldata _contour,
-        int256 _highestPoint
-    ) external;
+    function setDetails(uint256 _tokenId, TokenType _tokenType, AreaSource _areaSource, uint256 _area, bytes32 _ledgerIdentifier, string calldata _humanAddress, string calldata _dataLink) external;
+    function setContour(uint256 _tokenId, uint256[] calldata _contour, int256 _highestPoint) external;
     function setArea(uint256 _tokenId, uint256 _area, AreaSource _areaSource) external;
     function setLedgerIdentifier(uint256 _tokenId, bytes32 _ledgerIdentifier) external;
     function setDataLink(uint256 _tokenId, string calldata _dataLink) external;
@@ -422,4 +405,399 @@ interface IPPToken {
     function getDataLink(uint256 _tokenId) external view returns (string memory);
     function getVertexRootHash(uint256 _tokenId) external view returns (bytes32);
     function getVertexStorageLink(uint256 _tokenId) external view returns (string memory);
-   
+    function getSetupStage(uint256 _tokenId) external view returns (uint256);
+    function getDetails(uint256 _tokenId) external view returns (TokenType tokenType, uint256[] memory contour, int256 highestPoint, AreaSource areaSource, uint256 area, bytes32 ledgerIdentifier, string memory humanAddress, string memory dataLink, uint256 setupStage, bytes32 vertexRootHash, string memory vertexStorageLink);
+}
+
+interface IPPLocker {
+    function deposit(IPPToken _tokenContract, uint256 _tokenId) external payable;
+    function withdraw() external;
+    function approveMint(IPPRA _tra) external;
+    function burn(IPPRA _tra) external;
+    function isMinted(address _tra) external view returns (bool);
+    function getTras() external view returns (address[] memory);
+    function getTrasCount() external view returns (uint256);
+    function isOwner() external view returns (bool);
+    function owner() external view returns(address);
+    function tokenId() external view returns(uint256);
+    function reputation() external view returns(uint256);
+    function tokenContract() external view returns(IPPToken);
+}
+
+library ArraySet {
+    struct AddressSet {
+        address[] array;
+        mapping(address => uint256) map;
+        mapping(address => bool) exists;
+    }
+
+    struct Bytes32Set {
+        bytes32[] array;
+        mapping(bytes32 => uint256) map;
+        mapping(bytes32 => bool) exists;
+    }
+
+    function add(AddressSet storage _set, address _v) internal {
+        require(_set.exists[_v] == false, "Element already exists");
+        _set.map[_v] = _set.array.length;
+        _set.exists[_v] = true;
+        _set.array.push(_v);
+    }
+
+    function addSilent(AddressSet storage _set, address _v) internal returns (bool) {
+        if (_set.exists[_v] == true) {
+            return false;
+        }
+        _set.map[_v] = _set.array.length;
+        _set.exists[_v] = true;
+        _set.array.push(_v);
+        return true;
+    }
+
+    function remove(AddressSet storage _set, address _v) internal {
+        require(_set.array.length > 0, "Array is empty");
+        require(_set.exists[_v] == true, "Element doesn't exist");
+        _remove(_set, _v);
+    }
+
+    function removeSilent(AddressSet storage _set, address _v) internal returns (bool) {
+        if (_set.exists[_v] == false) {
+            return false;
+        }
+        _remove(_set, _v);
+        return true;
+    }
+
+    function _remove(AddressSet storage _set, address _v) internal {
+        uint256 lastElementIndex = _set.array.length - 1;
+        uint256 currentElementIndex = _set.map[_v];
+        address lastElement = _set.array[lastElementIndex];
+        _set.array[currentElementIndex] = lastElement;
+        delete _set.array[lastElementIndex];
+        _set.array.length = _set.array.length - 1;
+        delete _set.map[_v];
+        delete _set.exists[_v];
+        _set.map[lastElement] = currentElementIndex;
+    }
+
+    function clear(AddressSet storage _set) internal {
+        for (uint256 i = 0; i < _set.array.length; i++) {
+            address v = _set.array[i];
+            delete _set.map[v];
+            _set.exists[v] = false;
+        }
+        delete _set.array;
+    }
+
+    function has(AddressSet storage _set, address _v) internal view returns (bool) {
+        return _set.exists[_v];
+    }
+
+    function elements(AddressSet storage _set) internal view returns (address[] storage) {
+        return _set.array;
+    }
+
+    function size(AddressSet storage _set) internal view returns (uint256) {
+        return _set.array.length;
+    }
+
+    function isEmpty(AddressSet storage _set) internal view returns (bool) {
+        return _set.array.length == 0;
+    }
+
+    function add(Bytes32Set storage _set, bytes32 _v) internal {
+        require(_set.exists[_v] == false, "Element already exists");
+        _add(_set, _v);
+    }
+
+    function addSilent(Bytes32Set storage _set, bytes32 _v) internal returns (bool) {
+        if (_set.exists[_v] == true) {
+            return false;
+        }
+        _add(_set, _v);
+        return true;
+    }
+
+    function _add(Bytes32Set storage _set, bytes32 _v) internal {
+        _set.map[_v] = _set.array.length;
+        _set.exists[_v] = true;
+        _set.array.push(_v);
+    }
+
+    function remove(Bytes32Set storage _set, bytes32 _v) internal {
+        require(_set.array.length > 0, "Array is empty");
+        require(_set.exists[_v] == true, "Element doesn't exist");
+        _remove(_set, _v);
+    }
+
+    function removeSilent(Bytes32Set storage _set, bytes32 _v) internal returns (bool) {
+        if (_set.exists[_v] == false) {
+            return false;
+        }
+        _remove(_set, _v);
+        return true;
+    }
+
+    function _remove(Bytes32Set storage _set, bytes32 _v) internal {
+        uint256 lastElementIndex = _set.array.length - 1;
+        uint256 currentElementIndex = _set.map[_v];
+        bytes32 lastElement = _set.array[lastElementIndex];
+        _set.array[currentElementIndex] = lastElement;
+        delete _set.array[lastElementIndex];
+        _set.array.length = _set.array.length - 1;
+        delete _set.map[_v];
+        delete _set.exists[_v];
+        _set.map[lastElement] = currentElementIndex;
+    }
+
+    function clear(Bytes32Set storage _set) internal {
+        for (uint256 i = 0; i < _set.array.length; i++) {
+            _set.exists[_set.array[i]] = false;
+        }
+        delete _set.array;
+    }
+
+    function has(Bytes32Set storage _set, bytes32 _v) internal view returns (bool) {
+        return _set.exists[_v];
+    }
+
+    function elements(Bytes32Set storage _set) internal view returns (bytes32[] storage) {
+        return _set.array;
+    }
+
+    function size(Bytes32Set storage _set) internal view returns (uint256) {
+        return _set.array.length;
+    }
+
+    function isEmpty(Bytes32Set storage _set) internal view returns (bool) {
+        return _set.array.length == 0;
+    }
+
+    struct Uint256Set {
+        uint256[] array;
+        mapping(uint256 => uint256) map;
+        mapping(uint256 => bool) exists;
+    }
+
+    function add(Uint256Set storage _set, uint256 _v) internal {
+        require(_set.exists[_v] == false, "Element already exists");
+        _add(_set, _v);
+    }
+
+    function addSilent(Uint256Set storage _set, uint256 _v) internal returns (bool) {
+        if (_set.exists[_v] == true) {
+            return false;
+        }
+        _add(_set, _v);
+        return true;
+    }
+
+    function _add(Uint256Set storage _set, uint256 _v) internal {
+        _set.map[_v] = _set.array.length;
+        _set.exists[_v] = true;
+        _set.array.push(_v);
+    }
+
+    function remove(Uint256Set storage _set, uint256 _v) internal {
+        require(_set.array.length > 0, "Array is empty");
+        require(_set.exists[_v] == true, "Element doesn't exist");
+        _remove(_set, _v);
+    }
+
+    function removeSilent(Uint256Set storage _set, uint256 _v) internal returns (bool) {
+        if (_set.exists[_v] == false) {
+            return false;
+        }
+        _remove(_set, _v);
+        return true;
+    }
+
+    function _remove(Uint256Set storage _set, uint256 _v) internal {
+        uint256 lastElementIndex = _set.array.length - 1;
+        uint256 currentElementIndex = _set.map[_v];
+        uint256 lastElement = _set.array[lastElementIndex];
+        _set.array[currentElementIndex] = lastElement;
+        delete _set.array[lastElementIndex];
+        _set.array.length = _set.array.length - 1;
+        delete _set.map[_v];
+        delete _set.exists[_v];
+        _set.map[lastElement] = currentElementIndex;
+    }
+
+    function clear(Uint256Set storage _set) internal {
+        for (uint256 i = 0; i < _set.array.length; i++) {
+            _set.exists[_set.array[i]] = false;
+        }
+        delete _set.array;
+    }
+
+    function has(Uint256Set storage _set, uint256 _v) internal view returns (bool) {
+        return _set.exists[_v];
+    }
+
+    function elements(Uint256Set storage _set) internal view returns (uint256[] storage) {
+        return _set.array;
+    }
+
+    function size(Uint256Set storage _set) internal view returns (uint256) {
+        return _set.array.length;
+    }
+
+    function isEmpty(Uint256Set storage _set) internal view returns (bool) {
+        return _set.array.length == 0;
+    }
+}
+
+contract PPLocker is IPPLocker {
+    using ArraySet for ArraySet.AddressSet;
+
+    event ReputationMint(address indexed sra);
+    event ReputationBurn(address indexed sra);
+    event Deposit(uint256 reputation);
+    event Withdrawal(uint256 reputation);
+
+    bytes32 public constant LOCKER_TYPE = bytes32("REPUTATION");
+    bytes32 public constant GALT_FEE_KEY = bytes32("LOCKER_GALT");
+    bytes32 public constant ETH_FEE_KEY = bytes32("LOCKER_ETH");
+
+    IPPGlobalRegistry public globalRegistry;
+    address public owner;
+    uint256 public tokenId;
+    uint256 public reputation;
+    bool public tokenDeposited;
+    IPPToken public tokenContract;
+    ArraySet.AddressSet internal traSet;
+
+    modifier onlyOwner() {
+        require(isOwner(), "Not the locker owner");
+        _;
+    }
+
+    modifier onlyValidTokenContract(IPPToken _tokenContract) {
+        IPPTokenRegistry(globalRegistry.getPPTokenRegistryAddress()).requireValidToken(address(_tokenContract));
+        _;
+    }
+
+    constructor(IPPGlobalRegistry _globalRegistry, address _owner) public {
+        globalRegistry = _globalRegistry;
+        owner = _owner;
+    }
+
+    function deposit(
+        IPPToken _tokenContract,
+        uint256 _tokenId
+    ) external payable onlyOwner onlyValidTokenContract(_tokenContract) {
+        require(!tokenDeposited, "Token already deposited");
+        _acceptPayment(_tokenContract);
+        tokenContract = _tokenContract;
+        tokenId = _tokenId;
+        reputation = _tokenContract.getArea(_tokenId);
+        tokenDeposited = true;
+        _tokenContract.transferFrom(msg.sender, address(this), _tokenId);
+        emit Deposit(reputation);
+    }
+
+    function _acceptPayment(IPPToken _tokenContract) internal {
+        if (msg.value == 0) {
+            uint256 fee = IPPTokenController(_tokenContract.controller()).fees(GALT_FEE_KEY);
+            IERC20(globalRegistry.getGaltTokenAddress()).transferFrom(msg.sender, address(this), fee);
+            IERC20(globalRegistry.getGaltTokenAddress()).transfer(_tokenContract.controller(), fee);
+        } else {
+            uint256 fee = IPPTokenController(_tokenContract.controller()).fees(ETH_FEE_KEY);
+            require(msg.value == fee, "Invalid ETH fee");
+            _tokenContract.controller().transfer(msg.value);
+        }
+    }
+
+    function withdraw() external onlyOwner {
+        require(tokenDeposited, "Token not deposited");
+        require(traSet.size() == 0, "RAs counter should be 0");
+        IPPToken previousTokenContract = tokenContract;
+        uint256 previousTokenId = tokenId;
+        tokenContract = IPPToken(address(0));
+        tokenId = 0;
+        reputation = 0;
+        tokenDeposited = false;
+        previousTokenContract.transferFrom(address(this), msg.sender, previousTokenId);
+        emit Withdrawal(reputation);
+    }
+
+    function approveMint(IPPRA _tra) external onlyOwner {
+        require(!traSet.has(address(_tra)), "Already minted to this RA");
+        require(_tra.ping() == bytes32("pong"), "Handshake failed");
+        traSet.add(address(_tra));
+        emit ReputationMint(address(_tra));
+    }
+
+    function burn(IPPRA _tra) external onlyOwner {
+        require(traSet.has(address(_tra)), "Not minted to the RA");
+        require(_tra.reputationMinted(address(tokenContract), tokenId) == false, "Reputation not completely burned");
+        traSet.remove(address(_tra));
+        emit ReputationBurn(address(_tra));
+    }
+
+    function cancelTokenBurn() external onlyOwner {
+        IPPTokenController(tokenContract.controller()).cancelTokenBurn(tokenId);
+    }
+
+    function isOwner() public view returns (bool) {
+        return msg.sender == owner;
+    }
+
+    function getTokenInfo() public view returns (
+        address _owner,
+        uint256 _tokenId,
+        uint256 _reputation,
+        bool _tokenDeposited,
+        address _tokenContract
+    ) {
+        return (owner, tokenId, reputation, tokenDeposited, address(tokenContract));
+    }
+
+    function isMinted(address _tra) external view returns (bool) {
+        return traSet.has(_tra);
+    }
+
+    function getTras() external view returns (address[] memory) {
+        return traSet.elements();
+    }
+
+    function getTrasCount() external view returns (uint256) {
+        return traSet.size();
+    }
+}
+
+interface IPPLockerRegistry {
+    event AddLocker(address indexed locker, address indexed owner, address indexed factory);
+    event SetFactory(address factory);
+
+    function addLocker(address _locker) external;
+    function requireValidLocker(address _locker) external view;
+    function isValid(address _locker) external view returns (bool);
+}
+
+contract PPLockerFactory is Ownable, ChargesFee {
+    event NewPPLocker(address indexed owner, address locker);
+
+    IPPGlobalRegistry public globalRegistry;
+
+    constructor(
+        IPPGlobalRegistry _globalRegistry,
+        uint256 _ethFee,
+        uint256 _galtFee
+    ) public ChargesFee(_ethFee, _galtFee) {
+        globalRegistry = _globalRegistry;
+    }
+
+    function build() external payable returns (IPPLocker) {
+        _acceptPayment();
+        IPPLocker locker = new PPLocker(globalRegistry, msg.sender);
+        IPPLockerRegistry(globalRegistry.getPPLockerRegistryAddress()).addLocker(address(locker));
+        emit NewPPLocker(msg.sender, address(locker));
+        return IPPLocker(locker);
+    }
+
+    function _galtToken() internal view returns (IERC20) {
+        return IERC20(globalRegistry.getGaltTokenAddress());
+    }
+}

@@ -80,8 +80,10 @@ library SafeMath {
 
 contract BasicToken is ERC20Basic {
     using SafeMath for uint256;
+
     mapping(address => uint256) balances;
-    uint256 totalSupply_;
+
+    uint256 public totalSupply_;
 
     function totalSupply() public view returns (uint256) {
         return totalSupply_;
@@ -138,7 +140,8 @@ contract StandardToken is ERC20, BasicToken {
         address _spender,
         uint256 _addedValue
     ) public returns (bool) {
-        allowed[msg.sender][_spender] = allowed[msg.sender][_spender].add(_addedValue);
+        allowed[msg.sender][_spender] = (
+            allowed[msg.sender][_spender].add(_addedValue));
         emit Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
         return true;
     }
@@ -162,7 +165,7 @@ contract Pausable is Ownable {
     event Pause();
     event Unpause();
 
-    bool public paused = false;
+    bool public paused;
 
     modifier whenNotPaused() {
         require(!paused);
@@ -240,10 +243,10 @@ contract BurnableToken is BasicToken {
 }
 
 contract RepublicToken is PausableToken, BurnableToken {
-    string public constant name = "Republic Token";
-    string public constant symbol = "REN";
-    uint8 public constant decimals = 18;
-    uint256 public constant INITIAL_SUPPLY = 1000000000 * 10**uint256(decimals);
+    uint8 public decimals = 18;
+    string public name = "Republic Token";
+    string public symbol = "REN";
+    uint256 public INITIAL_SUPPLY = 1000000000 * 10**uint256(decimals);
 
     constructor() public {
         totalSupply_ = INITIAL_SUPPLY;
@@ -260,8 +263,6 @@ contract RepublicToken is PausableToken, BurnableToken {
 }
 
 library LinkedList {
-    address constant NULL = 0x0;
-
     struct Node {
         bool inList;
         address previous;
@@ -271,6 +272,8 @@ library LinkedList {
     struct List {
         mapping (address => Node) list;
     }
+
+    address constant NULL = address(0);
 
     function insertBefore(List storage self, address target, address newNode) internal {
         require(!isInList(self, newNode), "already in list");
@@ -304,8 +307,10 @@ library LinkedList {
 
         address p = self.list[node].previous;
         address n = self.list[node].next;
+
         self.list[p].next = n;
         self.list[n].previous = p;
+
         self.list[node].inList = false;
         delete self.list[node];
     }
@@ -360,8 +365,8 @@ contract DarknodeRegistryStore is Ownable {
 
     mapping(address => Darknode) private darknodeRegistry;
     LinkedList.List private darknodes;
-    RepublicToken public ren;
 
+    RepublicToken public ren;
     string public VERSION;
 
     constructor(
@@ -387,7 +392,6 @@ contract DarknodeRegistryStore is Ownable {
             registeredAt: _registeredAt,
             deregisteredAt: _deregisteredAt
         });
-
         darknodeRegistry[_darknodeID] = darknode;
         LinkedList.append(darknodes, _darknodeID);
     }
@@ -453,7 +457,6 @@ contract DarknodeRegistry is Ownable {
     DarknodeRegistryStore public store;
 
     string public VERSION;
-
     uint256 public minimumBond;
     uint256 public nextMinimumBond;
     uint256 public minimumPodSize;
@@ -462,7 +465,6 @@ contract DarknodeRegistry is Ownable {
     uint256 public nextMinimumEpochInterval;
     address public slasher;
     address public nextSlasher;
-
     uint256 public numDarknodes;
     uint256 public numDarknodesNextEpoch;
     uint256 public numDarknodesPreviousEpoch;
@@ -518,12 +520,10 @@ contract DarknodeRegistry is Ownable {
         nextMinimumPodSize = minimumPodSize;
         minimumEpochInterval = _minimumEpochInterval;
         nextMinimumEpochInterval = minimumEpochInterval;
-
         currentEpoch = Epoch({
             epochhash: uint256(blockhash(block.number - 1)),
             blocknumber: block.number
         });
-
         numDarknodes = 0;
         numDarknodesNextEpoch = 0;
         numDarknodesPreviousEpoch = 0;
@@ -533,7 +533,6 @@ contract DarknodeRegistry is Ownable {
         require(_bond >= minimumBond, "insufficient bond");
         require(ren.transferFrom(msg.sender, address(this), _bond), "bond transfer failed");
         ren.transfer(address(store), _bond);
-
         store.appendDarknode(
             _darknodeID,
             msg.sender,
@@ -542,7 +541,6 @@ contract DarknodeRegistry is Ownable {
             currentEpoch.blocknumber + minimumEpochInterval,
             0
         );
-
         numDarknodesNextEpoch += 1;
         emit LogDarknodeRegistered(_darknodeID, _bond);
     }
@@ -561,4 +559,316 @@ contract DarknodeRegistry is Ownable {
 
         uint256 epochhash = uint256(blockhash(block.number - 1));
         previousEpoch = currentEpoch;
-        currentEpoch = E
+        currentEpoch = Epoch({
+            epochhash: epochhash,
+            blocknumber: block.number
+        });
+
+        numDarknodesPreviousEpoch = numDarknodes;
+        numDarknodes = numDarknodesNextEpoch;
+
+        if (nextMinimumBond != minimumBond) {
+            minimumBond = nextMinimumBond;
+            emit LogMinimumBondUpdated(minimumBond, nextMinimumBond);
+        }
+
+        if (nextMinimumPodSize != minimumPodSize) {
+            minimumPodSize = nextMinimumPodSize;
+            emit LogMinimumPodSizeUpdated(minimumPodSize, nextMinimumPodSize);
+        }
+
+        if (nextMinimumEpochInterval != minimumEpochInterval) {
+            minimumEpochInterval = nextMinimumEpochInterval;
+            emit LogMinimumEpochIntervalUpdated(minimumEpochInterval, nextMinimumEpochInterval);
+        }
+
+        if (nextSlasher != slasher) {
+            slasher = nextSlasher;
+            emit LogSlasherUpdated(slasher, nextSlasher);
+        }
+
+        emit LogNewEpoch();
+    }
+
+    function transferStoreOwnership(address _newOwner) external onlyOwner {
+        store.transferOwnership(_newOwner);
+    }
+
+    function updateMinimumBond(uint256 _nextMinimumBond) external onlyOwner {
+        nextMinimumBond = _nextMinimumBond;
+    }
+
+    function updateMinimumPodSize(uint256 _nextMinimumPodSize) external onlyOwner {
+        nextMinimumPodSize = _nextMinimumPodSize;
+    }
+
+    function updateMinimumEpochInterval(uint256 _nextMinimumEpochInterval) external onlyOwner {
+        nextMinimumEpochInterval = _nextMinimumEpochInterval;
+    }
+
+    function updateSlasher(address _slasher) external onlyOwner {
+        nextSlasher = _slasher;
+    }
+
+    function slash(address _prover, address _challenger1, address _challenger2) external onlySlasher {
+        uint256 penalty = store.darknodeBond(_prover) / 2;
+        uint256 reward = penalty / 4;
+
+        store.updateDarknodeBond(_prover, penalty);
+
+        if (isDeregisterable(_prover)) {
+            store.updateDarknodeDeregisteredAt(_prover, currentEpoch.blocknumber + minimumEpochInterval);
+            numDarknodesNextEpoch -= 1;
+            emit LogDarknodeDeregistered(_prover);
+        }
+
+        ren.transfer(store.darknodeOwner(_challenger1), reward);
+        ren.transfer(store.darknodeOwner(_challenger2), reward);
+    }
+
+    function refund(address _darknodeID) external onlyRefundable(_darknodeID) {
+        address darknodeOwner = store.darknodeOwner(_darknodeID);
+        uint256 amount = store.darknodeBond(_darknodeID);
+
+        store.removeDarknode(_darknodeID);
+        ren.transfer(darknodeOwner, amount);
+        emit LogDarknodeOwnerRefunded(darknodeOwner, amount);
+    }
+
+    function getDarknodeOwner(address _darknodeID) external view returns (address) {
+        return store.darknodeOwner(_darknodeID);
+    }
+
+    function getDarknodeBond(address _darknodeID) external view returns (uint256) {
+        return store.darknodeBond(_darknodeID);
+    }
+
+    function getDarknodePublicKey(address _darknodeID) external view returns (bytes) {
+        return store.darknodePublicKey(_darknodeID);
+    }
+
+    function getDarknodes(address _start, uint256 _count) external view returns (address[]) {
+        uint256 count = _count;
+        if (count == 0) {
+            count = numDarknodes;
+        }
+        return getDarknodesFromEpochs(_start, count, false);
+    }
+
+    function getPreviousDarknodes(address _start, uint256 _count) external view returns (address[]) {
+        uint256 count = _count;
+        if (count == 0) {
+            count = numDarknodesPreviousEpoch;
+        }
+        return getDarknodesFromEpochs(_start, count, true);
+    }
+
+    function isPendingRegistration(address _darknodeID) external view returns (bool) {
+        uint256 registeredAt = store.darknodeRegisteredAt(_darknodeID);
+        return registeredAt != 0 && registeredAt > currentEpoch.blocknumber;
+    }
+
+    function isPendingDeregistration(address _darknodeID) external view returns (bool) {
+        uint256 deregisteredAt = store.darknodeDeregisteredAt(_darknodeID);
+        return deregisteredAt != 0 && deregisteredAt > currentEpoch.blocknumber;
+    }
+
+    function isDeregistered(address _darknodeID) public view returns (bool) {
+        uint256 deregisteredAt = store.darknodeDeregisteredAt(_darknodeID);
+        return deregisteredAt != 0 && deregisteredAt <= currentEpoch.blocknumber;
+    }
+
+    function isDeregisterable(address _darknodeID) public view returns (bool) {
+        uint256 deregisteredAt = store.darknodeDeregisteredAt(_darknodeID);
+        return isRegistered(_darknodeID) && deregisteredAt == 0;
+    }
+
+    function isRefunded(address _darknodeID) public view returns (bool) {
+        uint256 registeredAt = store.darknodeRegisteredAt(_darknodeID);
+        uint256 deregisteredAt = store.darknodeDeregisteredAt(_darknodeID);
+        return registeredAt == 0 && deregisteredAt == 0;
+    }
+
+    function isRefundable(address _darknodeID) public view returns (bool) {
+        return isDeregistered(_darknodeID) && store.darknodeDeregisteredAt(_darknodeID) <= previousEpoch.blocknumber;
+    }
+
+    function isRegistered(address _darknodeID) public view returns (bool) {
+        return isRegisteredInEpoch(_darknodeID, currentEpoch);
+    }
+
+    function isRegisteredInPreviousEpoch(address _darknodeID) public view returns (bool) {
+        return isRegisteredInEpoch(_darknodeID, previousEpoch);
+    }
+
+    function isRegisteredInEpoch(address _darknodeID, Epoch _epoch) private view returns (bool) {
+        uint256 registeredAt = store.darknodeRegisteredAt(_darknodeID);
+        uint256 deregisteredAt = store.darknodeDeregisteredAt(_darknodeID);
+
+        bool registered = registeredAt != 0 && registeredAt <= _epoch.blocknumber;
+        bool notDeregistered = deregisteredAt == 0 || deregisteredAt > _epoch.blocknumber;
+
+        return registered && notDeregistered;
+    }
+
+    function getDarknodesFromEpochs(address _start, uint256 _count, bool _usePreviousEpoch) private view returns (address[]) {
+        uint256 count = _count;
+        if (count == 0) {
+            count = numDarknodes;
+        }
+
+        address[] memory nodes = new address[](count);
+        uint256 n = 0;
+        address next = _start;
+
+        if (next == 0x0) {
+            next = store.begin();
+        }
+
+        while (n < count) {
+            if (next == 0x0) {
+                break;
+            }
+
+            bool includeNext;
+            if (_usePreviousEpoch) {
+                includeNext = isRegisteredInPreviousEpoch(next);
+            } else {
+                includeNext = isRegistered(next);
+            }
+
+            if (!includeNext) {
+                next = store.next(next);
+                continue;
+            }
+
+            nodes[n] = next;
+            next = store.next(next);
+            n += 1;
+        }
+
+        return nodes;
+    }
+}
+
+library Math {
+    function max64(uint64 a, uint64 b) internal pure returns (uint64) {
+        return a >= b ? a : b;
+    }
+
+    function min64(uint64 a, uint64 b) internal pure returns (uint64) {
+        return a < b ? a : b;
+    }
+
+    function max256(uint256 a, uint256 b) internal pure returns (uint256) {
+        return a >= b ? a : b;
+    }
+
+    function min256(uint256 a, uint256 b) internal pure returns (uint256) {
+        return a < b ? a : b;
+    }
+}
+
+library CompatibleERC20Functions {
+    using SafeMath for uint256;
+
+    function safeTransfer(address token, address to, uint256 value) internal {
+        CompatibleERC20(token).transfer(to, value);
+        require(previousReturnValue(), "transfer failed");
+    }
+
+    function safeTransferFrom(address token, address from, address to, uint256 value) internal {
+        CompatibleERC20(token).transferFrom(from, to, value);
+        require(previousReturnValue(), "transferFrom failed");
+    }
+
+    function safeApprove(address token, address spender, uint256 value) internal {
+        CompatibleERC20(token).approve(spender, value);
+        require(previousReturnValue(), "approve failed");
+    }
+
+    function safeTransferFromWithFees(address token, address from, address to, uint256 value) internal returns (uint256) {
+        uint256 balancesBefore = CompatibleERC20(token).balanceOf(to);
+        CompatibleERC20(token).transferFrom(from, to, value);
+        require(previousReturnValue(), "transferFrom failed");
+        uint256 balancesAfter = CompatibleERC20(token).balanceOf(to);
+        return Math.min256(value, balancesAfter.sub(balancesBefore));
+    }
+
+    function previousReturnValue() private pure returns (bool) {
+        uint256 returnData = 0;
+        assembly {
+            switch returndatasize
+            case 0 {
+                returnData := 1
+            }
+            case 32 {
+                returndatacopy(0x0, 0x0, 32)
+                returnData := mload(0x0)
+            }
+            default { }
+        }
+        return returnData != 0;
+    }
+}
+
+interface CompatibleERC20 {
+    function transfer(address to, uint256 value) external;
+    function transferFrom(address from, address to, uint256 value) external;
+    function approve(address spender, uint256 value) external;
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address who) external view returns (uint256);
+    function allowance(address owner, address spender) external view returns (uint256);
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+contract DarknodeRewardVault is Ownable {
+    using SafeMath for uint256;
+    using CompatibleERC20Functions for CompatibleERC20;
+
+    DarknodeRegistry public darknodeRegistry;
+    mapping(address => mapping(address => uint256)) public darknodeBalances;
+
+    string public VERSION;
+    address constant ETHEREUM = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+
+    event LogDarknodeRegistryUpdated(DarknodeRegistry previousDarknodeRegistry, DarknodeRegistry nextDarknodeRegistry);
+
+    constructor(string _VERSION, DarknodeRegistry _darknodeRegistry) public {
+        VERSION = _VERSION;
+        darknodeRegistry = _darknodeRegistry;
+    }
+
+    function updateDarknodeRegistry(DarknodeRegistry _newDarknodeRegistry) public onlyOwner {
+        emit LogDarknodeRegistryUpdated(darknodeRegistry, _newDarknodeRegistry);
+        darknodeRegistry = _newDarknodeRegistry;
+    }
+
+    function deposit(address _darknode, ERC20 _token, uint256 _value) public payable {
+        uint256 receivedValue = _value;
+
+        if (address(_token) == ETHEREUM) {
+            require(msg.value == _value, "mismatched ether value");
+        } else {
+            require(msg.value == 0, "unexpected ether value");
+            receivedValue = CompatibleERC20(_token).safeTransferFromWithFees(msg.sender, address(this), _value);
+        }
+
+        darknodeBalances[_darknode][_token] = darknodeBalances[_darknode][_token].add(receivedValue);
+    }
+
+    function withdraw(address _darknode, ERC20 _token) public {
+        address darknodeOwner = darknodeRegistry.getDarknodeOwner(address(_darknode));
+        require(darknodeOwner != 0x0, "invalid darknode owner");
+
+        uint256 value = darknodeBalances[_darknode][_token];
+        darknodeBalances[_darknode][_token] = 0;
+
+        if (address(_token) == ETHEREUM) {
+            darknodeOwner.transfer(value);
+        } else {
+            CompatibleERC20(_token).safeTransfer(darknodeOwner, value);
+        }
+    }
+}

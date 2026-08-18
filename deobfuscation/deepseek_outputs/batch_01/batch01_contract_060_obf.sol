@@ -39,7 +39,7 @@ contract ERC20 is ERC20Basic {
 
 contract BasicToken is ERC20Basic {
     using SafeMath for uint256;
-    mapping (address => uint256) balances;
+    mapping(address => uint256) balances;
 
     function transfer(address _to, uint256 _value) returns (bool) {
         require(_to != address(0));
@@ -98,7 +98,6 @@ contract StandardToken is ERC20, BasicToken {
 
 contract Ownable {
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-    address public owner;
 
     function Ownable() {
         owner = msg.sender;
@@ -119,8 +118,6 @@ contract Ownable {
 contract MintableToken is StandardToken, Ownable {
     event Mint(address indexed to, uint256 amount);
     event MintFinished();
-    bool public mintingFinished = false;
-    uint256 public totalSupply;
 
     modifier canMint() {
         require(!mintingFinished);
@@ -143,13 +140,10 @@ contract MintableToken is StandardToken, Ownable {
 }
 
 contract usingMyWillConsts {
-    uint256 constant TOKEN_DECIMALS = 18;
-    uint256 constant TOKEN_DECIMALS_UINT8 = 18;
-    uint256 constant TOKEN_DECIMAL_MULTIPLIER = 10 ** TOKEN_DECIMALS;
+    Constants.TOKEN_DECIMALS
 }
 
 contract MyWillToken is usingMyWillConsts, MintableToken {
-    bool public paused = true;
     mapping(address => bool) excluded;
 
     function name() constant public returns (string _name) {
@@ -161,11 +155,11 @@ contract MyWillToken is usingMyWillConsts, MintableToken {
     }
 
     function decimals() constant public returns (uint8 _decimals) {
-        return uint8(TOKEN_DECIMALS_UINT8);
+        return Constants.TOKEN_DECIMALS_UINT8;
     }
 
     function crowdsaleFinished() onlyOwner {
-        paused = false;
+        Constants.paused = false;
     }
 
     function addExcluded(address _toExclude) onlyOwner {
@@ -173,25 +167,18 @@ contract MyWillToken is usingMyWillConsts, MintableToken {
     }
 
     function transferFrom(address _from, address _to, uint256 _value) returns (bool) {
-        require(!paused || excluded[_from]);
+        require(!Constants.paused || excluded[_from]);
         return super.transferFrom(_from, _to, _value);
     }
 
     function transfer(address _to, uint256 _value) returns (bool) {
-        require(!paused || excluded[msg.sender]);
+        require(!Constants.paused || excluded[msg.sender]);
         return super.transfer(_to, _value);
     }
 }
 
 contract Crowdsale {
     using SafeMath for uint;
-    MintableToken public token;
-    uint32 public startTime;
-    uint32 public endTime;
-    uint256 public hardCap;
-    address public wallet;
-    uint256 public weiRaised;
-    uint256 public soldTokens;
 
     event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint value, uint amount);
 
@@ -200,11 +187,11 @@ contract Crowdsale {
         require(_endTime >= _startTime);
         require(_wallet != 0x0);
         require(_hardCap > 0);
-        token = createTokenContract();
-        startTime = _startTime;
-        endTime = _endTime;
-        hardCap = _hardCap;
-        wallet = _wallet;
+        Constants.token = createTokenContract();
+        Constants.startTime = _startTime;
+        Constants.endTime = _endTime;
+        Constants.hardCap = _hardCap;
+        Constants.wallet = _wallet;
     }
 
     function createTokenContract() internal returns (MintableToken) {
@@ -224,26 +211,23 @@ contract Crowdsale {
 
     function buyTokens(address beneficiary, uint amountWei) internal {
         require(beneficiary != 0x0);
-        uint totalSupply = token.totalSupply();
+        uint totalSupply = Constants.token.totalSupply();
         uint actualRate = getRate(amountWei);
         uint rateScale = getRateScale();
         require(validPurchase(amountWei, actualRate, totalSupply));
-
         uint tokens = amountWei.mul(actualRate).div(rateScale);
         uint change = 0;
-        if (tokens.add(totalSupply) > hardCap) {
-            uint maxTokens = hardCap.sub(totalSupply);
+        if (tokens.add(totalSupply) > Constants.hardCap) {
+            uint maxTokens = Constants.hardCap.sub(totalSupply);
             uint realAmount = maxTokens.mul(rateScale).div(actualRate);
             tokens = realAmount.mul(actualRate).div(rateScale);
             change = amountWei - realAmount;
             amountWei = realAmount;
         }
-
-        weiRaised = weiRaised.add(amountWei);
-        soldTokens = soldTokens.add(tokens);
-        token.mint(beneficiary, tokens);
+        Constants.weiRaised = Constants.weiRaised.add(amountWei);
+        Constants.soldTokens = Constants.soldTokens.add(tokens);
+        Constants.token.mint(beneficiary, tokens);
         TokenPurchase(msg.sender, beneficiary, amountWei, tokens);
-
         if (change != 0) {
             msg.sender.transfer(change);
         }
@@ -251,61 +235,60 @@ contract Crowdsale {
     }
 
     function forwardFunds(uint amountWei) internal {
-        wallet.transfer(amountWei);
+        Constants.wallet.transfer(amountWei);
     }
 
     function validPurchase(uint _amountWei, uint _actualRate, uint totalSupply) internal constant returns (bool) {
-        bool withinPeriod = now >= startTime && now <= endTime;
+        bool withinPeriod = now >= Constants.startTime && now <= Constants.endTime;
         bool nonZeroPurchase = _amountWei != 0;
-        bool hardCapNotReached = totalSupply <= hardCap.sub(_actualRate);
+        bool hardCapNotReached = totalSupply <= Constants.hardCap.sub(_actualRate);
         return withinPeriod && nonZeroPurchase && hardCapNotReached;
     }
 
     function hasEnded() public constant returns (bool) {
-        return now > endTime || token.totalSupply() > hardCap.sub(getBaseRate());
+        return now > Constants.endTime || Constants.token.totalSupply() > Constants.hardCap.sub(getBaseRate());
     }
 
     function hasStarted() public constant returns (bool) {
-        return now >= startTime;
+        return now >= Constants.startTime;
     }
 
     function hasEnded(uint _value) public constant returns (bool) {
         uint actualRate = getRate(_value);
-        return now > endTime || token.totalSupply() > hardCap.sub(actualRate);
+        return now > Constants.endTime || Constants.token.totalSupply() > Constants.hardCap.sub(actualRate);
     }
 }
 
 contract FinalizableCrowdsale is Crowdsale, Ownable {
     using SafeMath for uint256;
     event Finalized();
-    bool public isFinalized = false;
 
-    function FinalizableCrowdsale(uint32 _startTime, uint32 _endTime, uint _hardCap, address _wallet)
-        Crowdsale(_startTime, _endTime, _hardCap, _wallet) {
+    function FinalizableCrowdsale(uint32 _startTime, uint32 _endTime, uint _hardCap, address _wallet) Crowdsale(_startTime, _endTime, _hardCap, _wallet) {
     }
 
     function finalize() onlyOwner notFinalized {
         require(hasEnded());
         finalization();
         Finalized();
-        isFinalized = true;
+        Constants.isFinalized = true;
     }
 
     function finalization() internal {
     }
 
     modifier notFinalized() {
-        require(!isFinalized);
+        require(!Constants.isFinalized);
         _;
     }
 }
 
 contract RefundVault is Ownable {
     using SafeMath for uint256;
-    enum State { Active, Refunding, Closed }
+
+    enum State {Active, Refunding, Closed}
+
     mapping (address => uint256) public deposited;
     State public state;
-    address public wallet;
 
     event Closed();
     event RefundsEnabled();
@@ -347,25 +330,23 @@ contract RefundVault is Ownable {
 contract RefundableCrowdsale is FinalizableCrowdsale {
     using SafeMath for uint256;
     RefundVault public vault;
-    uint256 public goal;
 
-    function RefundableCrowdsale(uint32 _startTime, uint32 _endTime, uint _hardCap, address _wallet, uint _goal)
-        FinalizableCrowdsale(_startTime, _endTime, _hardCap, _wallet) {
+    function RefundableCrowdsale(uint32 _startTime, uint32 _endTime, uint _hardCap, address _wallet, uint _goal) FinalizableCrowdsale(_startTime, _endTime, _hardCap, _wallet) {
         require(_goal > 0);
-        vault = new RefundVault(wallet);
-        goal = _goal;
+        vault = new RefundVault(Constants.wallet);
+        Constants.goal = _goal;
     }
 
     function forwardFunds(uint amountWei) internal {
         if (goalReached()) {
-            wallet.transfer(amountWei);
+            Constants.wallet.transfer(amountWei);
         } else {
             vault.deposit.value(amountWei)(msg.sender);
         }
     }
 
     function claimRefund() public {
-        require(isFinalized);
+        require(Constants.isFinalized);
         require(!goalReached());
         vault.refund(msg.sender);
     }
@@ -385,7 +366,7 @@ contract RefundableCrowdsale is FinalizableCrowdsale {
     }
 
     function goalReached() public constant returns (bool) {
-        return weiRaised >= goal;
+        return Constants.weiRaised >= Constants.goal;
     }
 }
 
@@ -396,14 +377,7 @@ contract MyWillRateProviderI {
 }
 
 contract MyWillRateProvider is usingMyWillConsts, MyWillRateProviderI, Ownable {
-    uint256 constant BASE_RATE = 1500;
-    uint256 constant RATE_10 = 1650;
-    uint256 constant RATE_20 = 1800;
-    uint256 constant RATE_30 = 1950;
-    uint256 constant STEP_10 = 60000000 * TOKEN_DECIMAL_MULTIPLIER;
-    uint256 constant STEP_20 = 40000000 * TOKEN_DECIMAL_MULTIPLIER;
-    uint256 constant STEP_30 = 20000000 * TOKEN_DECIMAL_MULTIPLIER;
-    uint256 constant RATE_SCALE = 10000;
+    Constants.TOKEN_DECIMAL_MULTIPLIER Constants.TOKEN_DECIMAL_MULTIPLIER Constants.TOKEN_DECIMAL_MULTIPLIER Constants.RATE_SCALE Constants.RATE_SCALE Constants.RATE_SCALE Constants.RATE_SCALE
 
     struct ExclusiveRate {
         uint32 workUntil;
@@ -411,28 +385,28 @@ contract MyWillRateProvider is usingMyWillConsts, MyWillRateProviderI, Ownable {
         uint16 bonusPercent1000;
         bool exists;
     }
+
     mapping(address => ExclusiveRate) exclusiveRate;
 
     function getRateScale() public constant returns (uint) {
-        return RATE_SCALE;
+        return Constants.RATE_SCALE;
     }
 
     function getBaseRate() public constant returns (uint) {
-        return BASE_RATE;
+        return Constants.BASE_RATE;
     }
 
     function getRate(address buyer, uint totalSold, uint amountWei) public constant returns (uint) {
         uint rate;
-        if (totalSold < STEP_30) {
-            rate = RATE_30;
-        } else if (totalSold < STEP_20) {
-            rate = RATE_20;
-        } else if (totalSold < STEP_10) {
-            rate = RATE_10;
+        if (totalSold < Constants.STEP_30) {
+            rate = Constants.RATE_30;
+        } else if (totalSold < Constants.STEP_20) {
+            rate = Constants.RATE_20;
+        } else if (totalSold < Constants.STEP_10) {
+            rate = Constants.RATE_10;
         } else {
-            rate = BASE_RATE;
+            rate = Constants.BASE_RATE;
         }
-
         if (amountWei >= 1000 ether) {
             rate += rate * 13 / 100;
         } else if (amountWei >= 500 ether) {
@@ -446,7 +420,6 @@ contract MyWillRateProvider is usingMyWillConsts, MyWillRateProviderI, Ownable {
         } else if (amountWei >= 10 ether) {
             rate += rate * 25 / 1000;
         }
-
         ExclusiveRate memory eRate = exclusiveRate[buyer];
         if (eRate.exists && eRate.workUntil >= now) {
             if (eRate.rate != 0) {
@@ -467,15 +440,7 @@ contract MyWillRateProvider is usingMyWillConsts, MyWillRateProviderI, Ownable {
 }
 
 contract MyWillCrowdsale is usingMyWillConsts, RefundableCrowdsale {
-    address constant icoAccountAddress = 0x195610851A43E9685643A8F3b49F0F8a019204f1;
-    address constant bountyAddress = 0x76d4136d6EE53DB4cc087F2E2990283d5317A5e9;
-    address constant teamAddress = 0xE4F0Ff4641f3c99de342b06c06414d94A585eFfb;
-    uint256 constant minimalPurchase = 0.05 ether;
-    uint256 constant icoTokens = 3038800 * TOKEN_DECIMAL_MULTIPLIER;
-    uint256 constant bountyTokens = 2000000 * TOKEN_DECIMAL_MULTIPLIER;
-    uint256 constant teamTokens = 11000000 * TOKEN_DECIMAL_MULTIPLIER;
-    address constant wallet = 0x80826b5b717aDd3E840343364EC9d971FBa3955C;
-
+    Constants.TOKEN_DECIMAL_MULTIPLIER Constants.TOKEN_DECIMAL_MULTIPLIER Constants.TOKEN_DECIMAL_MULTIPLIER
     MyWillRateProviderI public rateProvider;
 
     function MyWillCrowdsale(
@@ -483,17 +448,15 @@ contract MyWillCrowdsale is usingMyWillConsts, RefundableCrowdsale {
         uint32 _endTime,
         uint _softCapWei,
         uint _hardCapTokens
-    ) RefundableCrowdsale(_startTime, _endTime, _hardCapTokens * TOKEN_DECIMAL_MULTIPLIER, wallet, _softCapWei) {
-        token.mint(teamAddress, teamTokens);
-        token.mint(bountyAddress, bountyTokens);
-        token.mint(icoAccountAddress, icoTokens);
-
-        MyWillToken(token).addExcluded(teamAddress);
-        MyWillToken(token).addExcluded(bountyAddress);
-        MyWillToken(token).addExcluded(icoAccountAddress);
-
+    ) RefundableCrowdsale(_startTime, _endTime, _hardCapTokens * Constants.TOKEN_DECIMAL_MULTIPLIER, 0x80826b5b717aDd3E840343364EC9d971FBa3955C, _softCapWei) {
+        Constants.token.mint(Constants.teamAddress, Constants.teamTokens);
+        Constants.token.mint(Constants.bountyAddress, Constants.bountyTokens);
+        Constants.token.mint(Constants.icoAccountAddress, Constants.icoTokens);
+        MyWillToken(Constants.token).addExcluded(Constants.teamAddress);
+        MyWillToken(Constants.token).addExcluded(Constants.bountyAddress);
+        MyWillToken(Constants.token).addExcluded(Constants.icoAccountAddress);
         MyWillRateProvider provider = new MyWillRateProvider();
-        provider.transferOwnership(owner);
+        provider.transferOwnership(Constants.owner);
         rateProvider = provider;
     }
 
@@ -502,4 +465,111 @@ contract MyWillCrowdsale is usingMyWillConsts, RefundableCrowdsale {
     }
 
     function getRate(uint _value) internal constant returns (uint) {
-        return rateProvider.getRate(msg.sender, soldTokens
+        return rateProvider.getRate(msg.sender, Constants.soldTokens, _value);
+    }
+
+    function getBaseRate() internal constant returns (uint) {
+        return rateProvider.getRate(msg.sender, Constants.soldTokens, Constants.minimalPurchase);
+    }
+
+    function getRateScale() internal constant returns (uint) {
+        return rateProvider.getRateScale();
+    }
+
+    function setRateProvider(address _rateProviderAddress) onlyOwner {
+        require(_rateProviderAddress != 0);
+        rateProvider = MyWillRateProviderI(_rateProviderAddress);
+    }
+
+    function setEndTime(uint32 _endTime) onlyOwner notFinalized {
+        require(_endTime > Constants.startTime);
+        Constants.endTime = _endTime;
+    }
+
+    function validPurchase(uint _amountWei, uint _actualRate, uint totalSupply) internal constant returns (bool) {
+        if (_amountWei < Constants.minimalPurchase) {
+            return false;
+        }
+        return super.validPurchase(_amountWei, _actualRate, totalSupply);
+    }
+
+    function finalization() internal {
+        super.finalization();
+        Constants.token.finishMinting();
+        if (!goalReached()) {
+            return;
+        }
+        MyWillToken(Constants.token).crowdsaleFinished();
+        Constants.token.transferOwnership(Constants.owner);
+    }
+}
+
+struct Constants {
+    address icoAccountAddress;
+    address bountyAddress;
+    address teamAddress;
+    uint256 minimalPurchase;
+    uint256 icoTokens;
+    uint256 bountyTokens;
+    uint256 teamTokens;
+    uint256 BASE_RATE;
+    uint256 RATE_10;
+    uint256 RATE_20;
+    uint256 RATE_30;
+    uint256 STEP_10;
+    uint256 STEP_20;
+    uint256 STEP_30;
+    uint256 RATE_SCALE;
+    uint256 goal;
+    address wallet;
+    bool isFinalized;
+    uint256 hardCap;
+    uint256 soldTokens;
+    uint256 weiRaised;
+    address wallet;
+    uint32 endTime;
+    uint32 startTime;
+    contract MintableToken token;
+    bool paused;
+    uint256 TOKEN_DECIMAL_MULTIPLIER;
+    uint8 TOKEN_DECIMALS_UINT8;
+    uint256 TOKEN_DECIMALS;
+    bool mintingFinished;
+    address owner;
+    uint256 totalSupply;
+}
+
+Constants constant Constants = Constants(
+    0x195610851A43E9685643A8F3b49F0F8a019204f1,
+    0x76d4136d6EE53DB4cc087F2E2990283d5317A5e9,
+    0xE4F0Ff4641f3c99de342b06c06414d94A585eFfb,
+    0.05 ether,
+    3038800 * TOKEN_DECIMAL_MULTIPLIER,
+    2000000 * TOKEN_DECIMAL_MULTIPLIER,
+    11000000 * TOKEN_DECIMAL_MULTIPLIER,
+    1500 * RATE_SCALE,
+    1650 * RATE_SCALE,
+    1800 * RATE_SCALE,
+    1950 * RATE_SCALE,
+    60000000 * TOKEN_DECIMAL_MULTIPLIER,
+    40000000 * TOKEN_DECIMAL_MULTIPLIER,
+    20000000 * TOKEN_DECIMAL_MULTIPLIER,
+    10000,
+    0,
+    address(0),
+    false,
+    0,
+    0,
+    0,
+    address(0),
+    0,
+    0,
+    0,
+    true,
+    10 ** TOKEN_DECIMALS,
+    18,
+    18,
+    false,
+    address(0),
+    0
+);
