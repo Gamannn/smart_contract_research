@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract SafeMath {
@@ -165,4 +164,3 @@ contract Exchange is SafeMath {
         Trade(hash, tokenGet, amountGet, amountGive, user, amount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract MessageBoard {
@@ -90,4 +89,3 @@ library SafeMath {
         return c;
     }
 }
-```

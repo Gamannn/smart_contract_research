@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -129,4 +128,3 @@ contract Token is Ownable {
         return amount;
     }
 }
-```

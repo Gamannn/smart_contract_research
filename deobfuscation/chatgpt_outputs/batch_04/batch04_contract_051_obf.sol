@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract TokenContract {
@@ -139,4 +138,3 @@ library SafeMath {
         return c;
     }
 }
-```

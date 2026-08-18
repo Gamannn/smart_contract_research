@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract GladiatorGame {
@@ -242,4 +241,3 @@ library SafeMath {
         return c;
     }
 }
-```

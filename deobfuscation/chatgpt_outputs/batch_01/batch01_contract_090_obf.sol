@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract ERC20Interface {
@@ -436,4 +435,3 @@ contract CQSSale {
         s2c.endTime = _endTime;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Auction {
@@ -69,4 +68,3 @@ contract Auction {
     
     function() public payable {}
 }
-```

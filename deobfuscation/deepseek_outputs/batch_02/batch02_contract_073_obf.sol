@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract SafeMath {
@@ -181,4 +180,3 @@ contract CryptoTollBoothToken is SafeMath {
         owner.transfer(amount);
     }
 }
-```

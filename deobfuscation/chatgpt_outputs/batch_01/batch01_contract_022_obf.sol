@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.24;
 
 library Address {
@@ -221,4 +220,3 @@ contract WrapperLockEth is BasicToken, Ownable {
         return keccak256(_sender, _wrapper, _validTill);
     }
 }
-```

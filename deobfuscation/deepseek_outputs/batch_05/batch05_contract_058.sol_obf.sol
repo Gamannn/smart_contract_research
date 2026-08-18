@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract ERC20Basic {
@@ -332,4 +331,3 @@ contract Crowdsale is Ownable, Stateful, ReentrancyGuard {
         buyTokens();
     }
 }
-```

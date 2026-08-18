@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface ITokenContract {
@@ -158,4 +157,3 @@ contract Crowdsale is Ownable, SafeMath, ICrowdsale {
         emit RefundPayment(contributor, amountToRefund);
     }
 }
-```

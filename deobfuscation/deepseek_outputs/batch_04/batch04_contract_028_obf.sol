@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract HyperLords {
@@ -332,4 +331,3 @@ library SafeMath {
         return c;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 library SafeMath {
@@ -529,4 +528,3 @@ contract MyWillCrowdsale is RefundableCrowdsale {
         token.transferOwnership(owner);
     }
 }
-```

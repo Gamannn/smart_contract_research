@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.3;
 
 contract Proxy {
@@ -30,4 +29,3 @@ contract Proxy {
         }
     }
 }
-```

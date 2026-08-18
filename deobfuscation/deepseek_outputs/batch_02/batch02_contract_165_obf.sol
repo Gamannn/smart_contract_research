@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 library SafeMath {
@@ -315,4 +314,3 @@ contract PlasmaBankToken is MintableToken, PausableToken, BurnableToken {
         ReceivedEther(msg.sender, msg.value);
     }
 }
-```

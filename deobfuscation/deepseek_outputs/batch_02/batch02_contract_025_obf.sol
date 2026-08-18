@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -249,4 +248,3 @@ contract EthInvest is Ownable {
         return investments[_address];
     }
 }
-```

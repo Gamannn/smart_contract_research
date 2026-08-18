@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -249,4 +248,3 @@ contract ActivityCore is LogicBase {
         emit ActivityBidSuccess(_activityId, _packId, msg.sender);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -162,4 +161,3 @@ contract Token is Ownable, ERC20 {
         _transfer(this, msg.sender, amount);
     }
 }
-```

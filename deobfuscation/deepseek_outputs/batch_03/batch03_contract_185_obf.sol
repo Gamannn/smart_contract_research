@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.23;
 
 contract EternalStorage {
@@ -103,4 +102,3 @@ contract OwnableUpgradeableProxy is OwnableStorage, UpgradeableProxy {
 contract EternalStorageProxy is OwnableUpgradeableProxy, EternalStorage {
     constructor(address initialOwner) public OwnableUpgradeableProxy(initialOwner) {}
 }
-```

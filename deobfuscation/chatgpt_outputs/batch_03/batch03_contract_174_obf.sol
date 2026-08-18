@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Lottery {
@@ -111,4 +110,3 @@ contract Lottery {
         msg.sender.transfer(lotteryState.prizePool);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface TokenInterface {
@@ -147,4 +146,3 @@ contract Crowdsale is Ownable, MathOperations {
         emit TransferToFund(contributor, contributionAmount);
     }
 }
-```

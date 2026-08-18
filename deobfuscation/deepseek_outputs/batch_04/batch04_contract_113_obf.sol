@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.26;
 
 contract Tewken {
@@ -340,4 +339,3 @@ library SafeMath {
         return c;
     }
 }
-```

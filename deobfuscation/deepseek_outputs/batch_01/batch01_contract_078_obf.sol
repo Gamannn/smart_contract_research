@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 library SafeMath {
@@ -432,4 +431,3 @@ contract OnUpToken is ERC20Basic {
         0
     );
 }
-```

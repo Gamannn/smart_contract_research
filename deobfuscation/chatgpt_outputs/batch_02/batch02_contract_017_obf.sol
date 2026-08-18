@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract ERC20Interface {
@@ -175,4 +174,3 @@ contract Crowdsale is Pausable {
         owner.transfer(msg.value);
     }
 }
-```

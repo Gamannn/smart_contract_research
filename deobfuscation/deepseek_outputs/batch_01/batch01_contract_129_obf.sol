@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -229,4 +228,3 @@ contract EMPR is Owned {
         _;
     }
 }
-```

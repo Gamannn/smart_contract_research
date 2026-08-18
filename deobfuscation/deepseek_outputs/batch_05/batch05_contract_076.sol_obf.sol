@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 library SafeMath {
@@ -273,4 +272,3 @@ contract SynereoToken is StandardToken {
         emit Burn(_burner, _value);
     }
 }
-```

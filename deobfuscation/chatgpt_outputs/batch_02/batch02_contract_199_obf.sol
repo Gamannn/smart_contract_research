@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SafeMath {
@@ -155,4 +154,3 @@ contract Token is ERC20Interface, Pausable, SafeMath {
         revert();
     }
 }
-```

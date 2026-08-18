@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract Token {
@@ -97,4 +96,3 @@ contract Crowdsale {
     uint256[] public _integer_constant = [3235000000000000000000, 100, 6329];
     bool[] public _bool_constant = [true];
 }
-```

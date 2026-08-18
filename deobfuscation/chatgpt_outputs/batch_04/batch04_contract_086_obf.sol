@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -137,4 +136,3 @@ contract Token is Ownable {
         owner.transfer(amount);
     }
 }
-```

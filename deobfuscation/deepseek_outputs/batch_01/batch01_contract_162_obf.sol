@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.5.11;
 
 interface IFundReceiver {
@@ -101,4 +100,3 @@ contract InvestmentPlatform is IInvestmentManager, IFundReceiver {
         uint256 timestamp
     );
 }
-```

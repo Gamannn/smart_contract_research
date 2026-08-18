@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract TheSchmeckle {
@@ -60,4 +59,3 @@ contract TheSchmeckle {
         revert();
     }
 }
-```

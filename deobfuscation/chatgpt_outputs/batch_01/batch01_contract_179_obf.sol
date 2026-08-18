@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract TokenInterface {
@@ -279,4 +278,3 @@ contract Exchange is SafeMath {
         return user == ecrecover(keccak256("\x19Ethereum Signed Message:\n32", hash), v, r, s);
     }
 }
-```

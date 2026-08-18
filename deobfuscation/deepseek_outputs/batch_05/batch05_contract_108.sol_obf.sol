@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract Ownable {
@@ -57,4 +56,3 @@ contract EthMessage is Ownable {
         revert();
     }
 }
-```

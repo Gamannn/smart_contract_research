@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract ReentrancyGuard {
@@ -296,4 +295,3 @@ contract TokenTimelock {
         token.withdraw(beneficiary, amount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -216,4 +215,3 @@ contract SocialChain is ERC20 {
         return token.transfer(owner, amount);
     }
 }
-```

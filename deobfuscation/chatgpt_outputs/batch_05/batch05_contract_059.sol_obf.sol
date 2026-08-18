@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract TokenInterface {
@@ -80,4 +79,3 @@ contract BOPToken is TokenInterface {
         Transfer(owner, 0x0, _amount);
     }
 }
-```

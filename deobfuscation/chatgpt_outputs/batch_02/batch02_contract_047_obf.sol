@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SnailGame {
@@ -195,4 +194,3 @@ library SafeMath {
         return c;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 library SafeMath {
@@ -178,4 +177,3 @@ contract Crowdsale {
         wallet.transfer(msg.value);
     }
 }
-```

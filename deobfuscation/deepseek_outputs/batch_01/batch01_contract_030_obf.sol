@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 contract Ownable {
@@ -41,4 +40,3 @@ contract PaymentContract is Ownable {
         emit Withdraw(to, amount);
     }
 }
-```

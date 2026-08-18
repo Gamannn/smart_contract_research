@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SafeMath {
@@ -237,4 +236,3 @@ contract Exchange is SafeMath {
 contract AccountLevels {
     function accountLevel(address user) public view returns (uint);
 }
-```

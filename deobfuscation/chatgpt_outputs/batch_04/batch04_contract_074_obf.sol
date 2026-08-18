@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract TokenInterface {
@@ -127,4 +126,3 @@ contract MetaDollar is TokenInterface, Ownable {
         Deposited(msg.sender, msg.value, "wei deposited");
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Authority {
@@ -135,4 +134,3 @@ contract NameRegistry is Auth {
         }
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Ownable {
@@ -136,4 +135,3 @@ contract AdvancedToken is Ownable, ERC20Token {
 
     function () public payable {}
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface token {
@@ -65,4 +64,3 @@ contract RobotCoinSeller is Ownable {
         owner.transfer(etherAmount);
     }
 }
-```

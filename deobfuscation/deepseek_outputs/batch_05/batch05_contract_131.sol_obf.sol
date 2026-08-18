@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ox57e3750e96118991d3695fa3423d478d104ad611 {
@@ -63,4 +62,3 @@ contract Ox57e3750e96118991d3695fa3423d478d104ad611 {
         return recovered;
     }
 }
-```

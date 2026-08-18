@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -279,4 +278,3 @@ contract ETHERCExchange is Ownable {
         tradeTracker = _tradeTracker;
     }
 }
-```

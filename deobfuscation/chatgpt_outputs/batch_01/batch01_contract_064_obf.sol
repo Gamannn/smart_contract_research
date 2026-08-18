@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.2;
 
 contract Token {
@@ -307,4 +306,3 @@ contract SlognToken is Token, EscrowICO {
         revert();
     }
 }
-```

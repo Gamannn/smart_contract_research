@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -214,4 +213,3 @@ contract AigathaToken is ERC20Token, Ownable {
         transferable = true;
     }
 }
-```

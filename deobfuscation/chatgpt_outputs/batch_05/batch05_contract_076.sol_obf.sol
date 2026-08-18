@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 library SafeMath {
@@ -208,4 +207,3 @@ contract SynereoToken is ERC20Standard {
         emit Burn(_from, _value);
     }
 }
-```

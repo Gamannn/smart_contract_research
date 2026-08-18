@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 contract ERC20Interface {
@@ -78,4 +77,3 @@ contract Token is ERC20Interface, SafeMath {
         return allowed[tokenOwner][spender];
     }
 }
-```

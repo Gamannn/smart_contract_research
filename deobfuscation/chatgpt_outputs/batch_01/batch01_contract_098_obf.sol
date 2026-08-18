@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 library SafeMath {
@@ -264,4 +263,3 @@ contract TestProcess {
         assert(main.burnPrice() == 14);
     }
 }
-```

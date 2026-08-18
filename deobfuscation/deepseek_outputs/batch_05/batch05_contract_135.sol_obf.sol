@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract AlienFarm {
@@ -207,4 +206,3 @@ library SafeMath {
         return c;
     }
 }
-```

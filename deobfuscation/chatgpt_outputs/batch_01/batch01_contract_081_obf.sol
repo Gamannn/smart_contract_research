@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 interface IERC20 {
@@ -209,4 +208,3 @@ contract Sparkle is ERC20Detailed {
         return true;
     }
 }
-```

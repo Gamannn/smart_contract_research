@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.6;
 
 contract Ownable {
@@ -102,4 +101,3 @@ contract Token is Ownable, IERC20 {
 
     function tokenFallback(address from, uint value, bytes memory data) pure public {}
 }
-```

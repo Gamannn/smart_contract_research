@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract Ownable {
@@ -66,4 +65,3 @@ contract Crowdsale is Ownable {
     
     Storage storageData = Storage(0, address(0), address(0), msg.sender);
 }
-```

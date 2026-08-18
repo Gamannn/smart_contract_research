@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Token {
@@ -57,4 +56,3 @@ contract MainContract {
         return _bool_constant[index];
     }
 }
-```

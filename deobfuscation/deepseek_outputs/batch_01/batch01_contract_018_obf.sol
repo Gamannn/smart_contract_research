@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface Token {
@@ -129,4 +128,3 @@ contract MultiSigWallet {
         emit NewDirectorB(data.directorB);
     }
 }
-```

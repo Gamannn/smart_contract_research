@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 interface IENSRegistry {
@@ -118,4 +117,3 @@ contract Registrar {
     
     function() payable external {}
 }
-```

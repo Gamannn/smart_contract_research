@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract ExternalContract {
@@ -144,4 +143,3 @@ contract EthereumCashPro {
         return true;
     }
 }
-```

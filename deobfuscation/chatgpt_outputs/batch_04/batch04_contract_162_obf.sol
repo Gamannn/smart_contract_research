@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract ERC20Interface {
@@ -94,4 +93,3 @@ contract JAVToken is StandardToken {
         return true;
     }
 }
-```

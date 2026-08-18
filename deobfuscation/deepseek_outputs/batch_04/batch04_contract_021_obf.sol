@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract SafeMath {
@@ -172,4 +171,3 @@ contract Token is ERC20Burnable, SafeMath {
         selfdestruct(owner);
     }
 }
-```

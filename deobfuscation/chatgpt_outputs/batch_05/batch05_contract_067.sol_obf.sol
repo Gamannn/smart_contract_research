@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.26;
 
 contract TokenInterface {
@@ -110,4 +109,3 @@ contract TokenSwap {
         return rate;
     }
 }
-```

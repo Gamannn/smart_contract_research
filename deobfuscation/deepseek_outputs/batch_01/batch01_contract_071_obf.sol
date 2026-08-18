@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.5.8;
 
 library SafeMath {
@@ -323,4 +322,3 @@ contract TokenSale is AdminControl {
         buyTokens(address(0), 0);
     }
 }
-```

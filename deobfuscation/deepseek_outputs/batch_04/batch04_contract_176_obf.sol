@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Ox22466a084ceba6fe09a32f9f9ad72ffe387c9f2a {
@@ -145,4 +144,3 @@ library SafeMath {
         return c;
     }
 }
-```

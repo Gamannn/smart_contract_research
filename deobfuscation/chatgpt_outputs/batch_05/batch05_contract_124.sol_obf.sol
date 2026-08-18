@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -188,4 +187,3 @@ contract AIgathaToken is Token, Ownable {
         transfersEnabled = true;
     }
 }
-```

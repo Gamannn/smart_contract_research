@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 interface Token {
@@ -307,4 +306,3 @@ contract Exchange is SafeMath {
         );
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -215,4 +214,3 @@ contract Crowdsale is Ownable {
         emit TokensTransfer(msg.sender, wallet, msg.value, success);
     }
 }
-```

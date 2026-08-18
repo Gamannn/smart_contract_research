@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 library SafeMath {
@@ -203,4 +202,3 @@ contract SOFIN is BurnableToken {
         );
     }
 }
-```

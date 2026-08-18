@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 interface Token {
@@ -53,4 +52,3 @@ contract MultiSigWallet {
         tokenAddress = address(0);
     }
 }
-```

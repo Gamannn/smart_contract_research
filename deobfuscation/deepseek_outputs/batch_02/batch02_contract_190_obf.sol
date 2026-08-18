@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Ownable {
@@ -283,4 +282,3 @@ contract PluginImpl is PluginBase {
         revert();
     }
 }
-```

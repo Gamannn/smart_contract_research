@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 library SafeMath {
@@ -229,4 +228,3 @@ contract DogezerPrivateSaleITO is Haltable {
 
     event FundTransfer(address backer, uint amount, bool isContribution);
 }
-```

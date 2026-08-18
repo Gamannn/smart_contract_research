@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Token {
@@ -194,4 +193,3 @@ contract ERC20Token {
         return c;
     }
 }
-```

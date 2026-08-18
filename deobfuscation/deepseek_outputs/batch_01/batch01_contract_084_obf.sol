@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Storage {
@@ -103,4 +102,3 @@ contract EternalStorageProxy is OwnableUpgradableProxy, Storage {
     
     State state = State(address(0), address(0), "");
 }
-```

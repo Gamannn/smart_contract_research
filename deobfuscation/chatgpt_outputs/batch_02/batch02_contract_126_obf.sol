@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract AuctionContract {
@@ -169,4 +168,3 @@ library SafeMath {
         return c;
     }
 }
-```

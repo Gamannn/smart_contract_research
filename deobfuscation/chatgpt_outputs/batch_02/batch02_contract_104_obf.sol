@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 library AddressUtils {
@@ -279,4 +278,3 @@ contract EtheremonAdventure is EtheremonEnum, AccessControl {
         (monsterId, itemId, emontAmount, etherAmount) = adventureData.getSiteItem(_exploreId, _exploreId);
     }
 }
-```

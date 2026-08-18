@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SignatureVerifier {
@@ -34,4 +33,3 @@ contract SignatureVerifier {
     
     function() external payable {}
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -160,4 +159,3 @@ contract CustomToken is StandardToken, Ownable {
         }
     }
 }
-```

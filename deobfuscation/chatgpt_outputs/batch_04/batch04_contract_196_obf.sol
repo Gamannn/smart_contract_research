@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface ERC20 {
@@ -139,4 +138,3 @@ contract Crowdsale {
     bool[] public _bool_constant = [true, false];
     uint256[] public _integer_constant = [20000000000000000000, 2, 120, 100, 1000000000000000000000, 0];
 }
-```

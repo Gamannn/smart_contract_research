@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -137,4 +136,3 @@ contract ETHERChip is BurnableToken {
         emit Transfer(address(0), msg.sender, INITIAL_SUPPLY);
     }
 }
-```

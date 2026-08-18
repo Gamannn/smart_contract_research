@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -125,4 +124,3 @@ contract MyToken is StandardToken {
         devWallet.transfer(msg.value);
     }
 }
-```

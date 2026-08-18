@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract ERC20 {
@@ -276,4 +275,3 @@ contract Crowdsale is Ownable {
         }
     }
 }
-```

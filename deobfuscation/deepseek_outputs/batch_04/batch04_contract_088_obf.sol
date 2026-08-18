@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -220,4 +219,3 @@ contract ForeignToken {
     function balanceOf(address who) constant public returns (uint256);
     function transfer(address to, uint256 value) public returns (bool);
 }
-```

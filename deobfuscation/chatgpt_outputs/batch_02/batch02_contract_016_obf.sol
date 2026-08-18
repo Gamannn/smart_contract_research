@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface TokenInterface {
@@ -146,4 +145,3 @@ contract Token is MintableToken {
     string public symbol = "TKN";
     uint8 public decimals = 18;
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 library SafeMath {
@@ -246,4 +245,3 @@ contract Noxon is ERC20 {
     
     State state = State(address(0), address(0), address(0), address(0), false, 0, 0, 0, 0, 0);
 }
-```

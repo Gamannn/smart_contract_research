@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -304,4 +303,3 @@ contract InvestmentContract is Ownable {
         launchTime = newLaunchTime;
     }
 }
-```

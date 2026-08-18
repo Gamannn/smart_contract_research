@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Norsefire {
@@ -205,4 +204,3 @@ library SafeMath {
         return c;
     }
 }
-```

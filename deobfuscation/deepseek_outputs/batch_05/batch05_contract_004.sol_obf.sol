@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -219,4 +218,3 @@ contract SEN is StandardToken {
         return token.transfer(owner, amount);
     }
 }
-```

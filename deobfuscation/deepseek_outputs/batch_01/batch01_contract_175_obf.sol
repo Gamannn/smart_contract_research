@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SafeMath {
@@ -374,4 +373,3 @@ contract Ethernext is SafeMath {
         emit Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

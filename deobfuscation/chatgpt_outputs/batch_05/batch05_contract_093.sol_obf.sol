@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.7;
 
 contract ContractManager {
@@ -116,4 +115,3 @@ contract ContractManager {
         }
     }
 }
-```

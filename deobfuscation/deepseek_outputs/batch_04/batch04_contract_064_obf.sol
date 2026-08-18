@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.2;
 
 library SafeMath {
@@ -401,4 +400,3 @@ contract CrowdsaleTokenFinal is ReleasableToken, MintableToken, RecycleToken {
         return name;
     }
 }
-```

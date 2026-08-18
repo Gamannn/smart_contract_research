@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract Ownable {
@@ -260,4 +259,3 @@ library SafeMath {
         return a % b;
     }
 }
-```

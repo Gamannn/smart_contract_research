@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract ERC20Interface {
@@ -326,4 +325,3 @@ contract Crowdsale is Ownable {
         beneficiary.transfer(this.balance);
     }
 }
-```

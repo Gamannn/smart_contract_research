@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Owned {
@@ -125,4 +124,3 @@ contract AdvancedToken is Owned, TokenERC20 {
         selfdestruct(owner);
     }
 }
-```

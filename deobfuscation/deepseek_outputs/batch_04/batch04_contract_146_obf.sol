@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract InvestmentContract {
@@ -55,4 +54,3 @@ contract InvestmentContract {
         investments[msg.sender] += msg.value;
     }
 }
-```

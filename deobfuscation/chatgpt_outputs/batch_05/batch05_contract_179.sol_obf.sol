@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract TokenInterface {
@@ -85,4 +84,3 @@ contract BountyContract {
         balances[msg.sender] += msg.value;
     }
 }
-```

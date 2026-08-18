@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract SafeMath {
@@ -301,4 +300,3 @@ contract BITOX is SafeMath {
     
     ExchangeState exchangeState = ExchangeState(0, 0, 0, address(0), address(0), address(0), address(0), address(0), 0, 0);
 }
-```

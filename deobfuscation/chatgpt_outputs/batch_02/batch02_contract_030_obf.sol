@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract TokenInterface {
@@ -253,4 +252,3 @@ contract Crowdsale is Ownable {
         beneficiary.transfer(this.balance);
     }
 }
-```

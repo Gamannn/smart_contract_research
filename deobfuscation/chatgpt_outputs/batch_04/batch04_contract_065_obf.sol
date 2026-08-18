@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract TokenInterface {
@@ -285,4 +284,3 @@ contract TokenSaleWithDiscount is TokenSaleWithRateChange {
         }
     }
 }
-```

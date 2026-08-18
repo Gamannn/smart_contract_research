@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -196,4 +195,3 @@ contract Crowdsale is Ownable, Destructible {
         receiver.transfer(this.balance);
     }
 }
-```

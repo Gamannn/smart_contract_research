@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -73,4 +72,3 @@ contract Presale is Pausable {
         owner.transfer(this.balance);
     }
 }
-```

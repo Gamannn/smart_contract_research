@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Ownable {
@@ -802,4 +801,3 @@ contract DarknodeRewardVault is Ownable {
         }
     }
 }
-```

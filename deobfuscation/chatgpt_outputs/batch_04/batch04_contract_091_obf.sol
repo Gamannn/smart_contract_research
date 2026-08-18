@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract SafeMath {
@@ -236,4 +235,3 @@ contract ExchangeCore is Admin, SafeMath {
         Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

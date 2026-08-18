@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 library AddressUtils {
@@ -292,4 +291,3 @@ contract MarketCoin is ERC20, DividendToken {
         etherAmount = tokenPrice.mul(tokens);
     }
 }
-```

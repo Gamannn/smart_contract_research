@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract SafeMath {
@@ -126,4 +125,3 @@ contract Exchange is SafeMath {
 
     mapping(address => mapping(address => uint)) public balances;
 }
-```

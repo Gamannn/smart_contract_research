@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenExchange {
@@ -115,4 +114,3 @@ contract CoEvalToken {
         return circulatingSupply;
     }
 }
-```

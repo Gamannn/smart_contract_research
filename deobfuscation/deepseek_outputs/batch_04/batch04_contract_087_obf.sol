@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface MasterContract {
@@ -148,4 +147,3 @@ library SafeMath {
         return c;
     }
 }
-```

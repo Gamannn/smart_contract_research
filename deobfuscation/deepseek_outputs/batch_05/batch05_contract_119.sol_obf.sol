@@ -1,4 +1,3 @@
-```solidity
 contract TokenExchange {
     address public owner;
     address public devAddress;
@@ -293,4 +292,3 @@ contract TokenExchange {
         return c;
     }
 }
-```

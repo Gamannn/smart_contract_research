@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract ERC20Interface {
@@ -105,4 +104,3 @@ contract Ae1Token is ERC20Token {
     string[] public _string_constant = ["ae1", "Ae1Token", "H0.1"];
     bool[] public _bool_constant = [true];
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract InvestmentContract {
@@ -125,4 +124,3 @@ contract InvestmentContract {
         return _address_constant[index];
     }
 }
-```

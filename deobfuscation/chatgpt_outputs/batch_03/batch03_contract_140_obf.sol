@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract CoinPlacement {
@@ -107,4 +106,3 @@ contract CoinPlacement {
         balances[state.owner] += msg.value;
     }
 }
-```

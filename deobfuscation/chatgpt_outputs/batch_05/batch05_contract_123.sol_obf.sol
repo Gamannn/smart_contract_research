@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -95,4 +94,3 @@ contract Doge2Token is StandardToken {
         Transfer(msg.sender, msg.sender, tokens, empty);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -458,4 +457,3 @@ contract METADOLLAR is ERC20Interface, Owned {
         msg.sender.transfer(this.balance);
     }
 }
-```

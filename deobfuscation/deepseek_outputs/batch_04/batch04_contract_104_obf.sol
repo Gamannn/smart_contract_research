@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.10;
 
 contract Token {
@@ -167,4 +166,3 @@ contract HumansOnlyToken {
         return "Regulations of ICO and preICO and usage of this smartcontract are present at website humansOnly.network and by using this smartcontract you commit that you accept and will follow those rules";
     }
 }
-```

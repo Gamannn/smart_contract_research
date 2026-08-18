@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.4;
 
 contract TokenInterface {
@@ -94,4 +93,3 @@ contract JPMorganChaseToken is StandardToken {
         return true;
     }
 }
-```

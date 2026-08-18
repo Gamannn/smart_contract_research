@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -161,4 +160,3 @@ contract MyToken is MintableToken, BurnableToken {
         emit Transfer(address(0), msg.sender, INITIAL_SUPPLY);
     }
 }
-```

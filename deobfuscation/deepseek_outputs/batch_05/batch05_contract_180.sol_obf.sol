@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract ERC20Interface {
@@ -188,4 +187,3 @@ contract LCBrixCrowdsale is tokenRecipient {
         FundTransfer(from, balance, false);
     }
 }
-```

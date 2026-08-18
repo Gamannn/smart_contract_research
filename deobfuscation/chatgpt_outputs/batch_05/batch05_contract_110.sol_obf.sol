@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract Token {
@@ -147,4 +146,3 @@ function getStrFunc(uint256 index) internal view returns (string storage) {
 uint256[] public _integer_constant = [1538265540, 1000000000000000000, 0, 1532736000, 10000000, 99000000000000000, 10, 8, 1, 100000000, 1532736300];
 address payable[] public _address_constant = [0xA89d7a553Da4E313c7F77A1F7f16B9FACF538349, 0xa0f236796BE660F1ad18F56b0Da91516882aE049];
 string[] public _string_constant = ["GChainToken", "GCHAIN"];
-```

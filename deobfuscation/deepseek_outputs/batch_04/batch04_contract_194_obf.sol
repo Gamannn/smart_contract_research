@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract STK {
@@ -59,4 +58,3 @@ contract STK {
         return true;
     }
 }
-```

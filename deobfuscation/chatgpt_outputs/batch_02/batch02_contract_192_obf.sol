@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract OwnerContract {
@@ -187,4 +186,3 @@ library SafeMath {
         return c;
     }
 }
-```

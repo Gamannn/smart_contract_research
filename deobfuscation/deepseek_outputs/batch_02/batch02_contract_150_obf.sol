@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract Token {
@@ -80,4 +79,3 @@ contract Crowdsale {
         SaleStageUp(currentStage, priceInWei);
     }
 }
-```

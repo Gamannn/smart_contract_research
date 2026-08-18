@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -324,4 +323,3 @@ contract MainContract {
         return registeredUsers.length;
     }
 }
-```

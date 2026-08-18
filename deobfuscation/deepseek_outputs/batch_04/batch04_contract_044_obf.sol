@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SafeMath {
@@ -146,4 +145,3 @@ contract Exchange is SafeMath {
         return orderFills[user][hash];
     }
 }
-```

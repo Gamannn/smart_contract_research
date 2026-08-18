@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 contract IAccessPolicy {
@@ -471,4 +470,3 @@ contract EtherToken is
         emit Transfer(msg.sender, address(0), amount);
     }
 }
-```

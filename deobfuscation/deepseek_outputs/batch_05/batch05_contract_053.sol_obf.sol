@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ERC20 {
@@ -342,4 +341,3 @@ contract MultiSigWallet {
     mapping(address => uint) public ownerVotedToReplace;
     mapping(address => uint) public ownerVotedToSend;
 }
-```

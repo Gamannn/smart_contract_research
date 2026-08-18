@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract SafeMath {
@@ -278,4 +277,3 @@ contract LudoExchangeTest is SafeMath {
         Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

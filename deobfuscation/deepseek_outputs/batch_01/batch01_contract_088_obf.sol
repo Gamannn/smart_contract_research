@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -270,4 +269,3 @@ contract BlockJoyToken is Pausable, ERC223Token {
         Transfer(address(0), msg.sender, tokenAmount);
     }
 }
-```

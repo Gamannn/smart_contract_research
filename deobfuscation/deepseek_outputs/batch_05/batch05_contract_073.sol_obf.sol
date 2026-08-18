@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20 {
@@ -109,4 +108,3 @@ contract LibraToken is ERC20, BurnableToken, ICO {
         icoHolder = 0x3389460502c67478A0BE1078cbC33a38C5484926;
     }
 }
-```

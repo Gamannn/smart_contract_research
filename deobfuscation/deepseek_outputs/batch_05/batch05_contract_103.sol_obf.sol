@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract SafeMath {
@@ -103,4 +102,3 @@ contract TokenExchange is SafeMath {
         selfdestruct(msg.sender);
     }
 }
-```

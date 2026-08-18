@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -190,4 +189,3 @@ contract DN8Token is ERC20Interface, Owned {
         owner.transfer(amount);
     }
 }
-```

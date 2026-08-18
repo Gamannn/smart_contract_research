@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.11;
 
 library SafeMath {
@@ -365,4 +364,3 @@ contract MinerContract is Ownable {
         token.transfer(to, amount);
     }
 }
-```

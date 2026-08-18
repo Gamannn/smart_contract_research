@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -159,4 +158,3 @@ contract MRNToken is StandardToken {
     bool[] public _bool_constant = [true];
     string[] public _string_constant = ["MRN", "MRN"];
 }
-```

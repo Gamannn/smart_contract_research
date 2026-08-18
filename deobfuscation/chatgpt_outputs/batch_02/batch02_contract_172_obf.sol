@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -215,4 +214,3 @@ contract DEKZCrowdsale is Crowdsale, Ownable {
         return messages[index];
     }
 }
-```

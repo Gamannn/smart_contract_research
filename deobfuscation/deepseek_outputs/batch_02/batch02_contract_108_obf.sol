@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 library SafeMath {
@@ -125,4 +124,3 @@ contract PrivateSale is Ownable {
         emit tokensCalledBack(tokenBalance);
     }
 }
-```

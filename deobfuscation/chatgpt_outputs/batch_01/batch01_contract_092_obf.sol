@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.5.11;
 
 interface ICustomersFundable {
@@ -366,4 +365,3 @@ contract NTS80 is IFundable {
         "NTS 80"
     );
 }
-```

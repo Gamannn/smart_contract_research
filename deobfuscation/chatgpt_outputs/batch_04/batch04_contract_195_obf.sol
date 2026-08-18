@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract Token {
@@ -140,4 +139,3 @@ contract FundOfFunds is Token, AirdropToken, ICOContract {
     string[] public _string_constant = ["FOF", "FundofFunds"];
     address[] public _address_constant = [0x0, 0x0, 0x0];
 }
-```

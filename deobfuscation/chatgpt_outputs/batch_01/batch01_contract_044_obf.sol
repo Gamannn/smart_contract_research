@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.6.6;
 
 library Address {
@@ -644,4 +643,3 @@ contract HegicPutOptions is HegicOptions {
     uint256 private activationTime = 15 minutes;
     bool private highSpreadLockEnabled;
 }
-```

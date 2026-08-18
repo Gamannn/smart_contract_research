@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.7;
 
 interface IPriceOracle {
@@ -360,4 +359,3 @@ contract CompoundProxy is CompoundAdminProxy {
     
     function() external payable {}
 }
-```

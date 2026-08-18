@@ -1,14 +1,24 @@
 import os
+import re
 import time
 import argparse
 from openai import OpenAI, RateLimitError, APITimeoutError, APIConnectionError
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-PROMPT_PATH = "prompts/master_prompt.txt"
+SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
+PROMPT_PATH = os.path.join(SCRIPT_DIR, "..", "prompts", "master_prompt.txt")
 
 with open(PROMPT_PATH, "r") as f:
     MASTER_PROMPT = f.read()
+
+
+FENCE = re.compile(r"^```(?:solidity)?[ \t]*$", re.MULTILINE)
+
+
+def strip_fences(code):
+    """Models sometimes wrap output in markdown fences despite the prompt."""
+    return FENCE.sub("", code).strip() + "\n"
 
 
 def deobfuscate(code, retries=5):
@@ -48,14 +58,14 @@ def deobfuscate(code, retries=5):
 
 
 def run(batch):
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = SCRIPT_DIR
     base_dir   = os.path.join(script_dir, "..")
     input_dir  = os.path.join(script_dir, "../../Smart-contract-obfuscation/obfuscated_contracts", f"batch_{batch:02d}")
     output_dir = os.path.join(base_dir, "chatgpt_outputs", f"batch_{batch:02d}")
     log_file   = os.path.join(base_dir, "logs", f"openai_batch{batch:02d}.log")
 
     os.makedirs(output_dir, exist_ok=True)
-    os.makedirs("logs", exist_ok=True)
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
 
     all_files  = sorted(f for f in os.listdir(input_dir) if f.endswith(".sol"))
     done_files = set(os.listdir(output_dir))
@@ -75,7 +85,7 @@ def run(batch):
                 result = deobfuscate(contract)
                 output_file = os.path.join(output_dir, file)
                 with open(output_file, "w") as out:
-                    out.write(result)
+                    out.write(strip_fences(result))
                 print(f"  ✔ Done")
                 log.write(f"SUCCESS: {file}\n")
 

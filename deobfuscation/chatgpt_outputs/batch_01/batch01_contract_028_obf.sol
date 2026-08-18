@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -200,4 +199,3 @@ contract CRP_ERC20 is Owned {
         emit SellTokenAllowedEvent(false);
     }
 }
-```

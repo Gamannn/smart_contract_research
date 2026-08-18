@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 library SafeMath {
@@ -284,4 +283,3 @@ contract RefundVault is Ownable {
         Refunded(investor, depositedValue);
     }
 }
-```

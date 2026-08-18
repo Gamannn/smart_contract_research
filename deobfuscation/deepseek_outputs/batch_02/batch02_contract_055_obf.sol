@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -120,4 +119,3 @@ contract RESToken is TokenERC20, Ownable {
         msg.sender.transfer(amount * sellPrice / 1000);
     }
 }
-```

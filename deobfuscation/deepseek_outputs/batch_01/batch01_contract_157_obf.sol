@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract owned {
@@ -213,4 +212,3 @@ contract ARXCrowdsale is owned, safeMath {
         Refund(msg.sender, ethRefund);
     }
 }
-```

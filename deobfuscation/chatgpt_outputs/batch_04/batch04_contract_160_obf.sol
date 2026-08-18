@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Token {
@@ -106,4 +105,3 @@ contract Token is ERC20Token, BurnableToken, ICOContract {
         icoWallet = 0x649F543994ae132aC04FdBBcDe523F107d79d995;
     }
 }
-```

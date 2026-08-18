@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract ERC20Interface {
@@ -147,4 +146,3 @@ contract DEVWEBVUA is Token("DWD1", "DEV WEBVUA 1", 18, 8888888888 * (10 ** 18))
         return _allowances[_owner][_spender];
     }
 }
-```

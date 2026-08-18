@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -177,4 +176,3 @@ contract OLE is ERC20Token, Ownable {
         emit Transfer(owner, msg.sender, tokens);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface Token {
@@ -95,4 +94,3 @@ contract KeplerTokenCrowdsale is Ownable {
         selfdestruct(owner);
     }
 }
-```

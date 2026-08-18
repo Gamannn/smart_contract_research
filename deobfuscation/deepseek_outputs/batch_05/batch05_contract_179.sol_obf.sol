@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 interface Token {
@@ -94,4 +93,3 @@ contract Crowdsale {
         contributions[msg.sender] += msg.value;
     }
 }
-```

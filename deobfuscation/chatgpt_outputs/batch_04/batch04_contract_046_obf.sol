@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract SafeMath {
@@ -185,4 +184,3 @@ contract AciToken is StandardToken, Pausable {
         CreateACI(to, value);
     }
 }
-```

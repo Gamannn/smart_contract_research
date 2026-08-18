@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract owned {
@@ -130,4 +129,3 @@ contract RESToken is owned, TokenERC20 {
         msg.sender.transfer(amount * sellPrice / 1000);
     }
 }
-```

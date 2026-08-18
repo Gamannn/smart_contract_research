@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 library SafeMath {
@@ -139,4 +138,3 @@ contract TokenExchange is Ownable {
     event SellTransaction(uint256 etherAmount, uint256 tokenAmount);
     event BuyTransaction(uint256 etherAmount, uint256 tokenAmount);
 }
-```

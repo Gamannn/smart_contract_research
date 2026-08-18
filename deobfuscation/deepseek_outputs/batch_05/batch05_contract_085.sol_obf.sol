@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract Lottery {
@@ -103,4 +102,3 @@ contract Lottery {
         locked = false;
     }
 }
-```

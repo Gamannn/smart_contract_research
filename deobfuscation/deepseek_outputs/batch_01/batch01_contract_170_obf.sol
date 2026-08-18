@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Basic {
@@ -446,4 +445,3 @@ struct Storage {
 }
 
 Storage s2c = Storage(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, address(0), 0, 0, 0, 0, 0, false, 18, "HICS", "Interexchange Crypstock System Heritage Token", 18, "ICS", "Interexchange Crypstock System", 0, 0, false, address(0), 0);
-```

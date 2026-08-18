@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.5.10;
 
 library SafeMath {
@@ -247,4 +246,3 @@ contract TokenSale is ERC20Token {
     function () external payable {
     }
 }
-```

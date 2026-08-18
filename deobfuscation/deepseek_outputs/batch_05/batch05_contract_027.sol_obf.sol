@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.4;
 
 contract ERC20Interface {
@@ -100,4 +99,3 @@ contract RNNToken is ERC20Token {
         return true;
     }
 }
-```

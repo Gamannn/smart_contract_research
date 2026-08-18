@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract BonusDistribution {
@@ -77,4 +76,3 @@ contract BonusDistribution {
         }
     }
 }
-```

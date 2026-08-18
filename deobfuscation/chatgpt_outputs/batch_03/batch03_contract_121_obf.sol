@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.5.1;
 
 library ECRecovery {
@@ -246,4 +245,3 @@ contract Escrow {
 
     function() external payable {}
 }
-```

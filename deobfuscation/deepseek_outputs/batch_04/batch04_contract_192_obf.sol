@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.2;
 
 contract Ownable {
@@ -89,4 +88,3 @@ contract LuxuryToken is Ownable {
         MessageAdded(msg.sender, message, userBalance);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract ERC20Interface {
@@ -85,4 +84,3 @@ contract KPRToken is StandardToken {
         balances[msg.sender] = INITIAL_SUPPLY;
     }
 }
-```

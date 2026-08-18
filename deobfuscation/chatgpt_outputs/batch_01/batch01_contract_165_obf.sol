@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -442,4 +441,3 @@ contract LBSCSale is BaseLBSCSale {
         tokenReward = LBSCToken(tokenAddress);
     }
 }
-```

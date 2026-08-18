@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract InvestmentContract {
@@ -130,4 +129,3 @@ contract InvestmentContract {
     bool[] public _bool_constant = [false, true];
     uint256[] public _integer_constant = [6, 125000000000000000000, 100, 400000000000000, 10000000000000000000000000, 2500000000000000000000000, 1483300, 0, 1000000000000000000, 3];
 }
-```

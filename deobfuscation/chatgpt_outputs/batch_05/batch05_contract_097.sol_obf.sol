@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract TokenInterface {
@@ -127,4 +126,3 @@ contract MyToken is TokenInterface, Ownable {
         WeiSent(_to, _value);
     }
 }
-```

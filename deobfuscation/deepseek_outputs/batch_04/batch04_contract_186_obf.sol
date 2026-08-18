@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Auction {
@@ -56,4 +55,3 @@ contract Auction {
     
     uint256[] public _integer_constant = [17, 20, 1, 10, 5000000000000000, 0, 7200, 8];
 }
-```

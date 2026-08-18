@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Basic {
@@ -208,4 +207,3 @@ contract Exchange is Ownable {
     mapping(address => bool) public hardWithdrawActive;
     mapping(address => uint256) public lastActiveTransaction;
 }
-```

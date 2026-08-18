@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract Proxy {
@@ -148,4 +147,3 @@ contract AdminUpgradeabilityProxy is BaseAdminUpgradeabilityProxy, Upgradeabilit
         _setAdmin(_admin);
     }
 }
-```

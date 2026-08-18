@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 library SafeMath {
@@ -183,4 +182,3 @@ contract SHIT is ERC20 {
         }
     }
 }
-```

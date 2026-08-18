@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract SafeMath {
@@ -273,4 +272,3 @@ contract Bitcratic is SafeMath {
         Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

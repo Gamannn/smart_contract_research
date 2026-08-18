@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract TokenInterface {
@@ -160,4 +159,3 @@ contract UnicornRanch {
         owner.transfer(this.balance);
     }
 }
-```

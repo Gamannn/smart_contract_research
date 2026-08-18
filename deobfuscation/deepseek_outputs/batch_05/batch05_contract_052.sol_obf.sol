@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.22 <0.6.0;
 
 library SafeMath {
@@ -69,4 +68,3 @@ function getIntFunc(uint256 index) internal view returns(uint256) {
 }
 
 uint256[] public _integer_constant = [1, 0];
-```

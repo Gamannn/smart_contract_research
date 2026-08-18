@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Ox39df6123b4acb768c9c36b2663cf4d78e42d350d {
@@ -85,4 +84,3 @@ contract Ox39df6123b4acb768c9c36b2663cf4d78e42d350d {
         }
     }
 }
-```

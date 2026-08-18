@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -227,4 +226,3 @@ contract Crowdsale is Ownable {
 contract MintableToken {
     function mint(address to, uint256 amount) public returns (bool);
 }
-```

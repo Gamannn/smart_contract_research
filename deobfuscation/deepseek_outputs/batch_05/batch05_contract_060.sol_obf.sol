@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Lottery {
@@ -269,4 +268,3 @@ contract Lottery {
         selfdestruct(owner);
     }
 }
-```

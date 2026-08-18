@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Basic {
@@ -269,4 +268,3 @@ contract Geocash is StandardToken, Destructible {
         buy();
     }
 }
-```

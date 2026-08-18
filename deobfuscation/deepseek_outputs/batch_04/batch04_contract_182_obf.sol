@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Interface {
@@ -253,4 +252,3 @@ contract Token is ERC20Token {
 contract ERC20Receiver {
     function tokenFallback(address from, uint256 value, bytes data) public;
 }
-```

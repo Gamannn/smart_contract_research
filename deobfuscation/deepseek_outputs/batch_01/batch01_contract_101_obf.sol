@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.3;
 
 interface IRegistry {
@@ -240,4 +239,3 @@ library Constants {
     address public constant TOKEN_PROXY = 0x12345678979f29eBc99E00bdc5693ddEa564cA80;
     address public constant EXCHANGE_PROXY = 0x1234567896326230a28ee368825D11fE6571Be4a;
 }
-```

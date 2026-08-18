@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -157,4 +156,3 @@ contract TokenERC20 is Ownable {
     address public airdropAddress = 0xBfB92c13455c4ab69A2619614164c45Cb4BEC09C;
     mapping(address => bool) public airdrops;
 }
-```

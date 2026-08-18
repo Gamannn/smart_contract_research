@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -159,4 +158,3 @@ contract MyToken is TokenERC20 {
         currentChallenge = keccak256(nonce, currentChallenge, block.blockhash(block.number - 1));
     }
 }
-```

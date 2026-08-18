@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -181,4 +180,3 @@ contract NoKiacToken is StandardToken, Ownable {
         }
     }
 }
-```

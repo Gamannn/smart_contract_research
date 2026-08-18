@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract TokenReceiver {
@@ -202,4 +201,3 @@ contract StandardToken is BasicToken {
         return true;
     }
 }
-```

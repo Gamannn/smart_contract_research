@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 interface Token {
@@ -161,4 +160,3 @@ contract DeltaBalances {
         selfdestruct(msg.sender);
     }
 }
-```

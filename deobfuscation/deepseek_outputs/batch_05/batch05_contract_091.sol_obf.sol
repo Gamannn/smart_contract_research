@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract ERC20 {
@@ -90,4 +89,3 @@ contract CustomToken is ERC20, ICO {
         icoHolder = 0xf043ae16a61ece2107eb2b;
     }
 }
-```

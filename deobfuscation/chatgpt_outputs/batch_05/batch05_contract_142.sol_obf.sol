@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 library AddressUtils {
@@ -256,4 +255,3 @@ contract MarketCoin is BasicToken, DividendToken {
         etherAmount = tokenPrice.mul(tokens);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract EtherReceiver {
@@ -39,4 +38,3 @@ contract UpgradeableContract {
     
     function () payable external {}
 }
-```

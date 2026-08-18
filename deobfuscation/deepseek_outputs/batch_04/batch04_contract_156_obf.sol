@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 interface tokenRecipient {
@@ -136,4 +135,3 @@ library SafeMath {
         return c;
     }
 }
-```

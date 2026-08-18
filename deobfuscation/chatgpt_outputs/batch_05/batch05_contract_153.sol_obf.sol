@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.22 <0.6.0;
 
 contract InvestmentContract {
@@ -65,4 +64,3 @@ library AddressUtils {
         return addr;
     }
 }
-```

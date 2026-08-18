@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 interface IERC20 {
@@ -161,4 +160,3 @@ contract UnicornReward {
         token.transfer(owner, token.balanceOf(address(this)));
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -117,4 +116,3 @@ contract Token is ERC20Interface {
     event Transfer(address indexed from, address indexed to, uint256 tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint256 tokens);
 }
-```

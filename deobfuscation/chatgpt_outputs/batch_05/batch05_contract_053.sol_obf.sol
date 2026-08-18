@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenInterface {
@@ -131,4 +130,3 @@ contract MultiSigWallet {
         if (index == 4) return owner5;
     }
 }
-```

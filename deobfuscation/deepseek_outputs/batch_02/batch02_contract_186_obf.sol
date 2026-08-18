@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract Ownable {
@@ -145,4 +144,3 @@ contract PotatoCoin is ERC20, SafeMath, Ownable {
         transferFrom(this, msg.sender, amount);
     }
 }
-```

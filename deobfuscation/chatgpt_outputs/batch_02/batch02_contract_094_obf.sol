@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract OraclizeI {
@@ -941,4 +940,3 @@ contract TrumpImpeachmentToken is TrumpOracle, TimedEvidenceToken, StringOps {
         oraclize_setCustomGasPrice(gasPrice);
     }
 }
-```

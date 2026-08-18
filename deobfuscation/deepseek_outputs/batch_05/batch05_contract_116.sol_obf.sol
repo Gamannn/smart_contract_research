@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -227,4 +226,3 @@ contract ETHERCHIP is ERC20 {
         emit Burn(_burner, _value);
     }
 }
-```

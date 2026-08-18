@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenInterface {
@@ -74,4 +73,3 @@ contract MultiSigWallet {
 
     function () public payable {}
 }
-```

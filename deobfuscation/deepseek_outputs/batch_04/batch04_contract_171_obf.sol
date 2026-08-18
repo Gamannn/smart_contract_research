@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.16;
 
 library SafeMath {
@@ -168,4 +167,3 @@ interface KittyCore {
 interface KittySires {
     function bidOnSiringAuction(address bidder, uint256 kittyId) external;
 }
-```

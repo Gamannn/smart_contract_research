@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract DailyDivs {
@@ -228,4 +227,3 @@ library SafeMath {
         return c;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract SafeMath {
@@ -363,4 +362,3 @@ contract Exchange is SafeMath {
     
     ExchangeState exchangeState = ExchangeState(0, 0, 0, address(0), address(0), address(0), address(0), 0, 0);
 }
-```

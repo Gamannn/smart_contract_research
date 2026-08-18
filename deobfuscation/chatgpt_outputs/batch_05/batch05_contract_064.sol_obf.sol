@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 library SafeMath {
@@ -123,4 +122,3 @@ contract SOFINToken is BurnableToken {
         balances[msg.sender] = INITIAL_SUPPLY;
     }
 }
-```

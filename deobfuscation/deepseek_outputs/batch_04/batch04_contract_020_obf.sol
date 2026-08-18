@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract ERC20Interface {
@@ -133,4 +132,3 @@ contract GAR is ERC20Interface, Owned {
         tokenAddress.transfer(tokens);
     }
 }
-```

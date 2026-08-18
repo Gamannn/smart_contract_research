@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface IERC20 {
@@ -117,4 +116,3 @@ contract BitronCoin is IERC20 {
         stopped = false;
     }
 }
-```

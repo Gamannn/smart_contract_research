@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -187,4 +186,3 @@ contract ThaneCoin is Ownable, Token {
 
     Scalar2Vector s2c = Scalar2Vector(91000000e18, 0, 18, 0, 0, address(0));
 }
-```

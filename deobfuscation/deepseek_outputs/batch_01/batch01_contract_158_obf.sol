@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract _8thereum {
@@ -529,4 +528,3 @@ library SafeMath {
         return c;
     }
 }
-```

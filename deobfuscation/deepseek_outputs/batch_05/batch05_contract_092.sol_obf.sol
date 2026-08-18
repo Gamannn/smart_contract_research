@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract SafeMath {
@@ -132,4 +131,3 @@ contract Token is SafeMath {
     function() payable {
     }
 }
-```

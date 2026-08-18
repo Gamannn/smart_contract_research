@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 contract Owned {
@@ -189,4 +188,3 @@ contract Token {
         return false;
     }
 }
-```

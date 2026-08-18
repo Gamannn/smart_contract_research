@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.21;
 
 interface ITotlePrimary {
@@ -322,4 +321,3 @@ contract TotlePrimary is ITotlePrimary, Ownable {
         return amounts[0];
     }
 }
-```

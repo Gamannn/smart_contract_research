@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface tokenRecipient {
@@ -142,4 +141,3 @@ contract Honeycomb {
         assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
     }
 }
-```

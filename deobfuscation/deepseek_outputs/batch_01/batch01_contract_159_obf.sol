@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface ERC20 {
@@ -221,4 +220,3 @@ contract Exchange is SafeMath {
         return true;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract PoohGame {
@@ -161,4 +160,3 @@ library SafeMath {
         return c;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20 {
@@ -747,4 +746,3 @@ contract Exchange is DSAuth {
         return ecrecover(keccak256("\x19Ethereum Signed Message:\n32", hash), v, r, s);
     }
 }
-```

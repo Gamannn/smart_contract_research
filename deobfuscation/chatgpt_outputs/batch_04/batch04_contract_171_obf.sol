@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.16;
 
 library SafeMath {
@@ -146,4 +145,3 @@ contract ExternalContract {
 contract AnotherExternalContract {
     function anotherFunction(uint256 param) external;
 }
-```

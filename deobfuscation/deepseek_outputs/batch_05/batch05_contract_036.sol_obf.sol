@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -171,4 +170,3 @@ contract Token is Ownable, ERC20 {
     uint256 public buyMultiplier;
     uint256 public sellMultiplier;
 }
-```

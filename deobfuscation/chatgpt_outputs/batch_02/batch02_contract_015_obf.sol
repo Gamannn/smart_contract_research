@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.8.0;
 
 contract MathOperations {
@@ -109,4 +108,3 @@ contract TokenSwap is LiquidityPool {
         return tokenB.balanceOf(address(this));
     }
 }
-```

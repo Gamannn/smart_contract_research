@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.24;
 
 contract ERC20Basic {
@@ -210,4 +209,3 @@ contract WrapperLockEth is BasicToken, Ownable {
         0
     );
 }
-```

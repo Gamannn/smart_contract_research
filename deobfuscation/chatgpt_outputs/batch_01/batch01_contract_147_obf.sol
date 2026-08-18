@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.10;
 
 contract SafeMath {
@@ -158,4 +157,3 @@ contract SPINToken is StandardToken, SafeMath {
         0
     );
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.5.10;
 
 library SafeMath {
@@ -130,4 +129,3 @@ contract BitnomoToken is ERC20Interface, Owned {
         revert();
     }
 }
-```

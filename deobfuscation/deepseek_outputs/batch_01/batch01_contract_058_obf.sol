@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 contract Ownable {
@@ -421,4 +420,3 @@ contract GiftCrowdsale is Pausable {
         exchangeRate = _exchangeRate;
     }
 }
-```

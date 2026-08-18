@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract InvestmentContract {
@@ -45,4 +44,3 @@ contract InvestmentContract {
         return owner;
     }
 }
-```

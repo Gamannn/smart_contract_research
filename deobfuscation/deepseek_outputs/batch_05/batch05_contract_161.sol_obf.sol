@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 contract ERC20Interface {
@@ -224,4 +223,3 @@ contract BNP is ERC20Interface {
         this.transfer(to, amount);
     }
 }
-```

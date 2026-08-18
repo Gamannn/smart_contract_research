@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface ITokenManager {
@@ -204,4 +203,3 @@ contract TokenManager is Ownable, ITokenManager {
         require(IToken(token).transfer(from, amount));
     }
 }
-```

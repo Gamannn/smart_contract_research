@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract SafeMath {
@@ -198,4 +197,3 @@ contract BankWallet is Pausable, RequiringAuthorization, SafeMath {
         success = token.approve(casinoAddress, safeMul(amount, oneEdg));
     }
 }
-```

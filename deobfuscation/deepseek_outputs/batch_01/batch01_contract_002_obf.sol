@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Token {
@@ -242,4 +241,3 @@ contract Exchange {
         return true;
     }
 }
-```

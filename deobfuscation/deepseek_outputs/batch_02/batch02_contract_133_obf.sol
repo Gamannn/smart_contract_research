@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Suterusu {
@@ -112,4 +111,3 @@ contract Suterusu {
         return c;
     }
 }
-```

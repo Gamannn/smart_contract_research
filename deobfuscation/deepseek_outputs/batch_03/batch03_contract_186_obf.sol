@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Lottery {
@@ -127,4 +126,3 @@ library SafeMath {
         return a - b;
     }
 }
-```

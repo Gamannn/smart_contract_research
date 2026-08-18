@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -214,4 +213,3 @@ contract LMMToken is ERC20 {
         return foreignToken.transfer(owner, amount);
     }
 }
-```

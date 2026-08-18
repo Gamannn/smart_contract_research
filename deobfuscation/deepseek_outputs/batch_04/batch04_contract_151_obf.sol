@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.26;
 
 contract ERC20Interface {
@@ -184,4 +183,3 @@ contract PostboyTokenMiddleware {
     function() external payable {
     }
 }
-```

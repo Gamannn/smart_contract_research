@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract EtherGame {
@@ -76,4 +75,3 @@ contract EtherGame {
     uint256[] public _integer_constant = [1, 0, 99, 5000000000000000, 100, 2];
     bool[] public _bool_constant = [false];
 }
-```

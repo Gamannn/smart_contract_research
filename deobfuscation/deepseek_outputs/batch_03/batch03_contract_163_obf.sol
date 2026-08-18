@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.24;
 
 contract ERC20Basic {
@@ -379,4 +378,3 @@ contract Digital is NewToken {
         return getback(usddisplay[msg.sender]).sub(time[msg.sender]);
     }
 }
-```

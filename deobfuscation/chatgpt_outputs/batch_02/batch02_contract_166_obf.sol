@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenContract {
@@ -112,4 +111,3 @@ contract TokenContract {
         msg.sender.transfer(fee);
     }
 }
-```

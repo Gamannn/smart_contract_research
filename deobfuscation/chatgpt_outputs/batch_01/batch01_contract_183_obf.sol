@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract SafeMath {
@@ -269,4 +268,3 @@ contract PolarisDEX is SafeMath {
         emit Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

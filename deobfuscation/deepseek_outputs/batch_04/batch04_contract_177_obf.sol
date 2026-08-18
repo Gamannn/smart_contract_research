@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Interface {
@@ -155,4 +154,3 @@ contract Crowdsale is Token {
         ethFundDeposit.transfer(minAmount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 contract Ownable {
@@ -202,4 +201,3 @@ contract Wallet {
 contract Authorizer {
     mapping(address => bool) public authorized;
 }
-```

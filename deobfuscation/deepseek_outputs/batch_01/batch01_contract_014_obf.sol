@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.11;
 
 contract Token {
@@ -135,4 +134,3 @@ contract EtherToken is UnlimitedAllowanceToken, SafeMath {
         require(msg.sender.send(_value));
     }
 }
-```

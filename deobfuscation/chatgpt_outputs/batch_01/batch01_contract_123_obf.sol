@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract MainContract {
@@ -107,4 +106,3 @@ contract ExternalContract {
     function getSomeValue() external view returns(uint256);
     function executeTransaction(address from, address to, uint amount) external returns (bool success);
 }
-```

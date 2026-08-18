@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 library SafeMath {
@@ -178,4 +177,3 @@ contract TulipToken is Auction, StandardToken {
         balances[owner] = INITIAL_SUPPLY;
     }
 }
-```

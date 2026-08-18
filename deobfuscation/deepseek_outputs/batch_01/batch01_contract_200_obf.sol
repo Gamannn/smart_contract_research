@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract DeobfuscatedContract {
@@ -47,4 +46,3 @@ contract DeobfuscatedContract {
     
     function() public payable {}
 }
-```

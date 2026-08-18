@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -150,4 +149,3 @@ contract ICOContract is Ownable {
         return now;
     }
 }
-```

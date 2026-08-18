@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract ERC20 {
@@ -102,4 +101,3 @@ contract StatusBuyer {
         processDeposit();
     }
 }
-```

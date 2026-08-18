@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.2;
 
 contract Ownable {
@@ -151,4 +150,3 @@ contract AdvancedToken is Ownable, ERC20Token {
         }
     }
 }
-```

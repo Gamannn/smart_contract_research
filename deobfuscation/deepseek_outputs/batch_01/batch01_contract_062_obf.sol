@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.19;
 
 library SafeMath {
@@ -191,4 +190,3 @@ contract ADBToken is ERC20Interface {
         18
     );
 }
-```

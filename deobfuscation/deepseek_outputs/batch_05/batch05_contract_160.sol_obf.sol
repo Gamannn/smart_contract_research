@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -191,4 +190,3 @@ contract OMTMToken is StandardToken, BurnableToken, Ownable {
         owner.transfer(address(this).balance);
     }
 }
-```

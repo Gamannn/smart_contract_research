@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ERC20Interface {
@@ -95,4 +94,3 @@ contract BitronCoin is ERC20Interface {
         icoEnded = false;
     }
 }
-```

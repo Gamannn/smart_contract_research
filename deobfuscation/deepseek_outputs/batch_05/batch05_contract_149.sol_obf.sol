@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -232,4 +231,3 @@ contract SVChain is ERC20 {
         emit Burn(_burner, _value);
     }
 }
-```

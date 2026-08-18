@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract PyramidScheme {
@@ -88,4 +87,3 @@ contract PyramidScheme {
         owner.transfer(amount);
     }
 }
-```

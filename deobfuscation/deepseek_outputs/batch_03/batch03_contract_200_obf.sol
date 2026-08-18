@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract ERC721 {
@@ -473,4 +472,3 @@ contract SaleClockAuction is ClockAuction {
         return nextPrice;
     }
 }
-```

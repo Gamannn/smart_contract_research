@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract Ownable {
@@ -174,4 +173,3 @@ contract Crowdsale is Token {
         // Finalization logic
     }
 }
-```

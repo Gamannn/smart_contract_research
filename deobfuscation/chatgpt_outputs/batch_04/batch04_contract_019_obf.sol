@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -152,4 +151,3 @@ contract MyAdvancedToken is Ownable, Token {
         return balanceOf[account];
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract EtherReceiver {
@@ -45,4 +44,3 @@ struct ContractState {
 }
 
 ContractState public contractState = ContractState(address(0), false);
-```

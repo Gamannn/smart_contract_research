@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Token {
@@ -125,4 +124,3 @@ contract Exchange is SafeMath {
         return tokens[token][user];
     }
 }
-```

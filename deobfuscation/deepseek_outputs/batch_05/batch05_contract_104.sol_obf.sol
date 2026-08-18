@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 interface IERC20 {
@@ -182,4 +181,3 @@ library SafeMath {
         return c;
     }
 }
-```

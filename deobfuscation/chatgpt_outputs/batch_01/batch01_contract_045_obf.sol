@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface HDX20Interface {
@@ -353,4 +352,3 @@ library SafeMath {
         return c;
     }
 }
-```

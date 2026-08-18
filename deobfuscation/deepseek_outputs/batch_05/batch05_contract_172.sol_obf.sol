@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract ERC20Basic {
@@ -121,4 +120,3 @@ contract AUSToken is ERC20, Ownable {
         return allowed[owner][spender];
     }
 }
-```

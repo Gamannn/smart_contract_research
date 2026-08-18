@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.24;
 
 library SafeMath {
@@ -195,4 +194,3 @@ contract PrivateSale is Ownable {
         token.transfer(owner, unsoldTokens);
     }
 }
-```

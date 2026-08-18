@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.7;
 
 interface IAddressProvider {
@@ -343,4 +342,3 @@ contract CompoundDeployer is CompoundAdmin {
 
     function() external payable {}
 }
-```

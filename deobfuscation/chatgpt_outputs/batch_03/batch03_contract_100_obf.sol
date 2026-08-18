@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.6;
 
 interface IERC20 {
@@ -356,4 +355,3 @@ contract LinkdropERC721 is ILinkdropERC721, LinkdropCommon {
 }
 
 contract LinkdropMastercopy is LinkdropERC20, LinkdropERC721 {}
-```

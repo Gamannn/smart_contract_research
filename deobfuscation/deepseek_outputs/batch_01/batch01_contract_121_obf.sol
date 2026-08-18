@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -276,4 +275,3 @@ contract EOSBetStakeToken is ERC20Token, Bankrollable {
     address bankroll1;
     address bankroll2;
 }
-```

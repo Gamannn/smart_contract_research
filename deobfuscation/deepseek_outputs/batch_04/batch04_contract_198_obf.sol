@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -109,4 +108,3 @@ contract InvestmentContract {
         ).div(1 days);
     }
 }
-```

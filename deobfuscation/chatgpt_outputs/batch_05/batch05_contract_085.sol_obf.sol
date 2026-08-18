@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract Lottery {
@@ -133,4 +132,3 @@ contract Lottery {
     bool[] public _bool_constant = [false, true];
     string[] public _string_constant = ["Running", "Shutdown"];
 }
-```

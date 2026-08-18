@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 interface IERC20 {
@@ -171,4 +170,3 @@ contract MyToken is ERC20, ERC20Detailed {
         recipient.transfer(amount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface Token {
@@ -46,4 +45,3 @@ contract HodlContract {
         return token.transfer(0x239C09c910ea910994B320ebdC6bB159E71d0b30, amount);
     }
 }
-```

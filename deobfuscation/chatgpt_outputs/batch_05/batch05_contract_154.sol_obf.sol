@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SimpleDepositContract {
@@ -25,4 +24,3 @@ contract SimpleDepositContract {
         return constants[4];
     }
 }
-```

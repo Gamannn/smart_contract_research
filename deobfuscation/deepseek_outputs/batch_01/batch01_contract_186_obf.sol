@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract owned {
@@ -186,4 +185,3 @@ contract SMBQToken is pays_commission, owned {
         buy();
     }
 }
-```

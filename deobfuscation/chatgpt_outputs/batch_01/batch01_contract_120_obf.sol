@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Basic {
@@ -318,4 +317,3 @@ contract Crowdsale is Ownable {
         0, 0, address(0), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, "MHC", "Mahala Coin", false, true, 0x04cFbFa64917070d7AEECd20225782240E8976dc, address(0), 0
     );
 }
-```

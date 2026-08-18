@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.24 <0.6.0;
 
 contract Initializable {
@@ -403,4 +402,3 @@ contract UniSwap_Zap is Initializable {
         owner = newOwner;
     }
 }
-```

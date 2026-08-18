@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -262,4 +261,3 @@ contract SimpleToken is Pausable, ERC223Token {
         Transfer(0x0, msg.sender, tokenAmount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.5.10;
 
 library SafeMath {
@@ -170,4 +169,3 @@ contract Crowdsale {
         msg.sender.transfer(address(this).balance);
     }
 }
-```

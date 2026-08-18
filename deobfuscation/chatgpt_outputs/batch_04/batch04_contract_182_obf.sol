@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract TokenReceiver {
@@ -213,4 +212,3 @@ contract Vitalik2XToken is StandardToken {
         return true;
     }
 }
-```

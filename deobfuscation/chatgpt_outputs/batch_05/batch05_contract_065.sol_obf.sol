@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.5.10;
 
 library SafeMath {
@@ -168,4 +167,3 @@ contract ExampleToken is Token {
         owner.transfer(address(this).balance);
     }
 }
-```

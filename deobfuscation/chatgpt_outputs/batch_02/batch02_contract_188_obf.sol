@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract DeObfuscatedContract {
@@ -101,4 +100,3 @@ contract DeObfuscatedContract {
     uint256 constant STARTING_POOHS = 300;
     uint256 constant SECONDS_IN_A_DAY = 86400;
 }
-```

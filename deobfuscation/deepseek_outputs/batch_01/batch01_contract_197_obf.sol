@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract DaoCasinoToken {
@@ -94,4 +93,3 @@ contract BetBuyer {
         default_helper();
     }
 }
-```

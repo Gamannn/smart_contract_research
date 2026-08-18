@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 interface IWeightFormula {
@@ -235,4 +234,3 @@ contract BondingCurve is Ownable, ITokenReceiver {
     uint256 public virtualReserveBalance;
     uint256 public collectedFees;
 }
-```

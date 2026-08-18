@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract Oxaa94056cb5524fc0bac318156647d9f9f5a7d556 {
@@ -142,4 +141,3 @@ contract Oxaa94056cb5524fc0bac318156647d9f9f5a7d556 {
         return _bool_constant[index];
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -116,4 +115,3 @@ contract TokenSale is Ownable {
         delete frozenAccounts[account];
     }
 }
-```

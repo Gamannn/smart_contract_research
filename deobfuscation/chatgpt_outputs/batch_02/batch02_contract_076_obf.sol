@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -217,4 +216,3 @@ contract RepublicToken is PausableToken, BurnableToken {
         emit Transfer(address(0), msg.sender, INITIAL_SUPPLY);
     }
 }
-```

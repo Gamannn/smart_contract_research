@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract TokenInterface {
@@ -118,4 +117,3 @@ function getIntFunc(uint256 index) internal view returns(uint256) {
 
 address payable[] public _address_constant = [0x96357e75B7Ccb1a7Cf10Ac6432021AEa7174c803];
 uint256[] public _integer_constant = [0, 100000000000000, 50000000000000];
-```

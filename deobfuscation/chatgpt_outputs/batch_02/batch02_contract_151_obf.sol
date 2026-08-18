@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Interface {
@@ -233,4 +232,3 @@ contract Exchange is Ownable {
     bool[] public _bool_constant = [false, true];
     string[] public _string_constant = ["\x19Ethereum Signed Message:\n32"];
 }
-```

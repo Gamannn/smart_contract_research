@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.8;
 
 contract Context {
@@ -184,4 +183,3 @@ contract ERC20 is IERC20, Context {
     
     TokenData private _tokenData = TokenData(0, 0);
 }
-```

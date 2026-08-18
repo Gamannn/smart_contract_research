@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -126,4 +125,3 @@ contract MyToken is Token {
         totalSupply = initialSupply;
     }
 }
-```

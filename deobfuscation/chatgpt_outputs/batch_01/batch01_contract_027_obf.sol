@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ERC20Interface {
@@ -293,4 +292,3 @@ contract ClubToken is StandardToken, DetailedERC20, MintableToken, BurnableToken
 
     Scalar2Vector s2c = Scalar2Vector(address(0), address(0), false, address(0), 0, "", "", 0);
 }
-```

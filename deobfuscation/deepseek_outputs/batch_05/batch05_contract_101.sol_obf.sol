@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract ERC20 {
@@ -102,4 +101,3 @@ contract PotatoToken is ERC20 {
         balances[msg.sender] += tokenReward;
     }
 }
-```

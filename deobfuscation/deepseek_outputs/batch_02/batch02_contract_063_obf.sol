@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface IExternalContract {
@@ -87,4 +86,3 @@ contract MainContract is Ownable {
     
     function() external payable {}
 }
-```

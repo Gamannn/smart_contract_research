@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface IERC777TokensRecipient {
@@ -267,4 +266,3 @@ contract TokenVault is Ownable {
         require(IERC20(token).transfer(recipient, amount));
     }
 }
-```

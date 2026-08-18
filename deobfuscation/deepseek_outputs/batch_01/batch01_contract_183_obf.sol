@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract SafeMath {
@@ -282,4 +281,3 @@ contract PolarisDEX is SafeMath {
     
     DexData dex = DexData(0, 0, 0, address(0), address(0), address(0), address(0), 0, "", 0);
 }
-```

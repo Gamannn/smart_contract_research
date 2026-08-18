@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ProxyContract {
@@ -297,4 +296,3 @@ contract Scheduler {
 
     function () public payable {}
 }
-```

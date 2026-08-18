@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract ERC20Interface {
@@ -84,4 +83,3 @@ contract Token is StandardToken {
         balances[msg.sender] += tokens;
     }
 }
-```

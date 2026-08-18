@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.10;
 
 library SafeMath {
@@ -265,4 +264,3 @@ contract Stablecoin is IERC20, Ownable {
         }
     }
 }
-```

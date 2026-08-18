@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Token {
@@ -96,4 +95,3 @@ contract Crowdsale {
         creator.transfer(address(this).balance);
     }
 }
-```

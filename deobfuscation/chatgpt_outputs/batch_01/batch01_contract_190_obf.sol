@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -385,4 +384,3 @@ contract OnUpAffiliate is OnUpToken {
         return size > 0;
     }
 }
-```

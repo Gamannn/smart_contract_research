@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 library SafeMath {
@@ -124,4 +123,3 @@ contract preDGZToken is StandardToken {
         balances[msg.sender] = totalSupply;
     }
 }
-```

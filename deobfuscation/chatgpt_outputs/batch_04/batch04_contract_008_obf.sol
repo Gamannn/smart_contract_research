@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 contract TokenInterface {
@@ -149,4 +148,3 @@ contract Crowdsale {
     event CrowdsaleFinished();
     event Distribution(address indexed to, uint256 amount);
 }
-```

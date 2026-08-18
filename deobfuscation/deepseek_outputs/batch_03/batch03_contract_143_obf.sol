@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.14;
 
 contract Ownable {
@@ -184,4 +183,3 @@ contract BuyToken is Ownable, Order {
         buy();
     }
 }
-```

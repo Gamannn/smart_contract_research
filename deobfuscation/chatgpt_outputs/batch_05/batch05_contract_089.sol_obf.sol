@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.8.0;
 
 library MathLibrary {
@@ -751,4 +750,3 @@ contract ArbitrationManager is Ownable {
         metadata = newMetadata;
     }
 }
-```

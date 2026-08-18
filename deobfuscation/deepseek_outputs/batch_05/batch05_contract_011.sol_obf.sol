@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 library SafeMath {
@@ -107,4 +106,3 @@ contract Crowdsale {
         }
     }
 }
-```

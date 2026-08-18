@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Token {
@@ -153,4 +152,3 @@ contract Exchange is SafeMath {
 
     Admin admin = Admin(0, address(0), address(0), false, 0, 0);
 }
-```

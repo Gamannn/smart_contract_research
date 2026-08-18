@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Basic {
@@ -285,4 +284,3 @@ contract DexBrokerage is Ownable {
         return true;
     }
 }
-```

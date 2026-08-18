@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Token {
@@ -129,4 +128,3 @@ function getIntFunc(uint256 index) internal view returns (uint256) {
 
 bool[] public _bool_constant = [true, false];
 uint256[] public _integer_constant = [5000, 10000, 100, 1000000000000000, 300, 86400, 4, 5, 1, 10, 0];
-```

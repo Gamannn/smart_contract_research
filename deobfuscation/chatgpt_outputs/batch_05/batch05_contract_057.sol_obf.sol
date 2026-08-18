@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract TokenInterface {
@@ -265,4 +264,3 @@ contract CoEvalToken {
 
     event Transfer(address indexed from, address indexed to, uint256 value);
 }
-```

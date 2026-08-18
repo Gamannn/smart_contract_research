@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract MathOperations {
@@ -190,4 +189,3 @@ contract AccountLevels {
         return accountLevel[user];
     }
 }
-```

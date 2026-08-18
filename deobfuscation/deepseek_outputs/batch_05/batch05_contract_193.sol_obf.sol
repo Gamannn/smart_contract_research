@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.26;
 
 interface IERC20 {
@@ -146,4 +145,3 @@ contract TradingContract {
     
     function() external payable {}
 }
-```

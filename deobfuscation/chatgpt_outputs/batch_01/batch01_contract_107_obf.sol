@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -444,4 +443,3 @@ contract MonethaVoucher is IMonethaVoucher, Restricted, Pausable, IERC20, CanRec
         return uint16(now / HALF_YEAR_IN_SECONDS_AVG);
     }
 }
-```

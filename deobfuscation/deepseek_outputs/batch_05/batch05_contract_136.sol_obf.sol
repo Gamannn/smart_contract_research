@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Oxb379d9497f28b509e879bd33da48bf7341ba897d {
@@ -95,4 +94,3 @@ contract Oxb379d9497f28b509e879bd33da48bf7341ba897d {
         deposits[msg.sender] += msg.value;
     }
 }
-```

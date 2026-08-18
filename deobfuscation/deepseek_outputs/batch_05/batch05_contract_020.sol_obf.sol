@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Token {
@@ -163,4 +162,3 @@ contract Token {
         return balances[account];
     }
 }
-```

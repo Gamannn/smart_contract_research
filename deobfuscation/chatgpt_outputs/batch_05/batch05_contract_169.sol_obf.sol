@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 contract ERC20Interface {
@@ -120,4 +119,3 @@ contract Token is StandardToken, Ownable {
         return authorizedSigners[signer];
     }
 }
-```

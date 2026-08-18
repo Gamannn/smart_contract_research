@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract SafeMath {
@@ -313,4 +312,3 @@ contract VINContract is SafeMath {
         buyTokens(_buyer, _datetime, _ether * 10 ** 18);
     }
 }
-```

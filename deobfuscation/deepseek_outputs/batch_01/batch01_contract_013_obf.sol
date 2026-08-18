@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -309,4 +308,3 @@ contract AhooleeTokenSale is Haltable {
         Refunded(msg.sender, refundAmount);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract DepositOfferInfo {
@@ -312,4 +311,3 @@ contract DepositContractImpl is DepositContract {
         return true;
     }
 }
-```

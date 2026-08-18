@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ERC20Basic {
@@ -173,4 +172,3 @@ contract Ethernity is StandardToken {
         return StandardToken.transferFrom(_from, _to, _value);
     }
 }
-```

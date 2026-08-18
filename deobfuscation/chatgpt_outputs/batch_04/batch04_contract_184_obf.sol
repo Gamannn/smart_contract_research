@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract LotteryGame {
@@ -128,4 +127,3 @@ contract LotteryGame {
     bool[] public _bool_constant = [false, true];
     address payable[] public _address_constant = [0x5Bf066c70C2B5e02F1C6723E72e82478Fec41201];
 }
-```

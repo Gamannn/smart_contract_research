@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract StakingContract {
@@ -117,4 +116,3 @@ contract StakingContract {
         emit Status(minimumStake, highestStake, totalStakes);
     }
 }
-```

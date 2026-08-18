@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenInterface {
@@ -110,4 +109,3 @@ contract TokenSale is Ownable {
         owner.transfer(address(this).balance);
     }
 }
-```

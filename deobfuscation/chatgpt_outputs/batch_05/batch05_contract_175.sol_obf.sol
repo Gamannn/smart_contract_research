@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -111,4 +110,3 @@ contract Token is StandardToken, Ownable {
         emit Transfer(msg.sender, address(0), _value);
     }
 }
-```

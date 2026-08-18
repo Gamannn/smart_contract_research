@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Ownable {
@@ -205,4 +204,3 @@ contract TransferManager is FeeManager {
         coreContract.execute(address(this), fee);
     }
 }
-```

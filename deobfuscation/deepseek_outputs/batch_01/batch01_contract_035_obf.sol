@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract hodlEthereum {
@@ -24,4 +23,3 @@ contract hodlEthereum {
         Party(msg.sender, amount);
     }
 }
-```

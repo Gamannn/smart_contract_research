@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract MiningGame {
@@ -171,4 +170,3 @@ contract MiningGame {
         emit Status(minStake, target, finalBlock);
     }
 }
-```

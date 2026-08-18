@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface ExternalContractInterface {
@@ -100,4 +99,3 @@ function getInteger(uint256 index) internal view returns(uint256) {
 
 address payable[] public _address_constant = [0x0B0eFad4aE088a88fFDC50BCe5Fb63c6936b9220, 0xb172BB8BAae74F27Ade3211E0c145388d3b4f8d8];
 uint256[] public _integer_constant = [0, 100000000000000000];
-```

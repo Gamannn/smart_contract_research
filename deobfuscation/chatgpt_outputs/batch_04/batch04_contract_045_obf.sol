@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract ERC20Interface {
@@ -81,4 +80,3 @@ contract Ae1Token is StandardToken {
         totalSupply -= tokens;
     }
 }
-```

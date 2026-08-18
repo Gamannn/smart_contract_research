@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface tokenRecipient {
@@ -151,4 +150,3 @@ contract BitcoinSuperstarToken is Owned, TokenERC20 {
         _transfer(this, msg.sender, amount);
     }
 }
-```

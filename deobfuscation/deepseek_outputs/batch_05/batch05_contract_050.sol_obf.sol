@@ -1,4 +1,3 @@
-```solidity
 contract ERC20Interface {
     function transfer(address to, uint256 value) returns (bool success);
     function balanceOf(address owner) constant returns (uint256 balance);
@@ -140,4 +139,3 @@ contract TokenSale {
         bought_tokens[msg.sender] += msg.value;
     }
 }
-```

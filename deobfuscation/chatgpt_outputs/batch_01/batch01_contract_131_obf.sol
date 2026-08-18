@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -140,4 +139,3 @@ contract TokenSale is TokenInterface, Ownable, Whitelist {
         msg.sender.transfer(amount);
     }
 }
-```

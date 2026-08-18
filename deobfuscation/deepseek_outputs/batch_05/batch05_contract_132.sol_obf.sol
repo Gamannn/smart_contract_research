@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract SpermBank {
@@ -182,4 +181,3 @@ library SafeMath {
         return c;
     }
 }
-```

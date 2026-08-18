@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -255,4 +254,3 @@ contract TokenManager {
         return registeredAddresses.length;
     }
 }
-```

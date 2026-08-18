@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract Token {
@@ -227,4 +226,3 @@ contract MainContract is TokenContract {
         selfdestruct(owner);
     }
 }
-```

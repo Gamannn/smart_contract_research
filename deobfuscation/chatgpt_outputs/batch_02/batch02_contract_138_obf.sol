@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract AcornGame {
@@ -234,4 +233,3 @@ library SafeMath {
         return c;
     }
 }
-```

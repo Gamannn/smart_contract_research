@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.12;
 
 contract ERC20Interface {
@@ -101,4 +100,3 @@ contract RMKToken is ERC20Token {
         return true;
     }
 }
-```

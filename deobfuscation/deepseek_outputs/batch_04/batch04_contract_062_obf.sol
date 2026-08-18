@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.17;
 
 contract ERC20Interface {
@@ -319,4 +318,3 @@ contract Crowdsale {
     
     mapping(address => uint256) public contributions;
 }
-```

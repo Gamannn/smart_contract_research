@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract SafeMath {
@@ -269,4 +268,3 @@ contract Exchange is SafeMath {
         TakeSellOrder(orderHash, token, amount, price, ethersMinusFee, msg.sender, maker);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract SafeMath {
@@ -277,4 +276,3 @@ contract Exchange is SafeMath {
     mapping(address => mapping(bytes32 => bool)) public orders;
     mapping(address => mapping(bytes32 => uint)) public tokensFilled;
 }
-```

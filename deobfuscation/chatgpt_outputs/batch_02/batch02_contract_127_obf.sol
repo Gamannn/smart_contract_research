@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract Ownable {
@@ -114,4 +113,3 @@ contract MyToken is Ownable {
     uint256[] public _integer_constant = [90, 0, 100, 10, 1, 14, 1505865600, 1503187200];
     bool[] public _bool_constant = [true, false];
 }
-```

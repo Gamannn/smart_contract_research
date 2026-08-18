@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -174,4 +173,3 @@ contract SecurityValueChain is StandardToken, Ownable {
         emit Burn(burner, _value);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -158,4 +157,3 @@ contract Token is MintableToken, BurnableToken {
         balances[msg.sender] = totalSupply_;
     }
 }
-```

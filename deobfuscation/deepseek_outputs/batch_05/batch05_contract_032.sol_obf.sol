@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract Ownable {
@@ -292,4 +291,3 @@ contract GoldRewardToken is Ownable {
         tradingEnabled = enable;
     }
 }
-```

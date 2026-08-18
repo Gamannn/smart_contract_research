@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.6.0;
 
 interface ExternalContract {
@@ -145,4 +144,3 @@ contract RNG {
         return (numbers, win);
     }
 }
-```

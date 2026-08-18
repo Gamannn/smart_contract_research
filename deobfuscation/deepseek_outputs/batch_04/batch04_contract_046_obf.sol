@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract SafeMath {
@@ -191,4 +190,3 @@ contract ACIToken is SafeMath, ERC20Token, Pausable {
         CreateACI(recipient, tokens);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.10;
 
 interface Token {
@@ -89,4 +88,3 @@ contract Crowdsale {
         require(token.transfer(to, value));
     }
 }
-```

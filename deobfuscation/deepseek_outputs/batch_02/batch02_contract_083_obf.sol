@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract PredictionMarket {
@@ -83,4 +82,3 @@ contract PredictionMarket {
         msg.sender.transfer(refundAmount);
     }
 }
-```

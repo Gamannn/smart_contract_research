@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -312,4 +311,3 @@ contract Game is ERC20, SafeMath, Ownable {
         return allowances[_owner][_spender];
     }
 }
-```

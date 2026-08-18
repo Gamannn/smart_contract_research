@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract TokenInterface {
@@ -166,4 +165,3 @@ contract FinalToken is Token {
         selfdestruct(owner);
     }
 }
-```

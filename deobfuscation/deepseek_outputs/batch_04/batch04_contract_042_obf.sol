@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract ERC20Interface {
@@ -135,4 +134,3 @@ contract TokenSale is TokenRecover {
         owner.transfer(address(this).balance);
     }
 }
-```

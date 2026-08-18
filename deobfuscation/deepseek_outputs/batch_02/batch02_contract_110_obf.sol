@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -208,4 +207,3 @@ contract CryptopusToken is ERC20Interface, Owned {
         Transfer(owner, msg.sender, tokenAmount);
     }
 }
-```

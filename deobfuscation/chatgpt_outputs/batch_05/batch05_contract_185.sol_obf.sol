@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract TokenInterface {
@@ -139,4 +138,3 @@ contract Token is TokenInterface {
         return allowed[owner][spender];
     }
 }
-```

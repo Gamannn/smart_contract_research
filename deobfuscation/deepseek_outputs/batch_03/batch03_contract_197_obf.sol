@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract tokenRecipient {
@@ -214,4 +213,3 @@ contract IOCT_Coin {
         return true;
     }
 }
-```

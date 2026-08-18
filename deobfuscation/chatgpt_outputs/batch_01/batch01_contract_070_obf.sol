@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -346,4 +345,3 @@ contract TokenCrowdsale is CappedCrowdsale, RefundableCrowdsale {
         require(_goal <= _cap);
     }
 }
-```

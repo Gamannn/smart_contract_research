@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract WineMarket {
@@ -181,4 +180,3 @@ library SafeMath {
         return c;
     }
 }
-```

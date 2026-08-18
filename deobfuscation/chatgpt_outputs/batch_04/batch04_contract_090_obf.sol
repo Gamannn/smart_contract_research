@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 library SafeMath {
@@ -181,4 +180,3 @@ contract DEX {
         tokenWithdrawFee[token] = fee;
     }
 }
-```

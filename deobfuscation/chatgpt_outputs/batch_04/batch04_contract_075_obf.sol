@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface Token {
@@ -84,4 +83,3 @@ contract Crowdsale {
     address payable[] public _address_constant = [0x8f42914C201AcDd8a2769211C862222Ec56eea40];
     uint256[] public _integer_constant = [1515801540, 225, 1000000000000000000, 1263];
 }
-```

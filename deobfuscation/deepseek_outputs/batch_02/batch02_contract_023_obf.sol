@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract SafeMath {
@@ -170,4 +169,3 @@ contract Exchange is SafeMath, Ownable {
         emit Cancel(tokenGet, amountGet, tokenGive, amountGive, expires, nonce, user, v, r, s);
     }
 }
-```

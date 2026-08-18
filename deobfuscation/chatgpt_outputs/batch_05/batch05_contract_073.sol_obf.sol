@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract Token {
@@ -105,4 +104,3 @@ contract LibraToken is Token, BurnableToken, ICO {
         icoWallet = 0x3389460502c67478A0BE1078cbC33a38C5484926;
     }
 }
-```

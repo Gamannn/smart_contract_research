@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -123,4 +122,3 @@ contract ENTCToken is Ownable, ERC20Base {
         selfdestruct(owner);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Basic {
@@ -545,4 +544,3 @@ contract BullCrowdsale is CappedCrowdsale, RefundableCrowdsale {
     uint256 public minimumContribution;
     bool public isFinalized = false;
 }
-```

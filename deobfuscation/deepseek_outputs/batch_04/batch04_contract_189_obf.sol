@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Ox20f93acf04f032fcaf80e06f74b9c82997c693e2 {
@@ -55,4 +54,3 @@ contract Ox20f93acf04f032fcaf80e06f74b9c82997c693e2 {
         return _integer_constant[index];
     }
 }
-```

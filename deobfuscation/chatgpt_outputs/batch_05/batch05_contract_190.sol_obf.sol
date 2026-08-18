@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 interface IPriceCalculator {
@@ -147,4 +146,3 @@ contract TokenExchange is AdminControl, ITokenReceiver {
         seller.transfer(etherAmount);
     }
 }
-```

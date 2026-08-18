@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract SafeMath {
@@ -405,4 +404,3 @@ contract KaasyToken is ERC20Interface, Pausable, SafeMath {
         return true;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.1;
 
 contract Oxbc1e7515ed8b60ebfc18b83ffcff62ee7ce9c828 {
@@ -117,4 +116,3 @@ contract Oxbc1e7515ed8b60ebfc18b83ffcff62ee7ce9c828 {
     bool[] public _bool_constant = [true, false];
     uint256[] public _integer_constant = [1000000000000000000, 10000, 2, 40, 0, 563];
 }
-```

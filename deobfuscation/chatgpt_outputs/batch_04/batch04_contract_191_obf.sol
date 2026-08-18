@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract SafeMath {
@@ -112,4 +111,3 @@ contract Crowdsale is SafeMath {
         return false;
     }
 }
-```

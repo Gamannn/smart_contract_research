@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract ExternalContract {
@@ -259,4 +258,3 @@ contract BettingContract {
         address(0)
     );
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -152,4 +151,3 @@ contract FaCaiCoin is ERC20Standard {
         emit Burn(burner, _value);
     }
 }
-```

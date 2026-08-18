@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.0;
 
 contract Bank {
@@ -32,4 +31,3 @@ contract Bank {
         return balances[msg.sender];
     }
 }
-```

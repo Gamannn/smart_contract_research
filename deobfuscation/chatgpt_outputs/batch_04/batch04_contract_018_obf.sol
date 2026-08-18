@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -160,4 +159,3 @@ contract AdvancedToken is Ownable, Token {
         msg.sender.transfer(amount * sellPrice);
     }
 }
-```

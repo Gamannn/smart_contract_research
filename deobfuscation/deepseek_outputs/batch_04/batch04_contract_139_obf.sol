@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -152,4 +151,3 @@ contract Politicoin is Ownable, ERC20 {
     uint8 public decimals = 9;
     string public symbol = "PBLC";
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 interface Token {
@@ -83,4 +82,3 @@ contract Crowdsale {
         if (now >= deadline) _;
     }
 }
-```

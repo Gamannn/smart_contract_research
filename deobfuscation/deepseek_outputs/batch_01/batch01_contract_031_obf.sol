@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract Utils {
@@ -213,4 +212,3 @@ contract EtherToken is IEtherToken, Owned, ERC20Token, TokenHolder {
         deposit();
     }
 }
-```

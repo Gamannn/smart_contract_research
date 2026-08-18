@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.16;
 
 contract Ownable {
@@ -169,4 +168,3 @@ contract Bridge is Ownable {
         emit AddEth(msg.value);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract TokenTransferHelper {
@@ -129,4 +128,3 @@ contract ProxyWithPayment is ProxyWithSetup, TokenTransferHelper {
         }
     }
 }
-```

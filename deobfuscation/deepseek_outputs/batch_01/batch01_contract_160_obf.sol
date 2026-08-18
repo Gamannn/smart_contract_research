@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract MiningRig {
@@ -101,4 +100,3 @@ contract MiningRig {
     
     function() payable {}
 }
-```

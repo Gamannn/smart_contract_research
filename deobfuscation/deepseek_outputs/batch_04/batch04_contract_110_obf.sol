@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 contract Oxf2936d678fc2b847d98c5127aff85fbf0af7250b {
@@ -180,4 +179,3 @@ contract Oxf2936d678fc2b847d98c5127aff85fbf0af7250b {
         return integerConstants[index];
     }
 }
-```

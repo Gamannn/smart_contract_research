@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Basic {
@@ -201,4 +200,3 @@ contract QIUToken is StandardToken, Ownable {
     uint256 private constant INITIAL_SUPPLY = 5000000000;
     uint256 private totalSupply_;
 }
-```

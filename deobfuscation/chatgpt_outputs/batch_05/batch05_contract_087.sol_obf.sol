@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.21;
 
 interface IExchange {
@@ -276,4 +275,3 @@ contract Exchange is IExchange, Ownable {
         return values[0];
     }
 }
-```

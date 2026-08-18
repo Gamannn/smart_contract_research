@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 library SafeMath {
@@ -179,4 +178,3 @@ contract TREKToken is ERC20, Ownable {
         return token.transfer(owner, amount);
     }
 }
-```

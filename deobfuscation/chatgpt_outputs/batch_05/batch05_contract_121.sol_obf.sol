@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 library MathLibrary {
@@ -84,4 +83,3 @@ contract TokenSale is Admin {
         // Fallback function to receive Ether
     }
 }
-```

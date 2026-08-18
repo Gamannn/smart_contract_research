@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.8;
 
 contract ERC20 {
@@ -222,4 +221,3 @@ contract BOPToken is ERC20 {
     string[] public _string_constant = ["Ox49e8456378624d08f87499af802f450f894eace0", "BOP"];
     bool[] public _bool_constant = [false, true];
 }
-```

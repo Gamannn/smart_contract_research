@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -245,4 +244,3 @@ contract HYIPRETHPRO4 is Ownable {
         lastInvestmentTime = newTime;
     }
 }
-```

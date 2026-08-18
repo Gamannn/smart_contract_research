@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 library SafeMath {
@@ -201,4 +200,3 @@ contract Exchange {
         buy();
     }
 }
-```

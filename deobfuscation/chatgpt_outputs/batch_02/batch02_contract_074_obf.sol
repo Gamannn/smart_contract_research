@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -187,4 +186,3 @@ contract Token is BasicToken, Crowdsale {
         Transfer(msg.sender, beneficiary, amount);
     }
 }
-```

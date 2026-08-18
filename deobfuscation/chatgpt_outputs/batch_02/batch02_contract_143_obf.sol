@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface ExternalContract {
@@ -103,4 +102,3 @@ contract MainContract is OwnerContract {
     uint256[] public _integer_constant = [100000000000000000, 0];
     address payable[] public _address_constant = [0x31cF8B6E8bB6cB16F23889F902be86775bB1d0B3, 0x0B0eFad4aE088a88fFDC50BCe5Fb63c6936b9220];
 }
-```

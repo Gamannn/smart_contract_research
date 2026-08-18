@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 library SafeMath {
@@ -141,4 +140,3 @@ contract Marketplace {
         return size > 0;
     }
 }
-```

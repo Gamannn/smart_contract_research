@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract MathOperations {
@@ -102,4 +101,3 @@ contract TokenExchange is MathOperations {
         selfdestruct(owner);
     }
 }
-```

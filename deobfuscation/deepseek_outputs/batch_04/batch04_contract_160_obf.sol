@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20 {
@@ -105,4 +104,3 @@ contract TorkenToken is ERC20, BurnableToken, ICO {
         owner = msg.sender;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface ITokenReceiver {
@@ -117,4 +116,3 @@ contract HoneycombToken is Ownable {
         emit Transfer(from, to, tokens);
     }
 }
-```

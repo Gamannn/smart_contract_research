@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface tokenRecipient {
@@ -149,4 +148,3 @@ contract AdvancedToken is Ownable, TokenERC20 {
         msg.sender.transfer(amount * sellPrice);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface IERC20 {
@@ -159,4 +158,3 @@ contract MultiSigWallet {
     function() public payable {
     }
 }
-```

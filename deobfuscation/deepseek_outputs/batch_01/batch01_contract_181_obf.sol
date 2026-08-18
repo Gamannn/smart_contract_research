@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract ERC20Basic {
@@ -219,4 +218,3 @@ contract CIDCrowdsale is Ownable {
         createTokens();
     }
 }
-```

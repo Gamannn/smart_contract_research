@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract StrongHands {
@@ -209,4 +208,3 @@ library SafeMath {
         return c;
     }
 }
-```

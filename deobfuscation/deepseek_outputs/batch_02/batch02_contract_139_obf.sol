@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract ERC20Interface {
@@ -236,4 +235,3 @@ contract Vitalik2X is Token {
 contract ERC223Receiver {
     function tokenFallback(address from, uint256 value, bytes data) public;
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 interface RandomSource {
@@ -109,4 +108,3 @@ contract DiceGame is Destructible, RandomProvider {
         owner.transfer(amount);
     }
 }
-```

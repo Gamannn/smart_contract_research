@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface VaultInterface {
@@ -258,4 +257,3 @@ contract Vault is Ownable, VaultInterface {
     
     State state = State(address(0), 0x0, address(0));
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract UpgradeTokenUtility {
@@ -289,4 +288,3 @@ contract UpgradeTokenUtility {
         return allowances[ownerAddr][spender];
     }
 }
-```

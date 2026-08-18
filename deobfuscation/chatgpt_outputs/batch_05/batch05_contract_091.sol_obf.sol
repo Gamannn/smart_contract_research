@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract TokenBase {
@@ -86,4 +85,3 @@ contract CustomToken is TokenBase, ICOBase {
         icoHolder = 0xf043ae16a61ece2107eb2b;
     }
 }
-```

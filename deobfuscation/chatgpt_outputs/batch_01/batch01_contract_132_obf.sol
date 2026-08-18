@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Ownable {
@@ -220,4 +219,3 @@ contract TaxPhoneToken is Ownable, ERC20 {
         return true;
     }
 }
-```

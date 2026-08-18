@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 library SafeMath {
@@ -404,4 +403,3 @@ contract RACECrowdsale is Crowdsale {
         0xcd7cF1D613D5974876AfBfd612ED6AFd94093ce7
     ) public {}
 }
-```

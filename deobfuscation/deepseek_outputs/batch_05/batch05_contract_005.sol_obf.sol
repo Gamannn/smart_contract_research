@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract Fomo3D {
@@ -194,4 +193,3 @@ library SafeMath {
         return c;
     }
 }
-```

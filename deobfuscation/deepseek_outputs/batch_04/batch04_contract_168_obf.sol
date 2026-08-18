@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ShrimpFarmer {
@@ -167,4 +166,3 @@ library SafeMath {
         return c;
     }
 }
-```

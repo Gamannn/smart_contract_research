@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.0;
 
 interface IERC20 {
@@ -185,4 +184,3 @@ contract CIPX is ERC20, ERC20Detailed {
         recipient.transfer(amount);
     }
 }
-```

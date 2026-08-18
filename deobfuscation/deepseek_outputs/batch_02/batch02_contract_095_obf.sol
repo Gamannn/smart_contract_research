@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.26;
 
 contract DunatonMetacurrency30 {
@@ -122,4 +121,3 @@ contract DunatonMetacurrency30 {
         return c;
     }
 }
-```

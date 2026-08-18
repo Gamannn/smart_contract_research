@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract InvestmentContract {
@@ -167,4 +166,3 @@ contract InvestmentContract {
         uint256 timestamp
     );
 }
-```

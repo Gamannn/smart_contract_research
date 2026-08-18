@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract Ownable {
@@ -125,4 +124,3 @@ contract Bankrollable is Ownable {
         emit LOG_ContractResumed();
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ox5815776c8a71e2b0c90b5aafdbb8ddde007baa13 {
@@ -60,4 +59,3 @@ contract Ox5815776c8a71e2b0c90b5aafdbb8ddde007baa13 {
         deposit();
     }
 }
-```

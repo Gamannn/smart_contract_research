@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -91,4 +90,3 @@ contract WrappedEther {
 
     uint256 public totalSupply;
 }
-```

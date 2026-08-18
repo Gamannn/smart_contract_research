@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 contract TokenContract {
@@ -141,4 +140,3 @@ contract TokenContract {
     ];
     string[] public _string_constant = ["TokenContract"];
 }
-```

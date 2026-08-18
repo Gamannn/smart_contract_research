@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.7;
 
 contract BR {
@@ -80,4 +79,3 @@ contract BR {
         return nameToAddress[name];
     }
 }
-```

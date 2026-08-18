@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -66,4 +65,3 @@ contract Vault is TokenRecover {
         return this.balance;
     }
 }
-```

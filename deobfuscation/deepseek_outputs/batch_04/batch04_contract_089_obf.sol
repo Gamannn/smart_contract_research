@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 interface IERC20 {
@@ -120,4 +119,3 @@ contract TokenSale is Destructible {
         etherRaised = etherRaised.sub(amount);
     }
 }
-```

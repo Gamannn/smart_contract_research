@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.4;
 
 contract ERC20Interface {
@@ -92,4 +91,3 @@ contract JPMorganChaseToken is ERC20Token {
         return true;
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 interface IERC20 {
@@ -345,4 +344,3 @@ contract Crowdsale is Ownable {
         _wallet.transfer(balance);
     }
 }
-```

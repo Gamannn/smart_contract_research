@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -201,4 +200,3 @@ contract ERC20Token is ERC20Interface, Owned {
         owner.transfer(_amount);
     }
 }
-```

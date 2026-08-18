@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.10;
 
 contract InvestmentPool {
@@ -101,4 +100,3 @@ contract InvestmentPool {
         return penalty;
     }
 }
-```

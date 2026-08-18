@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 contract SafeMath {
@@ -180,4 +179,3 @@ contract Trade is SafeMath {
         Cancel(user, amount, token, price, expires, nonce, msg.sender, v, r, s);
     }
 }
-```

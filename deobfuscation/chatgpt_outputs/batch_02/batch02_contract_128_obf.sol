@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract OwnershipContract {
@@ -117,4 +116,3 @@ contract Token is StandardToken, Ownable {
         balances[msg.sender] = totalSupply;
     }
 }
-```

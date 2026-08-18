@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.4;
 
 contract PresaleToken {
@@ -136,4 +135,3 @@ contract PresaleToken {
         buyTokens(msg.sender);
     }
 }
-```

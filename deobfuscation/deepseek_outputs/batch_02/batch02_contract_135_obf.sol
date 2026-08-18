@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Ownable {
@@ -132,4 +131,3 @@ contract CreatureMarket is Ownable {
         owner.transfer(this.balance);
     }
 }
-```

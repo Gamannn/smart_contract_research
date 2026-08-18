@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract AdminControl {
@@ -187,4 +186,3 @@ contract GoldRewardToken is AdminControl {
         usersCanTrade = lock;
     }
 }
-```

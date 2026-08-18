@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 interface IExternalContract {
@@ -122,4 +121,3 @@ library SafeMath {
         return c;
     }
 }
-```

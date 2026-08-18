@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -188,4 +187,3 @@ contract RockToken is ERC20 {
     
     event Burn(uint amount);
 }
-```

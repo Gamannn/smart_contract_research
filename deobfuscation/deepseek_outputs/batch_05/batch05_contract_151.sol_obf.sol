@@ -1,4 +1,3 @@
-```solidity
 pragma solidity >=0.4.22 <0.6.0;
 
 contract Ox333934475b23f09ed4c049c4e689e2fe4bedaf63 {
@@ -72,4 +71,3 @@ library AddressHelper {
         return result;
     }
 }
-```

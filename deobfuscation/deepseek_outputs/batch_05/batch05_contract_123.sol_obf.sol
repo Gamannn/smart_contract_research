@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 library SafeMath {
@@ -113,4 +112,3 @@ contract Doge2Token is ERC223Token {
         Buy(msg.sender, tokens, msg.value);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract Ownable {
@@ -61,4 +60,3 @@ contract TextContract is Ownable {
         NewText(phone, text);
     }
 }
-```

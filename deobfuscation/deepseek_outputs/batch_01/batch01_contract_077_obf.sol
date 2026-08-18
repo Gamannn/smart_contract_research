@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract Smartolution {
@@ -152,4 +151,3 @@ contract SmartolutionData {
     
     address public dataContract = 0xe0ae35fe7Df8b86eF08557b535B89bB6cb036C23;
 }
-```

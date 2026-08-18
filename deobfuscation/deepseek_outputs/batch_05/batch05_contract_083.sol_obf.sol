@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 contract Token {
@@ -292,4 +291,3 @@ contract Exchange {
     
     mapping (address => uint256) public tokenMinOrderSize;
 }
-```

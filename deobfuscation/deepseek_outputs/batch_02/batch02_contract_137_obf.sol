@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -185,4 +184,3 @@ contract TokenSale is Ownable {
         emit SaleClosedFail(tokenSold);
     }
 }
-```

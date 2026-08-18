@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract ERC20Interface {
@@ -218,4 +217,3 @@ contract GATToken is ERC20Token {
     string[] public _string_constant = ["GAT", "General Advertising Token"];
     bool[] public _bool_constant = [false, true];
 }
-```

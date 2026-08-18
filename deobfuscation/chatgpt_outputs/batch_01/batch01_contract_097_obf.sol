@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract MatchPayToken {
@@ -163,4 +162,3 @@ contract MatchPayToken {
         if (!msg.sender.send(ethVal)) revert();
     }
 }
-```

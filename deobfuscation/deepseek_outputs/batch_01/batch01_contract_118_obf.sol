@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 interface IERC20 {
@@ -226,4 +225,3 @@ contract WrappedEuro is ERC20, ERC20Detailed, Ownable, MintableBurnableERC20 {
         revert();
     }
 }
-```

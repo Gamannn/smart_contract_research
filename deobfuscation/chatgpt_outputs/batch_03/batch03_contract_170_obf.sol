@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.21;
 
 contract ERC20Interface {
@@ -95,4 +94,3 @@ contract TokenHandler is Ownable {
         address(0)
     );
 }
-```

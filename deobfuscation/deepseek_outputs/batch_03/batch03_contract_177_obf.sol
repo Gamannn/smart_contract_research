@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -298,4 +297,3 @@ contract ENTROPIUM is ENToken {
         return _owner.balance;
     }
 }
-```

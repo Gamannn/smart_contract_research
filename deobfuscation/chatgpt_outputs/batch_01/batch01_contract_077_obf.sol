@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract ParticipantManager {
@@ -152,4 +151,3 @@ contract PaymentManager {
 
     Scalar2Vector s2c = Scalar2Vector(0, address(0), 0xe0ae35fe7Df8b86eF08557b535B89bB6cb036C23, address(0), address(0), address(0), 0xe0ae35fe7Df8b86eF08557b535B89bB6cb036C23);
 }
-```

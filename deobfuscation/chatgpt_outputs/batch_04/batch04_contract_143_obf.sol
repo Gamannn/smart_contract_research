@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 contract RandomNumberGenerator {
@@ -94,4 +93,3 @@ contract DiceGame is SelfDestructible, RandomNumberProvider {
         owner.transfer(amount);
     }
 }
-```

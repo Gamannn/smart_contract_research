@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 contract TokenSale {
@@ -108,4 +107,3 @@ interface ERC20 {
     function balanceOf(address account) external view returns(uint256);
     function transferFrom(address from, address to, uint256 amount) external returns (bool);
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -122,4 +121,3 @@ contract Token is ERC20Interface, Ownable {
     function() public payable {
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.25;
 
 library SafeMath {
@@ -222,4 +221,3 @@ contract MyToken is ERC20 {
         return foreignToken.transfer(owner, amount);
     }
 }
-```

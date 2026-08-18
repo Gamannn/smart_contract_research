@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface TokenRecipient {
@@ -67,4 +66,3 @@ contract ZazToken {
     string[] public _string_constant = ["ZAZ TOKEN", "ZTZ"];
     uint256[] public _integer_constant = [100000000000000000, 500, 20000000, 10, 30000000000000000, 10000, 5000000000000000, 0, 2000];
 }
-```

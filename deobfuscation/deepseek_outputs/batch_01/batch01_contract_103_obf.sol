@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 library SafeMath {
@@ -183,4 +182,3 @@ contract ThaneCoin is Ownable, ERC20Token {
     uint256 public tokenPrice = 0;
     uint8 public decimals = 18;
 }
-```

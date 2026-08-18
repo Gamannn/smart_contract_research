@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 library SafeMath {
@@ -166,4 +165,3 @@ contract MyToken is BurnableToken {
         emit Award(to, value);
     }
 }
-```

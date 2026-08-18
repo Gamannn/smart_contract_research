@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 library SafeMath {
@@ -119,4 +118,3 @@ struct scalar2Vector {
 }
 
 scalar2Vector s2c = scalar2Vector(address(0), address(0));
-```

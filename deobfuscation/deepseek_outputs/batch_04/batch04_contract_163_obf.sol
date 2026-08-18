@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.4;
 
 contract Wallet {
@@ -121,4 +120,3 @@ contract MasterContract {
         uint nonce
     ) public view returns(bytes32);
 }
-```

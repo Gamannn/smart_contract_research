@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -115,4 +114,3 @@ contract EBEHealthChain is ERC20ExtendedInterface, Ownable {
         return allowed[tokenOwner][spender];
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract TokenContract {
@@ -145,4 +144,3 @@ contract TokenContract {
         return a - b;
     }
 }
-```

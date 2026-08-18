@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract ERC20Interface {
@@ -203,4 +202,3 @@ contract Token is StandardERC20Token, Ownable {
 
     Scalar2Vector s2c = Scalar2Vector(10000, 5000000000, 0, 0, address(0));
 }
-```

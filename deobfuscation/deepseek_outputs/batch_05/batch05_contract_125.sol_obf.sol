@@ -1,4 +1,3 @@
-```solidity
 pragma solidity 0.4.25;
 
 contract Ownable {
@@ -166,4 +165,3 @@ contract ERC20 {
         return false;
     }
 }
-```

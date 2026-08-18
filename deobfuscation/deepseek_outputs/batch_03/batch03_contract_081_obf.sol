@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract Calculator {
@@ -85,4 +84,3 @@ contract Sale is Ownable {
         beneficiary.transfer(amount);
     }
 }
-```

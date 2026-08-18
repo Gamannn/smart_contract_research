@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.13;
 
 contract ERC20Basic {
@@ -148,4 +147,3 @@ contract Automobilecoin is ERC20, Ownable {
         return allowed[_owner][_spender];
     }
 }
-```

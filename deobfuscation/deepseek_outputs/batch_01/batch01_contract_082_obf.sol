@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 library SafeMath {
@@ -121,4 +120,3 @@ contract IRBPreRefundVault is Ownable {
         selfdestruct(owner);
     }
 }
-```

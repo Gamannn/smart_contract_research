@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.15;
 
 contract MathOperations {
@@ -157,4 +156,3 @@ contract Exchange is MathOperations {
         Cancel(msg.sender, amountGet, tokenGet, amountGet, amountGive, expires, tokenGive, v, r, s);
     }
 }
-```

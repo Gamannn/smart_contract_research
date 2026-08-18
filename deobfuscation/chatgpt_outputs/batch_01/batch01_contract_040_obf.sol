@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.11;
 
 contract Ownable {
@@ -503,4 +502,3 @@ contract JincorTokenICO is Haltable, PriceReceiver {
         address(0)
     );
 }
-```

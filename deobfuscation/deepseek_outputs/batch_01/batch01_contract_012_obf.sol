@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.9;
 
 contract Token {
@@ -31,4 +30,3 @@ contract RedemptionContract {
         Redemption(msg.sender, amount, redemptionValue);
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 interface IGameContract {
@@ -244,4 +243,3 @@ contract CardMarket {
         config.pendingOwner = address(0);
     }
 }
-```

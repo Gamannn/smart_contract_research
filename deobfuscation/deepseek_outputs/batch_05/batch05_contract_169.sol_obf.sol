@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.22;
 
 contract ERC20Basic {
@@ -182,4 +181,3 @@ contract Token is BasicToken, Ownable, ERC20 {
         return keccak256(_target, _target, _nonce);
     }
 }
-```

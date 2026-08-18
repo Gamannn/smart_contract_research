@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.5.2;
 
 interface IERC20 {
@@ -190,4 +189,3 @@ contract TokenDistribution {
         msg.sender.transfer(address(this).balance);
     }
 }
-```

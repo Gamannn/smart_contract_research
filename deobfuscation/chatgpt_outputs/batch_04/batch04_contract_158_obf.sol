@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.24;
 
 contract InvestmentContract {
@@ -109,4 +108,3 @@ library SafeMath {
         return c;
     }
 }
-```

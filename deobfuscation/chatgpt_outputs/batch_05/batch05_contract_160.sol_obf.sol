@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.21;
 
 contract Ownable {
@@ -150,4 +149,3 @@ contract Token is StandardToken, BurnableToken, Ownable {
         emit Transfer(0x0, msg.sender, INITIAL_SUPPLY);
     }
 }
-```

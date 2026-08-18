@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.20;
 
 contract Gladiethers {
@@ -244,4 +243,3 @@ library SafeMath {
         return c;
     }
 }
-```

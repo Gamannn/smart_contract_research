@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.18;
 
 contract Ownable {
@@ -182,4 +181,3 @@ contract BOSSToken is Ownable, StandardToken {
         msg.sender.transfer(amount / buyPrice);
     }
 }
-```

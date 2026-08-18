@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.19;
 
 library SafeMath {
@@ -203,4 +202,3 @@ interface ERC20 {
     function balanceOf(address owner, address spender) public constant returns (uint256);
     function allowance(address owner, address spender) public constant returns (uint256);
 }
-```

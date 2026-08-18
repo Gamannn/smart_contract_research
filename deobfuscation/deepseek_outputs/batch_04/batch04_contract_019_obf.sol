@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.16;
 
 interface tokenRecipient {
@@ -153,4 +152,3 @@ contract TMET is Owned, TokenERC20 {
         return balanceOf[_address];
     }
 }
-```

@@ -1,4 +1,3 @@
-```solidity
 pragma solidity ^0.4.23;
 
 interface TokenInterface {
@@ -56,4 +55,3 @@ contract TokenSale {
         return true;
     }
 }
-```
