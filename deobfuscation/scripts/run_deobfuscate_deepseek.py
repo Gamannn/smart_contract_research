@@ -24,6 +24,10 @@ def strip_fences(code):
     return FENCE.sub("", code).strip() + "\n"
 
 
+class Truncated(Exception):
+    """Model hit max_tokens; retrying at temperature=0 cannot help."""
+
+
 def deobfuscate(code, retries=5):
     wait = 30
     for attempt in range(1, retries + 1):
@@ -34,9 +38,13 @@ def deobfuscate(code, retries=5):
                     {"role": "user", "content": MASTER_PROMPT + "\n\n" + code}
                 ],
                 temperature=0,
+                max_tokens=8192,
                 timeout=300
             )
-            return response.choices[0].message.content
+            choice = response.choices[0]
+            if choice.finish_reason == "length":
+                raise Truncated("hit max_tokens=8192")
+            return choice.message.content
 
         except RateLimitError as e:
             print(f"  [Rate limit] attempt {attempt}/{retries}, waiting {wait}s... ({e})")
@@ -47,6 +55,9 @@ def deobfuscate(code, retries=5):
             print(f"  [Network error] attempt {attempt}/{retries}, waiting {wait}s... ({e})")
             time.sleep(wait)
             wait *= 2
+
+        except Truncated:
+            raise
 
         except Exception as e:
             print(f"  [Unexpected error] attempt {attempt}/{retries}: {e}")
@@ -82,6 +93,11 @@ def run(batch):
                 contract = f.read()
 
             print(f"[{i}/{len(pending)}] Processing {file} ({len(contract)} bytes)...")
+
+            if not contract.strip():
+                print("  ! skipped: input file is empty")
+                log.write(f"SKIP: {file} -> empty input\n")
+                continue
 
             try:
                 result = deobfuscate(contract)
